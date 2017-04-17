@@ -4,15 +4,66 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/external_input_border"
-
+    android:clipChildren="false"
     >
 
-    <android.inputmethodservice.ExtractEditText
-        android:layout_width="match_parent"
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
         android:background="@drawable/internal_input_border"
-        />
+        >
+        <android.inputmethodservice.ExtractEditText
+            android:id="@+id/inputTextEditor"
+            android:layout_width="match_parent"
+            android:minHeight="100dp"
+            android:layout_height="wrap_content"
+
+            />
+
+
+        <LinearLayout
+            android:id="@+id/rightInputLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignEnd="@id/inputTextEditor"
+            android:layout_marginStart="-25dp"
+            >
+            <ImageButton
+                android:id="@+id/soundButton"
+                android:src="@drawable/keyboard_voice"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <ImageButton
+                android:id="@+id/playButton"
+                android:src="@drawable/play_sound"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottomInputLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/inputTextEditor"
+            android:layout_marginStart="-15dp"
+            android:layout_marginBottom="-15dp"
+            >
+            <ImageButton
+                android:id="@+id/eraseButton"
+                android:src="@drawable/erase"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
 
 </RelativeLayout>
