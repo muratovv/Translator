@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/external_input_border"
+    android:background="@drawable/border_external_input"
     android:clipChildren="false"
     android:orientation="vertical">
 
@@ -12,47 +12,47 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/internal_input_border"
+        android:background="@drawable/border_internal_input"
         android:padding="0dp">
 
         <EditText
-            android:id="@+id/inputTextEditor"
-            style="@style/yandex_translator_theme"
+            android:id="@+id/edit_input"
+            style="@style/YandexTranslatorTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/soundButton"
+            android:layout_toStartOf="@+id/button_sound"
             android:gravity="top|start"
             android:inputType="text"
             android:minHeight="100dp" />
 
         <ImageButton
-            android:id="@+id/soundButton"
+            android:id="@+id/button_sound"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:src="@drawable/keyboard_voice" />
+            android:src="@drawable/ic_keyboard_voice" />
 
         <ImageButton
-            android:id="@+id/playButton"
+            android:id="@+id/button_play"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
-            android:layout_below="@+id/soundButton"
-            android:src="@drawable/play_sound" />
+            android:layout_below="@+id/button_sound"
+            android:src="@drawable/ic_play_sound" />
 
         <ImageButton
-            android:id="@+id/eraseButton"
+            android:id="@+id/button_erase"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/inputTextEditor"
-            android:src="@drawable/erase" />
+            android:layout_below="@+id/edit_input"
+            android:src="@drawable/ic_erase" />
     </RelativeLayout>
 
 </RelativeLayout>

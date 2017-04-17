@@ -31,28 +31,28 @@ public class MainActivity extends AppCompatActivity {
         translate = initTranslateButton();
 
         bookmarks = initBookmarksButton();
-        preference = ((Button) findViewById(R.id.preferenceScreenButton));
+        preference = ((Button) findViewById(R.id.button_preference_screen));
     }
 
     private Button initTranslateButton() {
-        Button translate = ((Button) findViewById(R.id.translateScreenButton));
+        Button translate = ((Button) findViewById(R.id.button_translate_screen));
         translate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: translate");
-                changeScreen(R.id.screenLayout, new TranslatorFragment());
+                changeScreen(R.id.layout_screen, new TranslatorFragment());
             }
         });
         return translate;
     }
 
     private Button initBookmarksButton() {
-        Button bookmarks = ((Button) findViewById(R.id.bookmarksScreenButton));
+        Button bookmarks = ((Button) findViewById(R.id.button_bookmarks_screen));
         bookmarks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: bookmarks");
-                changeScreen(R.id.screenLayout, new BookmarkFragment());
+                changeScreen(R.id.layout_screen, new BookmarkFragment());
             }
         });
         return bookmarks;

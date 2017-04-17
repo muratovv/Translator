@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/yandex_primary"
+    android:minHeight="?attr/actionBarSize"
+    app:titleTextColor="@android:color/white">
+
+    <Button
+        android:id="@+id/button_pick_source_lang"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/button_swap_lang"
+        android:text="@string/source"
+        android:textColor="@color/text_color" />
+
+    <ImageButton
+        android:id="@+id/button_swap_lang"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+
+        android:layout_centerHorizontal="true"
+        android:contentDescription=""
+        android:src="@drawable/ic_swap" />
+
+    <Button
+        android:id="@+id/button_pick_destination_lang"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button_swap_lang"
+        android:layout_toEndOf="@+id/button_swap_lang"
+        android:text="@string/dest"
+        android:textColor="@color/text_color" />
+
+</RelativeLayout>

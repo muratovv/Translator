@@ -4,11 +4,11 @@
     android:layout_height="match_parent">
     <include
         android:id="@+id/toolbar"
-        layout="@layout/translator_toolbar"
+        layout="@layout/toolbar_translator"
         />
     <include
         android:id="@+id/input"
-        layout="@layout/translator_input_layout"
+        layout="@layout/partial_translator_input"
         />
 
 </LinearLayout>
