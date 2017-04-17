@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="yandex.muratov.translator.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/screenLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/botBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/translateScreenButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/translate_screen_text"
+            android:layout_weight="1"
+            style="?android:attr/buttonBarButtonStyle"
+            />
+        <Button
+            android:id="@+id/bookmarksScreenButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bookmarks_screen_text"
+            android:layout_weight="1"
+            style="?android:attr/buttonBarButtonStyle"
+            />
+        <Button
+            android:id="@+id/preferenceScreenButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/preference_button_text"
+            android:layout_weight="1"
+            style="?android:attr/buttonBarButtonStyle"
+            />
+    </LinearLayout>
+
+</RelativeLayout>
