@@ -8,5 +8,34 @@
     app:titleTextColor="@android:color/white"
     android:background="@color/yandex_primary"
     >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/source_lang"
+            android:text="@string/source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            style="?android:attr/buttonBarButtonStyle"
+            />
+        <ImageButton
+            android:id="@+id/swap_lang"
+            android:src="@drawable/swap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/buttonBarButtonStyle"
+            />
+        <Button
+            android:text="@string/dest"
+            android:id="@+id/destination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            style="?android:attr/buttonBarButtonStyle"
+            />
+    </LinearLayout>
 
 </android.support.v7.widget.Toolbar>
