@@ -7,7 +7,7 @@
 
     <ImageButton
         android:id="@+id/view_search"
-        style="?android:attr/borderlessButtonStyle"
+        android:background="?selectableItemBackgroundBorderless"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/edit_search"
@@ -34,13 +34,13 @@
 
     <ImageButton
         android:id="@+id/button_erase"
-        style="?android:attr/borderlessButtonStyle"
+        android:background="?selectableItemBackgroundBorderless"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/edit_search"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="@dimen/margin_toolbar_horizontal"
         android:src="@drawable/ic_erase" />
 
     <View

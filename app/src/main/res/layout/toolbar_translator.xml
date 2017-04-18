@@ -10,7 +10,7 @@
 
     <Button
         android:id="@+id/button_pick_source_lang"
-        style="?android:attr/buttonBarButtonStyle"
+        android:background="?selectableItemBackgroundBorderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -20,18 +20,20 @@
 
     <ImageButton
         android:id="@+id/button_swap_lang"
-        style="?android:attr/buttonBarButtonStyle"
+        android:background="?selectableItemBackgroundBorderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-
+        android:layout_marginRight="@dimen/item_translation_margin"
+        android:layout_marginLeft="@dimen/item_translation_margin"
         android:layout_centerHorizontal="true"
         android:contentDescription=""
-        android:src="@drawable/ic_compare" />
+        android:src="@drawable/ic_compare"
+        android:layout_alignBottom="@+id/button_pick_source_lang" />
 
     <Button
         android:id="@+id/button_pick_destination_lang"
-        style="?android:attr/buttonBarButtonStyle"
+        android:background="?selectableItemBackgroundBorderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/button_swap_lang"

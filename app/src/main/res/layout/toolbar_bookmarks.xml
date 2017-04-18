@@ -9,10 +9,11 @@
     app:titleTextColor="@android:color/white">
 
     <ImageButton
-        style="?android:attr/buttonBarButtonStyle"
-        android:src="@drawable/ic_delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_width="@dimen/image_icon_in_toolbar_size"
+        android:layout_height="@dimen/image_icon_in_toolbar_size"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/margin_toolbar_horizontal"
+        android:background="?selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_delete" />
 </RelativeLayout>

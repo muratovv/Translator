@@ -27,35 +27,35 @@
 
         <ImageButton
             android:id="@+id/button_sound"
-            style="?android:attr/borderlessButtonStyle"
             android:layout_width="@dimen/image_icon_width"
             android:layout_height="@dimen/image_icon_height"
+            android:background="?selectableItemBackgroundBorderless"
             android:src="@drawable/ic_play_sound" />
 
         <ImageButton
-            android:id="@+id/button_save_to_bookmarks"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="@dimen/image_icon_width"
             android:layout_height="@dimen/image_icon_height"
+            android:background="?selectableItemBackgroundBorderless"
             android:src="@drawable/ic_bookmark_unused" />
 
         <ImageButton
             android:id="@+id/button_share"
-            style="?android:attr/borderlessButtonStyle"
             android:layout_width="@dimen/image_icon_width"
             android:layout_height="@dimen/image_icon_height"
+            android:background="?selectableItemBackgroundBorderless"
             android:src="@drawable/ic_share" />
 
         <ImageButton
             android:id="@+id/button_fullscreen"
-            style="?android:attr/borderlessButtonStyle"
             android:layout_width="@dimen/image_icon_width"
             android:layout_height="@dimen/image_icon_height"
+            android:background="?selectableItemBackgroundBorderless"
             android:src="@drawable/ic_fullscreen" />
     </LinearLayout>
 
 
-    <android.support.v7.widget.RecyclerView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -91,5 +91,5 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
         </LinearLayout>
-    </android.support.v7.widget.RecyclerView>
+    </ScrollView>
 </RelativeLayout>
