@@ -27,7 +27,7 @@
 
         android:layout_centerHorizontal="true"
         android:contentDescription=""
-        android:src="@drawable/ic_swap" />
+        android:src="@drawable/ic_compare" />
 
     <Button
         android:id="@+id/button_pick_destination_lang"
