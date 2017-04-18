@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-//        bookmarks.callOnClick();
+        navigation.setSelectedItemId(R.id.action_bookmarks_screen);
         super.onResume();
     }
 }
