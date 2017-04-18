@@ -55,7 +55,7 @@
     </LinearLayout>
 
 
-    <ScrollView
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -91,5 +91,5 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
         </LinearLayout>
-    </ScrollView>
+    </android.support.v7.widget.RecyclerView>
 </RelativeLayout>

@@ -9,7 +9,7 @@
         android:id="@+id/edit_search"
         layout="@layout/view_search" />
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/list_with_bookmarks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
