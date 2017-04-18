@@ -4,8 +4,8 @@
     <dimen name="image_icon_in_toolbar_size">30dp</dimen>
     <dimen name="image_icon_height">50dp</dimen>
     <dimen name="image_icon_size">30dp</dimen>
-    <dimen name="part_of_speech_size">14sp</dimen>
-    <dimen name="variant_text_size">18sp</dimen>
-    <dimen name="translation_text_size">22sp</dimen>
+    <dimen name="font_part_of_speech_size">14sp</dimen>
+    <dimen name="font_variant_text_size">18sp</dimen>
+    <dimen name="font_translation_size">22sp</dimen>
     <dimen name="item_translation_margin">7dp</dimen>
 </resources>

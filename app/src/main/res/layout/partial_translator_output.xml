@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/item_translation_margin"
         android:layout_toStartOf="@+id/layout_bot_buttons_bar"
-        android:textSize="@dimen/translation_text_size"
+        android:textSize="@dimen/font_translation_size"
         tools:text="Hi" />
 
     <LinearLayout
@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/item_translation_margin"
-                android:textSize="@dimen/translation_text_size"
+                android:textSize="@dimen/font_translation_size"
                 tools:text="привет" />
 
             <TextView
@@ -82,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_part_of_speech"
-                android:textSize="@dimen/part_of_speech_size"
+                android:textSize="@dimen/font_part_of_speech_size"
                 tools:text="Сущ." />
 
             <LinearLayout
