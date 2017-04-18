@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/button_in_favorites"
         android:layout_alignParentEnd="true"
-        android:layout_alignStart="@id/text_source_text"
+        android:layout_alignEnd="@+id/layout_translation"
         android:layout_alignTop="@id/button_in_favorites"
         android:layout_marginEnd="@dimen/item_translation_margin"
         android:gravity="center"
