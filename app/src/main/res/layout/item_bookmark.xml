@@ -28,23 +28,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/text_color"
+            android:textSize="@dimen/font_bookmark_top_size"
             tools:text="streamline" />
 
         <TextView
             android:id="@+id/text_dest_word"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/icon_gray"
+            android:textSize="@dimen/font_bookmark_bottom_size"
             tools:text="оптимизация" />
     </LinearLayout>
 
     <TextView
-        android:layout_marginEnd="@dimen/item_translation_margin"
         android:id="@+id/text_used_languages"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/button_in_favorites"
         android:layout_alignParentEnd="true"
+        android:layout_alignStart="@id/text_source_text"
         android:layout_alignTop="@id/button_in_favorites"
+        android:layout_marginEnd="@dimen/item_translation_margin"
         android:gravity="center"
         tools:text="EN - RU" />
 

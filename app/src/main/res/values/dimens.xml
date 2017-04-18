@@ -7,5 +7,7 @@
     <dimen name="font_part_of_speech_size">14sp</dimen>
     <dimen name="font_variant_text_size">18sp</dimen>
     <dimen name="font_translation_size">22sp</dimen>
+    <dimen name="font_bookmark_top_size">16sp</dimen>
+    <dimen name="font_bookmark_bottom_size">14sp</dimen>
     <dimen name="item_translation_margin">7dp</dimen>
 </resources>
