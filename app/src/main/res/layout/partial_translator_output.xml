@@ -27,7 +27,7 @@
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="@dimen/image_icon_width"
             android:layout_height="@dimen/image_icon_height"
-            android:src="@drawable/ic_keyboard_voice" />
+            android:src="@drawable/ic_play_sound" />
 
         <ImageButton
             android:id="@+id/button_save_to_bookmarks"
