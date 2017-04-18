@@ -11,48 +11,53 @@
         style="@style/YandexTranslatorTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_toStartOf="@+id/layout_bot_buttons_bar"
         tools:text="Hi" />
 
-    <ImageButton
-        android:id="@+id/button_sound"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="@dimen/image_icon_width"
-        android:layout_height="@dimen/image_icon_height"
+    <LinearLayout
+        android:id="@+id/layout_bot_buttons_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/ic_keyboard_voice" />
+        android:orientation="vertical">
 
-    <ImageButton
-        android:id="@+id/button_save_to_bookmarks"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="@dimen/image_icon_width"
-        android:layout_height="@dimen/image_icon_height"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/button_sound"
-        android:src="@drawable/ic_bookmark_unused" />
-    <ImageButton
-        android:id="@+id/button_share"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="@dimen/image_icon_width"
-        android:layout_height="@dimen/image_icon_height"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/button_save_to_bookmarks"
-        android:src="@drawable/ic_share" />
+        <ImageButton
+            android:id="@+id/button_sound"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/image_icon_width"
+            android:layout_height="@dimen/image_icon_height"
+            android:src="@drawable/ic_keyboard_voice" />
 
-    <ImageButton
-        android:id="@+id/button_fullscreen"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="@dimen/image_icon_width"
-        android:layout_height="@dimen/image_icon_height"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/button_share"
-        android:src="@drawable/ic_fullscreen" />
+        <ImageButton
+            android:id="@+id/button_save_to_bookmarks"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/image_icon_width"
+            android:layout_height="@dimen/image_icon_height"
+            android:src="@drawable/ic_bookmark_unused" />
+
+        <ImageButton
+            android:id="@+id/button_share"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/image_icon_width"
+            android:layout_height="@dimen/image_icon_height"
+            android:src="@drawable/ic_share" />
+
+        <ImageButton
+            android:id="@+id/button_fullscreen"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/image_icon_width"
+            android:layout_height="@dimen/image_icon_height"
+            android:src="@drawable/ic_fullscreen" />
+    </LinearLayout>
+
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/text_translation">
+        android:layout_below="@+id/text_translation"
+        android:layout_toStartOf="@+id/layout_bot_buttons_bar">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -73,10 +78,11 @@
                 android:layout_height="wrap_content"
                 tools:text="Сущ." />
 
-            <ListView
+            <LinearLayout
                 android:id="@+id/list_additional_translations"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
