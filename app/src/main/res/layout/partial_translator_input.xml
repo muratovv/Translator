@@ -36,8 +36,8 @@
         <ImageButton
             android:id="@+id/button_sound"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="30dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/image_icon_width"
+            android:layout_height="@dimen/image_icon_height"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:src="@drawable/ic_keyboard_voice" />
@@ -45,8 +45,8 @@
         <ImageButton
             android:id="@+id/button_play"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="30dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/image_icon_width"
+            android:layout_height="@dimen/image_icon_height"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/button_sound"
             android:src="@drawable/ic_play_sound" />
