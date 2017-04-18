@@ -4,12 +4,14 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.ImageButton;
+import android.view.MenuItem;
 
 import yandex.muratov.translator.ui.BookmarkFragment;
+import yandex.muratov.translator.ui.SettingsFragment;
 import yandex.muratov.translator.ui.TranslatorFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,45 +19,41 @@ public class MainActivity extends AppCompatActivity {
     private static String TAG = "MAIN";
     private static String FRAGMENT_TAG = "screen";
 
-    private ImageButton translate;
-    private ImageButton bookmarks;
-    private ImageButton preference;
-
-    private Fragment activeFragment;
+    private BottomNavigationView navigation;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        translate = initTranslateButton();
+        navigation = initNavigation();
 
-        bookmarks = initBookmarksButton();
-        preference = ((ImageButton) findViewById(R.id.button_preference_screen));
     }
 
-    private ImageButton initTranslateButton() {
-        ImageButton translate = ((ImageButton) findViewById(R.id.button_translate_screen));
-        translate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: translate");
-                changeScreen(R.id.layout_screen, new TranslatorFragment());
-            }
-        });
-        return translate;
-    }
-
-    private ImageButton initBookmarksButton() {
-        ImageButton bookmarks = ((ImageButton) findViewById(R.id.button_bookmarks_screen));
-        bookmarks.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: bookmarks");
-                changeScreen(R.id.layout_screen, new BookmarkFragment());
-            }
-        });
-        return bookmarks;
+    private BottomNavigationView initNavigation() {
+        BottomNavigationView navigationView = ((BottomNavigationView) findViewById(R.id.bar_navigation));
+        navigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.action_translate_screen:
+                                Log.d(TAG, "onClick: translate");
+                                changeScreen(R.id.layout_screen, new TranslatorFragment());
+                                break;
+                            case R.id.action_bookmarks_screen:
+                                Log.d(TAG, "onClick: bookmarks");
+                                changeScreen(R.id.layout_screen, new BookmarkFragment());
+                                break;
+                            case R.id.action_preference_screen:
+                                Log.d(TAG, "onClick: preferences");
+                                changeScreen(R.id.layout_screen, new SettingsFragment());
+                                break;
+                        }
+                        return true;
+                    }
+                });
+        return navigationView;
     }
 
     private void changeScreen(int layout, Fragment fragment) {
@@ -76,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        bookmarks.callOnClick();
+//        bookmarks.callOnClick();
         super.onResume();
     }
 }

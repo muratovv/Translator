@@ -27,7 +27,7 @@
             android:id="@+id/text_source_word"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/text_color"
+            android:textColor="@color/elements_in_toolbar_color"
             android:textSize="@dimen/font_bookmark_top_size"
             tools:text="streamline" />
 

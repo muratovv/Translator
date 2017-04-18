@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,39 +10,25 @@
         android:id="@+id/layout_screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/bar_navigation"
         android:orientation="vertical" />
 
-    <LinearLayout
-        android:id="@+id/layout_bot_bar"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="2dp"
+        android:layout_above="@id/bar_navigation"
+        android:background="@drawable/border_separator" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bar_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/button_translate_screen"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_translate" />
-
-        <ImageButton
-            android:id="@+id/button_bookmarks_screen"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_bookmark_unused" />
-
-        <ImageButton
-            android:id="@+id/button_preference_screen"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_settings" />
-    </LinearLayout>
+        android:layout_gravity="start"
+        android:background="@android:color/transparent"
+        app:itemIconTint="@drawable/item_nav_color_state"
+        app:itemTextColor="@drawable/item_nav_color_state"
+        app:menu="@menu/bottom_navigation_main" />
 
 </RelativeLayout>

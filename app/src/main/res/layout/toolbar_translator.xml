@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_toStartOf="@+id/button_swap_lang"
         android:text="@string/source"
-        android:textColor="@color/text_color" />
+        android:textColor="@color/elements_in_toolbar_color" />
 
     <ImageButton
         android:id="@+id/button_swap_lang"
@@ -37,6 +37,6 @@
         android:layout_alignTop="@+id/button_swap_lang"
         android:layout_toEndOf="@+id/button_swap_lang"
         android:text="@string/dest"
-        android:textColor="@color/text_color" />
+        android:textColor="@color/elements_in_toolbar_color" />
 
 </RelativeLayout>
