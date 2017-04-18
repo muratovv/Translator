@@ -25,11 +25,10 @@
             android:layout_toStartOf="@+id/button_sound"
             android:background="@drawable/border_input_text"
             android:gravity="top|start"
-            android:imeOptions="actionSearch"
-            android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
+            android:imeOptions="actionDone"
+            android:inputType="textMultiLine|textCapSentences|textAutoComplete"
             android:maxLines="4"
-            android:minHeight="120dp"
-            android:scrollHorizontally="false"
+            android:minHeight="125dp"
             android:scrollbars="vertical"
             android:textSize="@dimen/translation_text_size" />
 
