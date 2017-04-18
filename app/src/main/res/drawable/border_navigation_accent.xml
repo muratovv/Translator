@@ -4,8 +4,7 @@
         <shape android:shape="line">
             <stroke
                 android:width="3dp"
-                android:color="@color/yandex_primary" />
-            <solid android:color="@color/yandex_primary" />
+                android:color="@color/colorNavigationAccent" />
         </shape>
     </item>
 </layer-list>

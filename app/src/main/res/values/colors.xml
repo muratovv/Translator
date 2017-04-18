@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="yellow_title">#DEBB42</color>
     <color name="yandex_primary">#FFD84C</color>
+    <color name="colorNavigationAccent">#FFD84C</color>
     <color name="icon_gray">#6e7783</color>
     <color name="soft_gray">#d5d5d6</color>
     <color name="elements_in_toolbar_color">#000000</color>
