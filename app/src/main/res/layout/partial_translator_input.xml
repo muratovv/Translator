@@ -31,7 +31,7 @@
             android:maxLines="4"
             android:minHeight="125dp"
             android:scrollbars="vertical"
-            android:textColorHint="@color/soft_gray"
+            android:textColorHint="@color/colorSoftGray"
             android:textSize="@dimen/font_translation_size" />
 
         <ImageButton

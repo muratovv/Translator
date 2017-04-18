@@ -3,16 +3,16 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="yellow_title">#DEBB42</color>
-    <color name="yandex_primary">#FFD84C</color>
+    <color name="colorTitle">#DEBB42</color>
+    <color name="colorMain">#FFD84C</color>
     <color name="colorNavigationAccent">#FFD84C</color>
-    <color name="icon_gray">#6e7783</color>
-    <color name="soft_gray">#d5d5d6</color>
-    <color name="elements_in_toolbar_color">#000000</color>
-    <color name="active_element_in_navigation_bar">#000000</color>
-    <color name="text_variant">#39617d</color>
-    <color name="text_explanation">#764e3b</color>
-    <color name="text_usages">#6a90ae</color>
-    <color name="icon_not_active">#b8b8b8</color>
-    <color name="text_part_of_speech">#8d647b</color>
+    <color name="colorGray">#6e7783</color>
+    <color name="colorSoftGray">#d5d5d6</color>
+    <color name="colorElementsInToolbar">#000000</color>
+    <color name="colorActiveElementInNavigationBar">#000000</color>
+    <color name="colorVariants">#39617d</color>
+    <color name="colorExplanation">#764e3b</color>
+    <color name="colorUsages">#6a90ae</color>
+    <color name="colorNotActive">#b8b8b8</color>
+    <color name="colorPartOfSpeech">#8d647b</color>
 </resources>

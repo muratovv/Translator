@@ -81,7 +81,7 @@
                 style="@style/YandexTranslatorTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_part_of_speech"
+                android:textColor="@color/colorPartOfSpeech"
                 android:textSize="@dimen/font_part_of_speech_size"
                 tools:text="Сущ." />
 

@@ -4,7 +4,7 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/yandex_primary"
+    android:background="@color/colorMain"
     android:minHeight="?attr/actionBarSize"
     app:titleTextColor="@android:color/white">
 
@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_toStartOf="@+id/button_swap_lang"
         android:text="@string/source"
-        android:textColor="@color/elements_in_toolbar_color" />
+        android:textColor="@color/colorElementsInToolbar" />
 
     <ImageButton
         android:id="@+id/button_swap_lang"
@@ -39,6 +39,6 @@
         android:layout_alignTop="@+id/button_swap_lang"
         android:layout_toEndOf="@+id/button_swap_lang"
         android:text="@string/dest"
-        android:textColor="@color/elements_in_toolbar_color" />
+        android:textColor="@color/colorElementsInToolbar" />
 
 </RelativeLayout>

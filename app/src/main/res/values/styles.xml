@@ -7,8 +7,8 @@
     </style>
 
     <style name="YandexTranslatorTheme" parent="NoBarTheme">
-        <item name="android:statusBarColor">@color/yellow_title</item>
-        <item name="colorPrimary">@color/yandex_primary</item>
+        <item name="android:statusBarColor">@color/colorTitle</item>
+        <item name="colorPrimary">@color/colorMain</item>
     </style>
 
 </resources>
