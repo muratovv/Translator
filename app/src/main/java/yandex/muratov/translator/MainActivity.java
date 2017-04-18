@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 import yandex.muratov.translator.ui.BookmarkFragment;
 import yandex.muratov.translator.ui.TranslatorFragment;
@@ -17,9 +17,9 @@ public class MainActivity extends AppCompatActivity {
     private static String TAG = "MAIN";
     private static String FRAGMENT_TAG = "screen";
 
-    private Button translate;
-    private Button bookmarks;
-    private Button preference;
+    private ImageButton translate;
+    private ImageButton bookmarks;
+    private ImageButton preference;
 
     private Fragment activeFragment;
 
@@ -31,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
         translate = initTranslateButton();
 
         bookmarks = initBookmarksButton();
-        preference = ((Button) findViewById(R.id.button_preference_screen));
+        preference = ((ImageButton) findViewById(R.id.button_preference_screen));
     }
 
-    private Button initTranslateButton() {
-        Button translate = ((Button) findViewById(R.id.button_translate_screen));
+    private ImageButton initTranslateButton() {
+        ImageButton translate = ((ImageButton) findViewById(R.id.button_translate_screen));
         translate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
         return translate;
     }
 
-    private Button initBookmarksButton() {
-        Button bookmarks = ((Button) findViewById(R.id.button_bookmarks_screen));
+    private ImageButton initBookmarksButton() {
+        ImageButton bookmarks = ((ImageButton) findViewById(R.id.button_bookmarks_screen));
         bookmarks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

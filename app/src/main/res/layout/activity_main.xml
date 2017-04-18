@@ -19,29 +19,29 @@
         android:layout_alignParentStart="true"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/button_translate_screen"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/translate_screen_text" />
+            android:src="@drawable/ic_translate" />
 
-        <Button
+        <ImageButton
             android:id="@+id/button_bookmarks_screen"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/bookmarks_screen_text" />
+            android:src="@drawable/ic_bookmark_unused" />
 
-        <Button
+        <ImageButton
             android:id="@+id/button_preference_screen"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/preference_button_text" />
+            android:src="@drawable/ic_settings" />
     </LinearLayout>
 
 </RelativeLayout>
