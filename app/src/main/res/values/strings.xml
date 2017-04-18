@@ -8,4 +8,6 @@
     <string name="play_button_text">P</string>
     <string name="source"><![CDATA[<Source>]]></string>
     <string name="dest"><![CDATA[<Dest>]]></string>
+    <string name="hint_find_in_history">Найти в истории</string>
+    <string name="hint_translate_input">Введите текст</string>
 </resources>

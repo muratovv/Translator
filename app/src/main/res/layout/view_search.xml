@@ -6,37 +6,48 @@
     android:orientation="horizontal">
 
     <ImageButton
-        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/view_search"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:src="@drawable/ic_search"
-        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/edit_search"
         android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/edit_search" />
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_search" />
 
     <EditText
         android:id="@+id/edit_search"
-        android:background="@drawable/border_input_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
         android:layout_toEndOf="@id/view_search"
         android:layout_toStartOf="@id/button_erase"
-        android:inputType="text"
+        android:background="@drawable/border_input_text"
         android:gravity="bottom"
-        android:layout_alignParentTop="true"
-        android:maxLines="1" />
+        android:hint="@string/hint_find_in_history"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textColorHint="@color/soft_gray" />
 
     <ImageButton
         android:id="@+id/button_erase"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="40dp"
-
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/edit_search"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/ic_erase"
-        android:layout_alignBottom="@+id/edit_search" />
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/ic_erase" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_above="@id/bar_navigation"
+        android:layout_alignBottom="@id/view_search"
+        android:background="@drawable/border_separator" />
 
 </RelativeLayout>

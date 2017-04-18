@@ -25,11 +25,13 @@
             android:layout_toStartOf="@+id/button_sound"
             android:background="@drawable/border_input_text"
             android:gravity="top|start"
+            android:hint="@string/hint_translate_input"
             android:imeOptions="actionDone"
             android:inputType="textMultiLine|textCapSentences|textAutoComplete"
             android:maxLines="4"
             android:minHeight="125dp"
             android:scrollbars="vertical"
+            android:textColorHint="@color/soft_gray"
             android:textSize="@dimen/font_translation_size" />
 
         <ImageButton
