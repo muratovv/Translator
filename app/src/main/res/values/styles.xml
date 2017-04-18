@@ -6,9 +6,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="YandexTranslatorTheme" parent="NoBarTheme" >
+    <style name="YandexTranslatorTheme" parent="NoBarTheme">
         <item name="android:statusBarColor">@color/yellow_title</item>
         <item name="colorPrimary">@color/yandex_primary</item>
-    </style>>
+    </style>
 
 </resources>
