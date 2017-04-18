@@ -10,4 +10,5 @@
     <color name="text_variant">#416a86</color>
     <color name="text_explanation">#845c47</color>
     <color name="text_usages">#6a90ae</color>
+    <color name="text_part_of_speech">#8d647b</color>
 </resources>
