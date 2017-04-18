@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/border_external_input"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_translation"
+        style="@style/YandexTranslatorTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Hi" />
+
+    <ImageButton
+        android:id="@+id/button_sound"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="@dimen/image_icon_width"
+        android:layout_height="@dimen/image_icon_height"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_keyboard_voice" />
+
+    <ImageButton
+        android:id="@+id/button_save_to_bookmarks"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="@dimen/image_icon_width"
+        android:layout_height="@dimen/image_icon_height"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/button_sound"
+        android:src="@drawable/ic_bookmark_unused" />
+    <ImageButton
+        android:id="@+id/button_share"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="@dimen/image_icon_width"
+        android:layout_height="@dimen/image_icon_height"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/button_save_to_bookmarks"
+        android:src="@drawable/ic_share" />
+
+    <ImageButton
+        android:id="@+id/button_fullscreen"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="@dimen/image_icon_width"
+        android:layout_height="@dimen/image_icon_height"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/button_share"
+        android:src="@drawable/ic_fullscreen" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text_translation">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_source_text"
+                style="@style/YandexTranslatorTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="привет" />
+
+            <TextView
+                android:id="@+id/text_part_of_speech"
+                style="@style/YandexTranslatorTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Сущ." />
+
+            <ListView
+                android:id="@+id/list_additional_translations"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
