@@ -26,9 +26,9 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_gravity="start"
-        android:background="@android:color/transparent"
-        app:itemIconTint="@drawable/item_nav_color_state"
-        app:itemTextColor="@drawable/item_nav_color_state"
+        app:itemBackground="@drawable/item_navigation_background_state"
+        app:itemIconTint="@drawable/item_navigation_color_state"
+        app:itemTextColor="@drawable/item_navigation_color_state"
         app:menu="@menu/bottom_navigation_main" />
 
 </RelativeLayout>
