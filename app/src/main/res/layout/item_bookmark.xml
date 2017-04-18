@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageButton
+        android:id="@+id/button_in_favorites"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_bookmark_unused" />
+
+    <LinearLayout
+        android:id="@+id/layout_translation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@id/button_in_favorites"
+        android:layout_alignTop="@id/button_in_favorites"
+        android:layout_toEndOf="@+id/button_in_favorites"
+        android:gravity="center|start"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_source_word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            tools:text="streamline" />
+
+        <TextView
+            android:id="@+id/text_dest_word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="оптимизация" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginEnd="@dimen/item_translation_margin"
+        android:id="@+id/text_used_languages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/button_in_favorites"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/button_in_favorites"
+        android:gravity="center"
+        tools:text="EN - RU" />
+
+</RelativeLayout>

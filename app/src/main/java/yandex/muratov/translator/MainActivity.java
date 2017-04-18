@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        translate.callOnClick();
+        bookmarks.callOnClick();
         super.onResume();
     }
 }
