@@ -1,14 +1,9 @@
 <resources>
 
-    <style name="NoBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-    <style name="YandexTranslatorTheme" parent="NoBarTheme">
+    <style name="YandexTranslatorTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:statusBarColor">@color/colorTitle</item>
         <item name="colorPrimary">@color/colorMain</item>
+        <item name="colorAccent">@color/colorGray</item>
     </style>
 
 </resources>
