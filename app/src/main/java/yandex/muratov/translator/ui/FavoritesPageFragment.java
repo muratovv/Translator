@@ -13,7 +13,7 @@ public class FavoritesPageFragment extends BasePageFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        searchBar.getTextLine().setHint(getActivity().getResources().getString(R.string.hint_find_in_favorites));
+        searchBar.getQueryLine().setHint(getActivity().getResources().getString(R.string.hint_find_in_favorites));
         return view;
     }
 
