@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 
 import yandex.muratov.translator.R;
 
-public class BookmarkFragment extends android.support.v4.app.Fragment {
+public class BookmarkScreenFragment extends android.support.v4.app.Fragment {
 
     private ViewPager pager;
     private TabLayout tabLayout;

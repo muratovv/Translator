@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import yandex.muratov.translator.R;
 
-public class TranslatorFragment extends Fragment {
+public class TranslatorScreenFragment extends Fragment {
 
     @Nullable
     @Override
