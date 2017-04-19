@@ -1,15 +1,10 @@
 <resources>
     <string name="app_name">Translator</string>
-    <string name="translate_screen_text">TR</string>
-    <string name="bookmarks_screen_text">BM</string>
-    <string name="preference_button_text">PR</string>
-    <string name="erase">E</string>
-    <string name="sound_button_text">S</string>
-    <string name="play_button_text">P</string>
-    <string name="source"><![CDATA[<Source>]]></string>
-    <string name="dest"><![CDATA[<Dest>]]></string>
-    <string name="hint_find_in_history">Найти в истории</string>
-    <string name="hint_translate_input">Введите текст</string>
+    <string name="source">Source</string>
+    <string name="dest">Target</string>
+    <string name="hint_find_in_history">Find in history</string>
+    <string name="hint_find_in_favorites">Find in favorites</string>
+    <string name="hint_translate_input">Put text</string>
     <string name="page_title_history">History</string>
     <string name="page_title_favorites">Favorites</string>
 </resources>
