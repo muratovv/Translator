@@ -2,6 +2,7 @@ package yandex.muratov.translator.ui.translator;
 
 
 import android.content.Context;
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -30,6 +31,8 @@ public class TranslatorInputView extends View {
         playTextButton = initPlayTextButton(view);
         eraseButton = initEraseButton(view);
         sourceEditText = initSourceEditText(view);
+
+        getSourceEditText().setRawInputType(InputType.TYPE_CLASS_TEXT);
 
         getEraseButton().setOnClickListener(new OnClickListener() {
             @Override
