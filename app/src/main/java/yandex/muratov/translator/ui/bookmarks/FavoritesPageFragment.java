@@ -1,4 +1,4 @@
-package yandex.muratov.translator.ui;
+package yandex.muratov.translator.ui.bookmarks;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

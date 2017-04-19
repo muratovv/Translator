@@ -1,4 +1,4 @@
-package yandex.muratov.translator.ui;
+package yandex.muratov.translator.ui.bookmarks;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import yandex.muratov.translator.R;
+import yandex.muratov.translator.ui.OneLineSearchBar;
 
 public abstract class BasePageFragment extends Fragment {
 

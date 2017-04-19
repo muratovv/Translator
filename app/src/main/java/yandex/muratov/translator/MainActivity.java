@@ -10,9 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
-import yandex.muratov.translator.ui.BookmarkScreenFragment;
+import yandex.muratov.translator.ui.bookmarks.BookmarkScreenFragment;
 import yandex.muratov.translator.ui.SettingsScreenFragment;
-import yandex.muratov.translator.ui.TranslatorScreenFragment;
+import yandex.muratov.translator.ui.translator.TranslatorScreenFragment;
 
 public class MainActivity extends AppCompatActivity {
 

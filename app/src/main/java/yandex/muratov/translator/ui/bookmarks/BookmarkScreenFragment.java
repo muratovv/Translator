@@ -1,4 +1,4 @@
-package yandex.muratov.translator.ui;
+package yandex.muratov.translator.ui.bookmarks;
 
 import android.content.res.Resources;
 import android.os.Bundle;

@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <include
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_translator"
         layout="@layout/toolbar_translator" />
 
     <include

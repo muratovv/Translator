@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/button_sound"
+            android:layout_toStartOf="@+id/button_speech_keyboard"
             android:background="@drawable/border_input_text"
             android:gravity="top|start"
             android:hint="@string/hint_translate_input"
@@ -35,7 +35,7 @@
             android:textSize="@dimen/font_translation_size" />
 
         <ImageButton
-            android:id="@+id/button_sound"
+            android:id="@+id/button_speech_keyboard"
             android:background="?selectableItemBackgroundBorderless"
             android:layout_width="@dimen/image_icon_width"
             android:layout_height="@dimen/image_icon_height"
@@ -49,7 +49,7 @@
             android:layout_width="@dimen/image_icon_width"
             android:layout_height="@dimen/image_icon_height"
             android:layout_alignParentEnd="true"
-            android:layout_below="@+id/button_sound"
+            android:layout_below="@+id/button_speech_keyboard"
             android:src="@drawable/ic_play_sound" />
 
         <ImageButton
