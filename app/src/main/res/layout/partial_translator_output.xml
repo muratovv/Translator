@@ -26,13 +26,14 @@
         android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/button_sound"
+            android:id="@+id/button_play_output_text"
             android:layout_width="@dimen/image_icon_width"
             android:layout_height="@dimen/image_icon_height"
             android:background="?selectableItemBackgroundBorderless"
             android:src="@drawable/ic_play_sound" />
 
         <ImageButton
+            android:id="@+id/button_save_in_bookmarks"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="@dimen/image_icon_width"
             android:layout_height="@dimen/image_icon_height"
