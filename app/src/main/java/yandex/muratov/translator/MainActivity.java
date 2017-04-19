@@ -10,9 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
-import yandex.muratov.translator.ui.BookmarkFragment;
-import yandex.muratov.translator.ui.SettingsFragment;
-import yandex.muratov.translator.ui.TranslatorFragment;
+import yandex.muratov.translator.ui.BookmarkScreenFragment;
+import yandex.muratov.translator.ui.SettingsScreenFragment;
+import yandex.muratov.translator.ui.TranslatorScreenFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,15 +39,15 @@ public class MainActivity extends AppCompatActivity {
                         switch (item.getItemId()) {
                             case R.id.action_translate_screen:
                                 Log.d(TAG, "onClick: translate");
-                                changeScreen(R.id.layout_screen, new TranslatorFragment());
+                                changeScreen(R.id.layout_screen, new TranslatorScreenFragment());
                                 break;
                             case R.id.action_bookmarks_screen:
                                 Log.d(TAG, "onClick: bookmarks");
-                                changeScreen(R.id.layout_screen, new BookmarkFragment());
+                                changeScreen(R.id.layout_screen, new BookmarkScreenFragment());
                                 break;
                             case R.id.action_preference_screen:
                                 Log.d(TAG, "onClick: preferences");
-                                changeScreen(R.id.layout_screen, new SettingsFragment());
+                                changeScreen(R.id.layout_screen, new SettingsScreenFragment());
                                 break;
                         }
                         return true;

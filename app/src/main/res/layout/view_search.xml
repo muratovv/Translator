@@ -10,14 +10,14 @@
         android:background="?selectableItemBackgroundBorderless"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/edit_search"
+        android:layout_alignBottom="@+id/edit_search_line"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="10dp"
         android:src="@drawable/ic_search" />
 
     <EditText
-        android:id="@+id/edit_search"
+        android:id="@+id/edit_search_line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -37,7 +37,7 @@
         android:background="?selectableItemBackgroundBorderless"
         android:layout_width="@dimen/image_icon_in_toolbar_size"
         android:layout_height="@dimen/image_icon_in_toolbar_size"
-        android:layout_alignBottom="@+id/edit_search"
+        android:layout_alignBottom="@+id/edit_search_line"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="@dimen/margin_toolbar_horizontal"
