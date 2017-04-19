@@ -1,11 +1,11 @@
 package yandex.muratov.translator;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void changeScreen(int layout, Fragment fragment) {
 
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         removePreviousFragment(fragmentManager, transaction)
                 .add(layout, fragment, FRAGMENT_TAG)

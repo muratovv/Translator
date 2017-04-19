@@ -1,6 +1,5 @@
 package yandex.muratov.translator.ui;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,7 +8,7 @@ import android.view.ViewGroup;
 
 import yandex.muratov.translator.R;
 
-public class BookmarkFragment extends Fragment {
+public class BookmarkFragment extends android.support.v4.app.Fragment {
 
     @Nullable
     @Override
