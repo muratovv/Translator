@@ -7,13 +7,13 @@
 
     <ImageButton
         android:id="@+id/view_search"
-        android:background="?selectableItemBackgroundBorderless"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/edit_search_line"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="10dp"
+        android:background="?selectableItemBackgroundBorderless"
         android:src="@drawable/ic_search" />
 
     <EditText
@@ -28,19 +28,20 @@
         android:background="@drawable/border_input_text"
         android:gravity="bottom"
         android:hint="@string/hint_find_in_history"
+        android:imeOptions="flagNoFullscreen"
         android:inputType="text"
         android:maxLines="1"
         android:textColorHint="@color/colorSoftGray" />
 
     <ImageButton
         android:id="@+id/button_erase"
-        android:background="?selectableItemBackgroundBorderless"
         android:layout_width="@dimen/image_icon_in_toolbar_size"
         android:layout_height="@dimen/image_icon_in_toolbar_size"
         android:layout_alignBottom="@+id/edit_search_line"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="@dimen/margin_toolbar_horizontal"
+        android:background="?selectableItemBackgroundBorderless"
         android:src="@drawable/ic_erase" />
 
     <View
