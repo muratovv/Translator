@@ -10,4 +10,6 @@
     <string name="dest"><![CDATA[<Dest>]]></string>
     <string name="hint_find_in_history">Найти в истории</string>
     <string name="hint_translate_input">Введите текст</string>
+    <string name="page_title_history">History</string>
+    <string name="page_title_favorites">Favorites</string>
 </resources>
