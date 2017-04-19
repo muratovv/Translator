@@ -5,39 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorMain"
+    android:maxHeight="?attr/actionBarSize"
     android:minHeight="?attr/actionBarSize"
     app:titleTextColor="@android:color/white">
 
     <Button
         android:id="@+id/button_pick_source_lang"
-        android:background="?selectableItemBackgroundBorderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
         android:layout_toStartOf="@+id/button_swap_lang"
+        android:background="?selectableItemBackgroundBorderless"
         android:text="@string/source"
         android:textColor="@color/colorElementsInToolbar" />
 
     <ImageButton
         android:id="@+id/button_swap_lang"
-        android:background="?selectableItemBackgroundBorderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="@dimen/item_translation_margin"
-        android:layout_marginLeft="@dimen/item_translation_margin"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/item_translation_margin"
+        android:layout_marginRight="@dimen/item_translation_margin"
+        android:background="?selectableItemBackgroundBorderless"
         android:contentDescription=""
-        android:src="@drawable/ic_compare"
-        android:layout_alignBottom="@+id/button_pick_source_lang" />
+        android:src="@drawable/ic_compare" />
 
     <Button
         android:id="@+id/button_pick_target_lang"
-        android:background="?selectableItemBackgroundBorderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button_swap_lang"
+        android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/button_swap_lang"
+        android:background="?selectableItemBackgroundBorderless"
         android:text="@string/dest"
         android:textColor="@color/colorElementsInToolbar" />
 
