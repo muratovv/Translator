@@ -21,7 +21,6 @@ public class OneLineSearchBar extends View {
 
     public OneLineSearchBar(Context context) {
         super(context);
-        // TODO find view
     }
 
     public OneLineSearchBar(View baseView) {

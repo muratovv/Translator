@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        navigation.setSelectedItemId(R.id.action_bookmarks_screen);
+        navigation.setSelectedItemId(R.id.action_translate_screen);
         super.onResume();
     }
 }
