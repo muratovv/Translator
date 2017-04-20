@@ -11,4 +11,7 @@
     <dimen name="font_bookmark_bottom_size">14sp</dimen>
     <dimen name="item_translation_margin">7dp</dimen>
     <dimen name="margin_toolbar_horizontal">20dp</dimen>
+    <dimen name="navigation_bar_accent_offset">52dp</dimen>
+    <dimen name="navigation_bar_accent_width">3dp</dimen>
+    <dimen name="navigation_bar_height">56dp</dimen>
 </resources>
