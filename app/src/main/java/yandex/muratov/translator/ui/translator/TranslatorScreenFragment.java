@@ -18,11 +18,19 @@ public class TranslatorScreenFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View screenView = inflater.inflate(R.layout.fragment_translator_screen, container, false);
+        return inflater.inflate(R.layout.fragment_translator_screen, container, false);
+    }
+
+    private void initInternalViews(View screenView) {
         input = initInputView(screenView);
         toolbar = initToolbar(screenView);
         output = initOutputView(screenView);
-        return screenView;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initInternalViews(view);
     }
 
     private static TranslatorInputView initInputView(View rootView) {
