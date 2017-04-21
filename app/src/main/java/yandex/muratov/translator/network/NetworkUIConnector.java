@@ -72,6 +72,7 @@ public class NetworkUIConnector implements ModelObserver, Droppable {
     }
 
     public void translate(Language sourceLanguage, Language targetLanguage, String text) {
+        if (uiSubscriber == null) return;
         net.dropLastRequest();
         String apiLang = makeApiCodeAdapter(sourceLanguage, targetLanguage);
         net.translateRequest(apiLang, text);
