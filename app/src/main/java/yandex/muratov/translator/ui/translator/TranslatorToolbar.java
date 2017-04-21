@@ -1,13 +1,15 @@
 package yandex.muratov.translator.ui.translator;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
 import yandex.muratov.translator.R;
 
-public class TranslatorToolbar extends View {
+public class TranslatorToolbar extends RelativeLayout {
 
     private Button pickSourceLang;
     private Button pickTargetLang;
@@ -15,14 +17,26 @@ public class TranslatorToolbar extends View {
 
     public TranslatorToolbar(Context context) {
         super(context);
+        initElements(context);
     }
 
-    public TranslatorToolbar(View view) {
-        super(view.getContext());
-        initElements(view);
+    public TranslatorToolbar(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        initElements(context);
     }
 
-    private void initElements(View view) {
+    public TranslatorToolbar(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        initElements(context);
+    }
+
+    public TranslatorToolbar(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        initElements(context);
+    }
+
+    private void initElements(Context context) {
+        View view = inflate(context, R.layout.toolbar_translator, this);
         pickSourceLang = initPickSourceLang(view);
         pickTargetLang = initPickTargetLang(view);
         swapButton = initSwapButton(view);

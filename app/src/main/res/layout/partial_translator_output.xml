@@ -56,42 +56,12 @@
     </LinearLayout>
 
 
-    <ScrollView
-        android:id="@+id/scroll_additional_variants"
+    <yandex.muratov.translator.ui.translator.DictionaryView
+        android:id="@+id/dictionary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/text_translation"
-        android:layout_toStartOf="@+id/layout_bot_buttons_bar">
+        android:layout_toStartOf="@+id/layout_bot_buttons_bar"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/text_source_text"
-                style="@style/YandexTranslatorTheme"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/item_translation_margin"
-                android:textSize="@dimen/font_translation_size"
-                tools:text="привет" />
-
-            <TextView
-                android:id="@+id/text_part_of_speech"
-                style="@style/YandexTranslatorTheme"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPartOfSpeech"
-                android:textSize="@dimen/font_part_of_speech_size"
-                tools:text="Сущ." />
-
-            <LinearLayout
-                android:id="@+id/list_additional_translations"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-        </LinearLayout>
-    </ScrollView>
 </RelativeLayout>

@@ -4,17 +4,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include
+    <yandex.muratov.translator.ui.translator.TranslatorToolbar
         android:id="@+id/toolbar_translator"
-        layout="@layout/toolbar_translator" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-    <include
+    <yandex.muratov.translator.ui.translator.TranslatorInputView
         android:id="@+id/input"
-        layout="@layout/partial_translator_input" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-    <include
+    <yandex.muratov.translator.ui.translator.TranslatorOutputView
         android:id="@+id/output"
-        layout="@layout/partial_translator_output" />
-
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

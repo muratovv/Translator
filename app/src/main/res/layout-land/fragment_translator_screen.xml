@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:isScrollContainer="true"
     android:layout_height="match_parent"
+    android:isScrollContainer="true"
     android:orientation="vertical">
 
 
-    <include
+    <yandex.muratov.translator.ui.translator.TranslatorToolbar
         android:id="@+id/toolbar_translator"
-        layout="@layout/toolbar_translator" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
 
@@ -24,9 +25,10 @@
             android:baselineAligned="false"
             android:orientation="horizontal">
 
-            <include
+            <yandex.muratov.translator.ui.translator.TranslatorInputView
                 android:id="@+id/input"
-                layout="@layout/partial_translator_input" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -36,9 +38,10 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <include
+            <yandex.muratov.translator.ui.translator.TranslatorOutputView
                 android:id="@+id/output"
-                layout="@layout/partial_translator_output" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
     </LinearLayout>

@@ -26,15 +26,15 @@ public class TranslatorScreenFragment extends Fragment {
     }
 
     private static TranslatorInputView initInputView(View rootView) {
-        return new TranslatorInputView(rootView.findViewById(R.id.input));
+        return ((TranslatorInputView) rootView.findViewById(R.id.input));
     }
 
     private static TranslatorToolbar initToolbar(View rootView) {
-        return new TranslatorToolbar(rootView.findViewById(R.id.toolbar_translator));
+        return ((TranslatorToolbar) rootView.findViewById(R.id.toolbar_translator));
     }
 
     private static TranslatorOutputView initOutputView(View rootView) {
-        return new TranslatorOutputView(rootView.findViewById(R.id.output));
+        return ((TranslatorOutputView) rootView.findViewById(R.id.output));
     }
 
 }

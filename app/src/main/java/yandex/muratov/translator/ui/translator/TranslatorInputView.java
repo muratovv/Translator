@@ -3,14 +3,16 @@ package yandex.muratov.translator.ui.translator;
 
 import android.content.Context;
 import android.text.InputType;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
 import yandex.muratov.translator.R;
 import yandex.muratov.translator.util.KeyboardUtil;
 
-public class TranslatorInputView extends View {
+public class TranslatorInputView extends RelativeLayout {
 
     private ImageButton speechKeyboardButton;
     private ImageButton playTextButton;
@@ -19,14 +21,26 @@ public class TranslatorInputView extends View {
 
     public TranslatorInputView(Context context) {
         super(context);
+        initElements(context);
     }
 
-    public TranslatorInputView(View view) {
-        super(view.getContext());
-        initElements(view);
+    public TranslatorInputView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        initElements(context);
     }
 
-    private void initElements(View view) {
+    public TranslatorInputView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        initElements(context);
+    }
+
+    public TranslatorInputView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        initElements(context);
+    }
+
+    private void initElements(Context context) {
+        View view = inflate(context, R.layout.partial_translator_input, this);
         speechKeyboardButton = initSpeechKeyboardButton(view);
         playTextButton = initPlayTextButton(view);
         eraseButton = initEraseButton(view);

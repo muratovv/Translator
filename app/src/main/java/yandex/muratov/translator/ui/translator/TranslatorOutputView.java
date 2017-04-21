@@ -1,43 +1,56 @@
 package yandex.muratov.translator.ui.translator;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import yandex.muratov.translator.R;
 
-public class TranslatorOutputView extends View {
+public class TranslatorOutputView extends RelativeLayout {
 
     private TextView translationText;
     private ImageButton playSoundButton;
     private ImageButton saveInBookmarksButton;
     private ImageButton shareButton;
     private ImageButton fullscreenButton;
-    private AdditionalTranslationVariantsView additionalTranslationVariantsView;
+    private DictionaryView dictionaryView;
 
 
     public TranslatorOutputView(Context context) {
         super(context);
+        initElements(context);
     }
 
-    public TranslatorOutputView(View view) {
-        super(view.getContext());
-        initElements(view);
+    public TranslatorOutputView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        initElements(context);
     }
 
-    private void initElements(View view) {
+    public TranslatorOutputView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        initElements(context);
+    }
+
+    public TranslatorOutputView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        initElements(context);
+    }
+
+    private void initElements(Context context) {
+        View view = inflate(context, R.layout.partial_translator_output, this);
         translationText = initTranslationText(view);
         playSoundButton = initPlaySoundButton(view);
         saveInBookmarksButton = initSaveInBookmarksButton(view);
         shareButton = initShareButton(view);
         fullscreenButton = initFullscreenButton(view);
-        additionalTranslationVariantsView = initAdditionalTranslationVariantsView(view);
+        dictionaryView = initAdditionalTranslationVariantsView(view);
     }
 
-    private AdditionalTranslationVariantsView initAdditionalTranslationVariantsView(View view) {
-        View scrollVew = view.findViewById(R.id.scroll_additional_variants);
-        return new AdditionalTranslationVariantsView(scrollVew);
+    private DictionaryView initAdditionalTranslationVariantsView(View view) {
+        return ((DictionaryView) view.findViewById(R.id.dictionary));
     }
 
     private static TextView initTranslationText(View view) {
