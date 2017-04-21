@@ -13,6 +13,7 @@ import yandex.muratov.translator.R;
 import yandex.muratov.translator.ui.OneLineSearchBar;
 
 public abstract class BasePageFragment extends Fragment {
+    private static String TAG = BasePageFragment.class.getSimpleName();
 
     protected ImageView eraseToolbarButton;
     protected OneLineSearchBar searchBar;
@@ -33,7 +34,7 @@ public abstract class BasePageFragment extends Fragment {
     }
 
     private OneLineSearchBar initSearchBar(View rootView) {
-        return new OneLineSearchBar(rootView.findViewById(R.id.bar_search));
+        return (OneLineSearchBar) rootView.findViewById(R.id.bar_search);
     }
 
     private static RecyclerView initListOfElements(View rootView) {

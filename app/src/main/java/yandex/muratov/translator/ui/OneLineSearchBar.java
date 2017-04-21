@@ -3,16 +3,19 @@ package yandex.muratov.translator.ui;
 
 import android.content.Context;
 import android.text.Editable;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
 import yandex.muratov.translator.R;
 import yandex.muratov.translator.util.DefaultTextWatcher;
 import yandex.muratov.translator.util.KeyboardUtil;
 
-public class OneLineSearchBar extends View {
+public class OneLineSearchBar extends RelativeLayout {
     private static String TAG = OneLineSearchBar.class.getSimpleName();
 
     private ImageButton findButton;
@@ -21,14 +24,27 @@ public class OneLineSearchBar extends View {
 
     public OneLineSearchBar(Context context) {
         super(context);
+        initElements(context);
     }
 
-    public OneLineSearchBar(View baseView) {
-        super(baseView.getContext());
-        initElements(baseView);
+    public OneLineSearchBar(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        initElements(context);
     }
 
-    private void initElements(View rootView) {
+    public OneLineSearchBar(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        initElements(context);
+    }
+
+    public OneLineSearchBar(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        initElements(context);
+    }
+
+    private void initElements(Context context) {
+        Log.d(TAG, "initElements: ");
+        View rootView = inflate(context, R.layout.view_search, this);
         findButton = initFindButton(rootView);
         queryLine = initTextLine(rootView);
         eraseButton = initEraseButton(rootView);
