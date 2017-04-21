@@ -34,18 +34,18 @@ public class YandexTranslator implements NetworkTranslatorModel {
     @Override
     public void unSubscribe() {
         subscriber = null;
-        denyLastRequest();
+        dropLastRequest();
     }
 
     @Override
-    public void denyLastRequest() {
+    public void dropLastRequest() {
         dictionaryCall.dropPreviousCall();
         translateCall.dropPreviousCall();
     }
 
     @Override
     public void dropConnection() {
-        denyLastRequest();
+        dropLastRequest();
         dictionaryRepository.closeConnection();
         translateRepository.closeConnection();
     }
