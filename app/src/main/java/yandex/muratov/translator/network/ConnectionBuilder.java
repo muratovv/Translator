@@ -10,23 +10,19 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ConnectionBuilder {
-    private static int CACHE_SIZE_MB = 10;
+    private static int CACHE_SIZE_MB = 1;
 
-    private String apiKey;
-    private String baseUrl;
-    private OkHttpClient sharedClient;
+    private OkHttpClient okHttpClient;
 
     private Retrofit.Builder commonRetrofitBuilder = new Retrofit.Builder();
 
-    public ConnectionBuilder(File cahceDir, String apiKey, String baseUrl) {
-        this.apiKey = apiKey;
-        this.baseUrl = baseUrl;
-        makeOkHttpClient(cahceDir);
+    public ConnectionBuilder(File cacheDir) {
+        makeOkHttpClient(cacheDir);
         makeBuilder();
     }
 
     private void makeOkHttpClient(File cacheDir) {
-        sharedClient = new OkHttpClient.Builder()
+        okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(new DeferredRequestInterceptor())
                 .cache(new Cache(cacheDir, CACHE_SIZE_MB * 1024 * 1024))
                 .build();
@@ -35,13 +31,8 @@ public class ConnectionBuilder {
     private void makeBuilder() {
         commonRetrofitBuilder
                 .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().setLenient().create()))
-                .baseUrl(baseUrl)
-                .client(sharedClient);
+                .client(okHttpClient);
 
-    }
-
-    public String getApiKey() {
-        return apiKey;
     }
 
     public Retrofit.Builder getCommonRetrofitBuilder() {
@@ -49,7 +40,7 @@ public class ConnectionBuilder {
     }
 
     public OkHttpClient getClient() {
-        return sharedClient;
+        return okHttpClient;
     }
 
 }

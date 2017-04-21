@@ -1,25 +1,22 @@
 package yandex.muratov.translator.network;
 
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
-import retrofit2.Retrofit;
+import yandex.muratov.translator.BuildConfig;
+import yandex.muratov.translator.network.api.BaseNetworkRepository;
 import yandex.muratov.translator.network.api.DictionaryApi;
 import yandex.muratov.translator.network.api.DictionaryRepository;
 import yandex.muratov.translator.network.data.DictionaryAnswer;
+import yandex.muratov.translator.network.data.Language;
 
-public class YandexDictionaryRepository implements DictionaryRepository {
+public class YandexDictionaryRepository extends BaseNetworkRepository implements DictionaryRepository {
 
     private DictionaryApi api;
-    private String apiKey;
     private String uiLanguage = "";
-    private OkHttpClient client;
 
-    public YandexDictionaryRepository(ConnectionBuilder builder, String uiLanguage) {
-        Retrofit retrofit = builder.getCommonRetrofitBuilder().build();
+    public YandexDictionaryRepository(ConnectionBuilder builder, Language uiLanguage) {
+        super(builder);
         api = retrofit.create(DictionaryApi.class);
-        this.uiLanguage = uiLanguage;
-        this.apiKey = builder.getApiKey();
-        this.client = builder.getClient();
+        this.uiLanguage = uiLanguage.getCode();
     }
 
     public void setUiLanguage(String uiLanguage) {
@@ -28,12 +25,22 @@ public class YandexDictionaryRepository implements DictionaryRepository {
 
     @Override
     public Call<DictionaryAnswer> dictionary(String lang, String text) {
-        return api.dictionary(apiKey, lang, uiLanguage, text);
+        return api.dictionary(getApiKey(), lang, uiLanguage, text);
     }
 
     @Override
     public void closeConnection() {
-        client.dispatcher().cancelAll();
-        client.dispatcher().executorService().shutdown();
+        getClient().dispatcher().cancelAll();
+        getClient().dispatcher().executorService().shutdown();
+    }
+
+    @Override
+    protected String initApiKey() {
+        return BuildConfig.YANDEX_DICTIONARY_API_TOKEN;
+    }
+
+    @Override
+    protected String initBaseUrl() {
+        return "https://dictionary.yandex.net/api/v1/dicservice.json/lookup";
     }
 }

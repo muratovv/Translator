@@ -9,7 +9,7 @@ import yandex.muratov.translator.network.data.TranslateAnswer;
 public interface TranslateApi {
 
     @FormUrlEncoded
-    @POST("https://translate.yandex.net/api/v1.5/tr.json/translate")
+    @POST
     Call<TranslateAnswer> translate(@Field("key") String key,
                                     @Field("lang") String lang,
                                     @Field("text") String text);

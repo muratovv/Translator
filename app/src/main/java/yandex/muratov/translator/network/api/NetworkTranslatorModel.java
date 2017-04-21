@@ -18,8 +18,7 @@ public interface NetworkTranslatorModel extends ModelObserver, Droppable {
      * Request for dictionary API
      *
      * @param rawLang pair make source and target language, ex: \"en-fr\"
-     * @param uiLang  language make data representation
      * @param text    source text for translation
      */
-    void dictionaryRequest(String rawLang, String uiLang, String text);
+    void dictionaryRequest(String rawLang, String text);
 }

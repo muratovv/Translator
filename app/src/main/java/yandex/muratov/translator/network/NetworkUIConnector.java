@@ -71,12 +71,12 @@ public class NetworkUIConnector implements ModelObserver, Droppable {
         net.dropConnection();
     }
 
-    public void translate(Language sourceLanguage, Language targetLanguage, Language uiLanguage, String text) {
+    public void translate(Language sourceLanguage, Language targetLanguage, String text) {
         net.dropLastRequest();
         String apiLang = makeApiCodeAdapter(sourceLanguage, targetLanguage);
         net.translateRequest(apiLang, text);
         // TODO: 22.04.17 optimize network with checking number of words
-        net.dictionaryRequest(apiLang, uiLanguage.getCode(), text);
+        net.dictionaryRequest(apiLang, text);
     }
 
     private static String makeApiCodeAdapter(Language sourceLanguage, Language targetLanguage) {

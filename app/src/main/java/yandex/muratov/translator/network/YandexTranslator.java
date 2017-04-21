@@ -21,7 +21,7 @@ public class YandexTranslator implements NetworkTranslatorModel {
     private CallHolder<TranslateAnswer> translateCall = new CallHolder<>();
 
 
-    private YandexTranslator(TranslateRepository translateRepository, DictionaryRepository dictionaryRepository) {
+    public YandexTranslator(TranslateRepository translateRepository, DictionaryRepository dictionaryRepository) {
         this.translateRepository = translateRepository;
         this.dictionaryRepository = dictionaryRepository;
     }
@@ -71,7 +71,7 @@ public class YandexTranslator implements NetworkTranslatorModel {
     }
 
     @Override
-    public void dictionaryRequest(String rawLang, String uiLang, String text) {
+    public void dictionaryRequest(String rawLang, String text) {
         Call<DictionaryAnswer> call = dictionaryRepository.dictionary(rawLang, text);
         dictionaryCall.enqueue(call, new Callback<DictionaryAnswer>() {
             @Override

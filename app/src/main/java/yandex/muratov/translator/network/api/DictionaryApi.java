@@ -6,7 +6,7 @@ import retrofit2.http.Query;
 import yandex.muratov.translator.network.data.DictionaryAnswer;
 
 public interface DictionaryApi {
-    @GET("https://dictionary.yandex.net/api/v1/dicservice.json/lookup")
+    @GET
     Call<DictionaryAnswer> dictionary(@Query("key") String key,
                                       @Query("lang") String lang,
                                       @Query("ui") String ui,

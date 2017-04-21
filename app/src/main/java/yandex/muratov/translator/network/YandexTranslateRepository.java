@@ -1,33 +1,39 @@
 package yandex.muratov.translator.network;
 
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
-import retrofit2.Retrofit;
+import yandex.muratov.translator.BuildConfig;
+import yandex.muratov.translator.network.api.BaseNetworkRepository;
 import yandex.muratov.translator.network.api.TranslateApi;
 import yandex.muratov.translator.network.api.TranslateRepository;
 import yandex.muratov.translator.network.data.TranslateAnswer;
 
-public class YandexTranslateRepository implements TranslateRepository {
+public class YandexTranslateRepository extends BaseNetworkRepository implements TranslateRepository {
 
     private TranslateApi api;
-    private String apiKey;
-    private OkHttpClient client;
 
-    public YandexTranslateRepository(ConnectionBuilder builder, String uiLanguage) {
-        Retrofit retrofit = builder.getCommonRetrofitBuilder().build();
+    public YandexTranslateRepository(ConnectionBuilder builder) {
+        super(builder);
         api = retrofit.create(TranslateApi.class);
-        this.apiKey = builder.getApiKey();
-        this.client = builder.getClient();
+    }
+
+    @Override
+    protected String initApiKey() {
+        return BuildConfig.YANDEX_TRANSLATOR_API_TOKEN;
+    }
+
+    @Override
+    protected String initBaseUrl() {
+        return "https://translate.yandex.net/api/v1.5/tr.json/translate";
     }
 
     @Override
     public Call<TranslateAnswer> translate(String lang, String text) {
-        return api.translate(apiKey, lang, text);
+        return api.translate(getApiKey(), lang, text);
     }
 
     @Override
     public void closeConnection() {
-        client.dispatcher().cancelAll();
-        client.dispatcher().executorService().shutdown();
+        getClient().dispatcher().cancelAll();
+        getClient().dispatcher().executorService().shutdown();
     }
 }
