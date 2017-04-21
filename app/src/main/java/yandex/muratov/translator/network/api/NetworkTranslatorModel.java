@@ -8,7 +8,6 @@ public interface NetworkTranslatorModel extends ModelObserver {
     /**
      * Drop last request
      *
-     * @return true of denied
      */
     void denyLastRequest();
 
@@ -19,7 +18,7 @@ public interface NetworkTranslatorModel extends ModelObserver {
 
 
     /**
-     * Request for translate API
+     * Request for dictionary API
      * @param rawLang pair of source and target language, ex: \"en-fr\"
      * @param text source text for translation
      */
