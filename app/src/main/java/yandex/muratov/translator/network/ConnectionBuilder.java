@@ -34,7 +34,6 @@ public class ConnectionBuilder {
                         .request("request")
                         .response("response")
                         .build())
-                .addInterceptor(new DeferredRequestInterceptor())
                 .cache(new Cache(cacheDir, CACHE_SIZE_MB * 1024 * 1024))
                 .build();
     }
