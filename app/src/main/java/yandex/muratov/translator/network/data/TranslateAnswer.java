@@ -27,5 +27,10 @@ public class TranslateAnswer {
     public String getLanguage() {
         return lang;
     }
+
+    public TranslateAnswer setCode(int code) {
+        this.code = code;
+        return this;
+    }
 }
 
