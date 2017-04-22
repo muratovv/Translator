@@ -23,7 +23,7 @@ public class YandexTranslateRepository extends BaseNetworkRepository implements 
 
     @Override
     protected String initBaseUrl() {
-        return "https://translate.yandex.net/api/v1.5/tr.json/translate";
+        return "https://translate.yandex.net";
     }
 
     @Override

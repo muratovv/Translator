@@ -41,6 +41,6 @@ public class YandexDictionaryRepository extends BaseNetworkRepository implements
 
     @Override
     protected String initBaseUrl() {
-        return "https://dictionary.yandex.net/api/v1/dicservice.json/lookup";
+        return "https://dictionary.yandex.net";
     }
 }
