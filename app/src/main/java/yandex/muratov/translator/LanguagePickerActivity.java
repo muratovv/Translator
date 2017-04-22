@@ -3,7 +3,6 @@ package yandex.muratov.translator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,18 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import yandex.muratov.translator.network.data.Language;
+import yandex.muratov.translator.ui.translator.LanguagePickerToolbar;
 
 
 public class LanguagePickerActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
+    private LanguagePickerToolbar toolbar;
     private ListView listOfLanguages;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language_picker);
         initViews();
-        super.onCreate(savedInstanceState);
     }
 
     private void initViews() {
@@ -43,17 +43,25 @@ public class LanguagePickerActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
     private ListView initListOfLanguages() {
         return ((ListView) findViewById(R.id.list_of_languages));
     }
 
-    private Toolbar initToolbar() {
-        return ((Toolbar) findViewById(R.id.toolbar_language_picker));
+    private LanguagePickerToolbar initToolbar() {
+        LanguagePickerToolbar toolbar = (LanguagePickerToolbar) findViewById(R.id.toolbar_language_picker);
+        toolbar.getBackButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+        return toolbar;
     }
 
-    private List<String> availableNameLanguages(){
+    private List<String> availableNameLanguages() {
         List<String> languages = new ArrayList<>();
         for (Language language : Language.availableLanguages) {
             languages.add(language.getUiName());

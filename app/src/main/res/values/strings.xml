@@ -16,5 +16,6 @@
     <string name="translation_api_error_text_cannot_be_translated">Text cannot be translated</string>
     <string name="translation_api_error_translation_direction_not_supported">Translation direction not supported</string>
     <string name="translation_api_error_unknown_network_error">Network error</string>
+    <string name="title_bar_pick_language">Choose language</string>
 
 </resources>

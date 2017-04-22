@@ -14,4 +14,5 @@
     <dimen name="navigation_bar_accent_offset">52dp</dimen>
     <dimen name="navigation_bar_accent_width">3dp</dimen>
     <dimen name="navigation_bar_height">56dp</dimen>
+    <dimen name="toolbar_text_size">20sp</dimen>
 </resources>

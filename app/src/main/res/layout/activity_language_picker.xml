@@ -4,14 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
+    <yandex.muratov.translator.ui.translator.LanguagePickerToolbar
         android:id="@+id/toolbar_language_picker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorMain"
         android:maxHeight="?attr/actionBarSize"
         android:minHeight="?attr/actionBarSize"
-        android:navigationIcon="?homeAsUpIndicator"
         android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
