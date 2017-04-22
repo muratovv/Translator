@@ -1,5 +1,7 @@
 package yandex.muratov.translator.network;
 
+import java.io.IOException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -64,7 +66,9 @@ public class YandexTranslator implements NetworkTranslatorModel {
             @Override
             public void onFailure(Call<TranslateAnswer> call, Throwable t) {
                 if (subscriber != null) {
-                    subscriber.onTranslateRequestFail(t);
+                    if (!isCancelledException(t)) {
+                        subscriber.onTranslateRequestFail(t);
+                    }
                 }
             }
         });
@@ -85,11 +89,16 @@ public class YandexTranslator implements NetworkTranslatorModel {
             @Override
             public void onFailure(Call<DictionaryAnswer> call, Throwable t) {
                 if (subscriber != null) {
-                    subscriber.onDictionaryRequestFail(t);
+                    if (!isCancelledException(t)) {
+                        subscriber.onDictionaryRequestFail(t);
+                    }
                 }
             }
         });
     }
 
+    private static boolean isCancelledException(Throwable er) {
+        return er instanceof IOException;
+    }
 
 }
