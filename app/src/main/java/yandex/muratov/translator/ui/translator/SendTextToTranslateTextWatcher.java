@@ -5,7 +5,7 @@ import android.text.Editable;
 import yandex.muratov.translator.util.DefaultTextWatcher;
 
 public class SendTextToTranslateTextWatcher extends DefaultTextWatcher {
-    TranslationContext context;
+    private TranslationContext context;
 
     public SendTextToTranslateTextWatcher(TranslationContext context) {
         this.context = context;
@@ -14,7 +14,7 @@ public class SendTextToTranslateTextWatcher extends DefaultTextWatcher {
     @Override
     public void afterTextChanged(Editable s) {
         String text = s.toString();
-        if (context.getConnector() != null) {
+        if (context != null && context.getConnector() != null) {
             context.getConnector().translate(context.getSource(), context.getUi(), text);
         }
     }

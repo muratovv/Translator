@@ -10,17 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
-import java.io.File;
-
-import yandex.muratov.translator.network.ConnectionBuilder;
-import yandex.muratov.translator.network.NetworkUIConnector;
-import yandex.muratov.translator.network.YandexDictionaryRepository;
-import yandex.muratov.translator.network.YandexTranslateRepository;
-import yandex.muratov.translator.network.YandexTranslator;
-import yandex.muratov.translator.network.data.Language;
+import yandex.muratov.translator.ui.ContextHolderFragment;
 import yandex.muratov.translator.ui.SettingsScreenFragment;
 import yandex.muratov.translator.ui.bookmarks.BookmarkScreenFragment;
-import yandex.muratov.translator.ui.translator.TranslationContext;
 import yandex.muratov.translator.ui.translator.TranslatorScreenFragment;
 
 import static yandex.muratov.translator.util.PermissionUtil.requestInternet;
@@ -29,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static String TAG = MainActivity.class.getSimpleName();
     private static String FRAGMENT_TAG = "screen";
-    private TranslationContext translationContext = new TranslationContext();
+
+    private ContextHolderFragment fragment;
 
     private BottomNavigationView navigation;
 
@@ -39,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, String.format("OnCreate bundle: %s", savedInstanceState));
         setContentView(R.layout.activity_main);
         navigation = initNavigation();
+        fragment = initContextFragment(getSupportFragmentManager());
         onRestoreInstanceState(savedInstanceState);
         requestInternet(this);
     }
@@ -46,20 +40,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        if (translationContext.getConnector() != null) {
-            translationContext.getConnector().unSubscribe();
-            translationContext.getConnector().dropConnection();
-            translationContext.setConnector(null);
-        }
+
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         Log.d(TAG, "onSaveInstanceState: ");
         super.onSaveInstanceState(outState);
-        if (translationContext != null) {
-            outState.putSerializable(TranslationContext.BUNDLE_TRANSLATION_CONTEXT, translationContext);
-        }
+
     }
 
     @Override
@@ -67,8 +55,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, String.format("onRestoreInstanceState bundle: %s", savedInstanceState));
         if (savedInstanceState != null) {
             super.onRestoreInstanceState(savedInstanceState);
-            translationContext = ((TranslationContext) savedInstanceState
-                    .get(TranslationContext.BUNDLE_TRANSLATION_CONTEXT));
+
         }
         initFirstTime(savedInstanceState);
     }
@@ -101,39 +88,15 @@ public class MainActivity extends AppCompatActivity {
 
     @NonNull
     private TranslatorScreenFragment initTranslatorScreenFragment() {
-        TranslatorScreenFragment translator = new TranslatorScreenFragment();
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(TranslationContext.BUNDLE_TRANSLATION_CONTEXT, translationContext);
-        translator.setArguments(bundle);
-        return translator;
+        return new TranslatorScreenFragment();
     }
 
     private void initFirstTime(Bundle savedInstanceState) {
         if (savedInstanceState == null) {
             navigation.setSelectedItemId(R.id.action_translate_screen);
-            translationContext = initTranslationContext();
         }
     }
 
-    private TranslationContext initTranslationContext() {
-        TranslationContext translationContext = new TranslationContext();
-        this.translationContext.setSource(Language.EN)
-                .setTarget(Language.RU)
-                .setUi(Language.RU);
-        this.translationContext.setConnector(initConnector(getExternalCacheDir(),
-                this.translationContext.getUi()));
-        return translationContext;
-    }
-
-    private static NetworkUIConnector initConnector(File cache, Language uiLanguage) {
-        ConnectionBuilder connectionBuilder = new ConnectionBuilder(cache);
-        YandexTranslateRepository translateRepo =
-                new YandexTranslateRepository(connectionBuilder);
-        YandexDictionaryRepository dictionaryRepo =
-                new YandexDictionaryRepository(connectionBuilder, uiLanguage);
-        YandexTranslator net = new YandexTranslator(translateRepo, dictionaryRepo);
-        return new NetworkUIConnector(net);
-    }
 
     private void changeScreen(int layout, Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -149,6 +112,14 @@ public class MainActivity extends AppCompatActivity {
         if (oldFragment != null)
             transaction.remove(oldFragment);
         return transaction;
+    }
+
+    private static ContextHolderFragment initContextFragment(FragmentManager fragmentManager) {
+        ContextHolderFragment contextHolderFragment = new ContextHolderFragment();
+        fragmentManager.beginTransaction()
+                .add(contextHolderFragment, ContextHolderFragment.TAG)
+                .commit();
+        return contextHolderFragment;
     }
 
 

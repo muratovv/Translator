@@ -23,15 +23,15 @@ class OnReceiveTranslationSubscriber implements TranslatorModelSubscriber {
     private Context context;
     private TranslatorOutputView output;
 
-    public OnReceiveTranslationSubscriber(Context context, TranslatorOutputView outputView) {
-        this.context = context;
+    public OnReceiveTranslationSubscriber(Context appContext, TranslatorOutputView outputView) {
+        this.context = appContext;
         this.output = outputView;
     }
 
     @Override
     public void onTranslateResponse(TranslateAnswer response) {
         if (isValid(response)) {
-            output.getTranslationTextEdit().setText(StringUtil.join(", ", response.getTexts()));
+            output.getTranslationTextView().setText(StringUtil.join(", ", response.getTexts()));
         } else {
             Integer resource = getResourceByError(response);
             if (!Objects.equals(resource, OK_CODE)) {

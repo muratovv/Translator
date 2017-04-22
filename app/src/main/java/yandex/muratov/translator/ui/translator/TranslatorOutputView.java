@@ -73,7 +73,7 @@ public class TranslatorOutputView extends RelativeLayout {
         return ((ImageButton) view.findViewById(R.id.button_fullscreen));
     }
 
-    public TextView getTranslationTextEdit() {
+    public TextView getTranslationTextView() {
         return translationText;
     }
 }
