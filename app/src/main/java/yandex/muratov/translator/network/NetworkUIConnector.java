@@ -3,7 +3,7 @@ package yandex.muratov.translator.network;
 import android.util.Log;
 
 import yandex.muratov.translator.network.api.Droppable;
-import yandex.muratov.translator.network.api.ModelObserver;
+import yandex.muratov.translator.network.api.NetworkModelObserver;
 import yandex.muratov.translator.network.api.NetworkTranslatorModel;
 import yandex.muratov.translator.network.api.TranslatorModelSubscriber;
 import yandex.muratov.translator.network.data.DataCodes;
@@ -12,7 +12,7 @@ import yandex.muratov.translator.network.data.Language;
 import yandex.muratov.translator.network.data.TranslateAnswer;
 
 
-public class NetworkUIConnector implements ModelObserver, Droppable {
+public class NetworkUIConnector implements NetworkModelObserver, Droppable {
     private static String TAG = NetworkUIConnector.class.getSimpleName();
 
     private NetworkTranslatorModel net;

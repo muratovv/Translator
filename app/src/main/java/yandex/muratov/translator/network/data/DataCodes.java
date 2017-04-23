@@ -9,7 +9,7 @@ import yandex.muratov.translator.R;
 public class DataCodes {
 
     public static final int VALID_ANSWER_CODE = 200;
-    public static final Integer OK_CODE = 0;
+    public static final Integer OK_RESPONSE_CODE = 0;
 
     public static boolean isValid(TranslateAnswer answer) {
         return answer != null && answer.getCode() == VALID_ANSWER_CODE;
@@ -21,7 +21,7 @@ public class DataCodes {
 
     public static Integer getResourceByError(TranslateAnswer answer) {
         if (isValid(answer))
-            return OK_CODE;
+            return OK_RESPONSE_CODE;
         Integer code = allDataErrors.get(answer.getCode());
         if (code == null) {
             return R.string.translation_api_error_unknown_network_error;
@@ -32,7 +32,7 @@ public class DataCodes {
 
     public static Integer getResourceByError(DictionaryAnswer answer) {
         if (isValid(answer))
-            return OK_CODE;
+            return OK_RESPONSE_CODE;
         Integer code = allDataErrors.get(answer.getCode());
         if (code == null) {
             return R.string.translation_api_error_unknown_network_error;
