@@ -33,7 +33,9 @@ public class InMemoryHistoryStorage implements HistoryStorageModel {
 
     private HistoryRow mergeHistoryRow(HistoryRow oldValue, HistoryRow newValue) {
         return HistoryRow.create(oldValue.getSourceText(), oldValue.getTranslationText(),
-                oldValue.isInFavorites(), oldValue.getRawLang(), newValue.getInsertionTimestamp());
+                oldValue.isInFavorites() || newValue.isInFavorites(),
+                oldValue.getRawLang(),
+                newValue.getInsertionTimestamp());
     }
 
     @Override
