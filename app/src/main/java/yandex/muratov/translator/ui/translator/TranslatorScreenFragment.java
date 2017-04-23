@@ -1,5 +1,6 @@
 package yandex.muratov.translator.ui.translator;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 
 import yandex.muratov.translator.LanguagePickerActivity;
 import yandex.muratov.translator.R;
@@ -102,7 +104,7 @@ public class TranslatorScreenFragment extends Fragment {
                 getResources(),
                 swapCallback);
         input = initInputView(screenView, textWatcher);
-        output = initOutputView(screenView);
+        output = initOutputView(getContext(), screenView);
     }
 
     private void immediateTranslate() {
@@ -202,8 +204,10 @@ public class TranslatorScreenFragment extends Fragment {
 
     }
 
-    private static TranslatorOutputView initOutputView(View rootView) {
+    private static TranslatorOutputView initOutputView(Context appContext, View rootView) {
         TranslatorOutputView translatorOutputView = (TranslatorOutputView) rootView.findViewById(R.id.output);
+        ListView listView = translatorOutputView.getDictionaryListView();
+        listView.setAdapter(new DictionaryAdapter(appContext, R.layout.item_dictionary_definition));
         return translatorOutputView;
     }
 

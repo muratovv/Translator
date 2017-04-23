@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -16,7 +17,7 @@ public class TranslatorOutputView extends RelativeLayout {
     private ImageButton saveInBookmarksButton;
     private ImageButton shareButton;
     private ImageButton fullscreenButton;
-    private DictionaryView dictionaryView;
+    private ListView dictionaryListView;
 
 
     public TranslatorOutputView(Context context) {
@@ -46,11 +47,13 @@ public class TranslatorOutputView extends RelativeLayout {
         saveInBookmarksButton = initSaveInBookmarksButton(view);
         shareButton = initShareButton(view);
         fullscreenButton = initFullscreenButton(view);
-        dictionaryView = initAdditionalTranslationVariantsView(view);
+        dictionaryListView = initAdditionalTranslationVariantsView(view);
     }
 
-    private DictionaryView initAdditionalTranslationVariantsView(View view) {
-        return ((DictionaryView) view.findViewById(R.id.dictionary));
+    private ListView initAdditionalTranslationVariantsView(View view) {
+        ListView listView = (ListView) view.findViewById(R.id.dictionary);
+        listView.setSelector(android.R.color.transparent);
+        return listView;
     }
 
     private static TextView initTranslationText(View view) {
@@ -75,5 +78,9 @@ public class TranslatorOutputView extends RelativeLayout {
 
     public TextView getTranslationTextView() {
         return translationText;
+    }
+
+    public ListView getDictionaryListView() {
+        return dictionaryListView;
     }
 }

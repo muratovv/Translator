@@ -48,7 +48,8 @@ class OnReceiveTranslationSubscriber implements TranslatorModelSubscriber {
 
     @Override
     public void onDictionaryResponse(DictionaryAnswer response) {
-
+        DictionaryAdapter adapter = ((DictionaryAdapter) output.getDictionaryListView().getAdapter());
+        adapter.setAnswer(response.getDefinitions());
     }
 
     @Override
