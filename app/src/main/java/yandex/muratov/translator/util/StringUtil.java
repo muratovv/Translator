@@ -5,6 +5,7 @@ import java.util.List;
 
 public class StringUtil {
     public static String join(String separator, List<String> collection) {
+        if(collection == null) return "";
         int size = collection.size();
         StringBuilder builder = new StringBuilder();
         for (int pos = 0; pos < size - 1; pos++) {
