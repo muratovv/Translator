@@ -57,12 +57,13 @@
 
 
     <ListView
-        tools:listitem="@layout/item_dictionary_definition"
         android:id="@+id/dictionary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/text_translation"
-        android:layout_toStartOf="@+id/layout_bot_buttons_bar"/>
+        android:layout_toStartOf="@+id/layout_bot_buttons_bar"
+        android:divider="@null"
+        tools:listitem="@layout/item_dictionary_definition" />
 
 </RelativeLayout>
