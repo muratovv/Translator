@@ -3,6 +3,7 @@ package yandex.muratov.translator.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import yandex.muratov.translator.network.data.LightTranslationEntry;
 import yandex.muratov.translator.network.data.MeanEntry;
 import yandex.muratov.translator.network.data.SynonymEntry;
 
@@ -28,6 +29,13 @@ public class ListsUtil {
             result.add(synonymEntry.getText());
         }
         return result;
+    }
 
+    public static List<String> extractTranslations(List<LightTranslationEntry> translations){
+        List<String> result = new ArrayList<>();
+        for (LightTranslationEntry translationEntry : translations) {
+            result.add(translationEntry.getText());
+        }
+        return result;
     }
 }
