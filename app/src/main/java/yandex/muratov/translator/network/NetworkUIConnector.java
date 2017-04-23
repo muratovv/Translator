@@ -119,8 +119,12 @@ public class NetworkUIConnector implements ModelObserver, Droppable {
 
     public void translate(String text) {
         Log.d(TAG, String.format("translate: %s", text));
-        net.dropLastRequest();
-        if (sendEmptyAnswer(text)) return;
+        if (text == null || text.trim().equals("")) {
+            sendEmptyAnswer(text);
+            dropLastRequest();
+            return;
+        }
+        dropLastRequest();
         translateRequest(text);
     }
 
@@ -131,7 +135,7 @@ public class NetworkUIConnector implements ModelObserver, Droppable {
     }
 
     private boolean sendEmptyAnswer(String text) {
-        if (text.trim().length() == 0) {
+        if (text.trim().length() == 0 && uiSubscriber != null) {
             uiSubscriber.onTranslateResponse(new TranslateAnswer()
                     .setCode(DataCodes.VALID_ANSWER_CODE));
             uiSubscriber.onDictionaryResponse(new DictionaryAnswer()
