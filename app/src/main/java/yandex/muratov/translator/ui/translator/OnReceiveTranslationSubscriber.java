@@ -12,7 +12,7 @@ import yandex.muratov.translator.network.data.DictionaryAnswer;
 import yandex.muratov.translator.network.data.TranslateAnswer;
 import yandex.muratov.translator.storage.HistoryRow;
 import yandex.muratov.translator.ui.FormatterStrategies;
-import yandex.muratov.translator.ui.bookmarks.HistoryStorageContext;
+import yandex.muratov.translator.ui.HistoryStorageContext;
 
 import static yandex.muratov.translator.network.data.DataCodes.OK_RESPONSE_CODE;
 import static yandex.muratov.translator.network.data.DataCodes.getResourceByError;

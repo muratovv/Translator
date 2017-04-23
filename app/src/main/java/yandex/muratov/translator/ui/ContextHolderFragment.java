@@ -18,8 +18,6 @@ import yandex.muratov.translator.network.YandexTranslator;
 import yandex.muratov.translator.network.data.Language;
 import yandex.muratov.translator.storage.InMemoryHistoryStorage;
 import yandex.muratov.translator.storage.StorageToUIConnector;
-import yandex.muratov.translator.ui.bookmarks.HistoryStorageContext;
-import yandex.muratov.translator.ui.translator.TranslationContext;
 
 public class ContextHolderFragment extends Fragment {
 

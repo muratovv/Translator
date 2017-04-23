@@ -1,4 +1,4 @@
-package yandex.muratov.translator.ui.bookmarks;
+package yandex.muratov.translator.ui;
 
 import yandex.muratov.translator.storage.StorageToUIConnector;
 

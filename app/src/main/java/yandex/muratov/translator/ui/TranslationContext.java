@@ -1,4 +1,4 @@
-package yandex.muratov.translator.ui.translator;
+package yandex.muratov.translator.ui;
 
 
 import yandex.muratov.translator.network.NetworkUIConnector;

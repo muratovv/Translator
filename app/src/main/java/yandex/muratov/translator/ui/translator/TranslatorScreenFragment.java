@@ -21,6 +21,7 @@ import yandex.muratov.translator.network.NetworkUIConnector;
 import yandex.muratov.translator.network.data.Language;
 import yandex.muratov.translator.storage.HistoryRow;
 import yandex.muratov.translator.ui.ContextHolderFragment;
+import yandex.muratov.translator.ui.TranslationContext;
 
 import static yandex.muratov.translator.ui.ContextHolderFragment.findContextFragment;
 

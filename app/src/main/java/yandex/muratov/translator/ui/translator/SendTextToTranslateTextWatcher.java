@@ -2,6 +2,7 @@ package yandex.muratov.translator.ui.translator;
 
 import android.text.Editable;
 
+import yandex.muratov.translator.ui.TranslationContext;
 import yandex.muratov.translator.util.DefaultTextWatcher;
 
 public class SendTextToTranslateTextWatcher extends DefaultTextWatcher {
