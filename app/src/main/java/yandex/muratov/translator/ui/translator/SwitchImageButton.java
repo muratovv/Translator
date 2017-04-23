@@ -45,6 +45,11 @@ public class SwitchImageButton extends android.support.v7.widget.AppCompatImageB
         }
     }
 
+    public void switchToState(State newState){
+        if(newState == state) return;
+        this.callOnClick();
+    }
+
     public interface ChangeStateNotification {
         void onChange(State newState);
     }

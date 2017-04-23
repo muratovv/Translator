@@ -19,6 +19,7 @@ import yandex.muratov.translator.LanguagePickerActivity;
 import yandex.muratov.translator.R;
 import yandex.muratov.translator.network.NetworkUIConnector;
 import yandex.muratov.translator.network.data.Language;
+import yandex.muratov.translator.storage.HistoryRow;
 import yandex.muratov.translator.ui.ContextHolderFragment;
 
 import static yandex.muratov.translator.ui.ContextHolderFragment.findContextFragment;
@@ -34,9 +35,11 @@ public class TranslatorScreenFragment extends Fragment {
 
     private SendTextToTranslateTextWatcher textWatcher;
 
-    public static OnChangeLanguage sourceLanguageChange = null;
-    public static OnChangeLanguage targetLanguageChange = null;
-    private OnReceiveTranslationSubscriber modelSubscriber;
+    public static OnChangeLanguage sourceLanguageChange;
+    public static OnChangeLanguage targetLanguageChange;
+    private OnReceiveTranslationSubscriber translationSubscriber;
+    private TranslatorHistoryChangeSubscriber historySubscriber;
+    private View.OnClickListener changeState;
 
 
     @Override
@@ -58,32 +61,49 @@ public class TranslatorScreenFragment extends Fragment {
         getInputArguments(getArguments());
         initInternalState();
         initInternalViews(view);
+        stateAfterViews();
 
-        modelSubscriber = new OnReceiveTranslationSubscriber(getContext(), output);
+
+    }
+
+    private void stateAfterViews() {
+        historySubscriber.setOutputView(output);
+
+        translationSubscriber = new OnReceiveTranslationSubscriber(getContext(),
+                contextHolderFragment.getHistoryContext(),
+                input, output);
     }
 
 
     @Override
     public void onResume() {
         super.onResume();
-        contextHolderFragment.getTranslationContext().getConnector().subscribe(modelSubscriber);
+        contextHolderFragment.getTranslationContext().getConnector().subscribe(translationSubscriber);
+        contextHolderFragment.getHistoryContext().getConnector().subscribe(historySubscriber);
     }
 
     @Override
     public void onPause() {
         super.onPause();
         contextHolderFragment.getTranslationContext().getConnector().unSubscribe();
+        contextHolderFragment.getHistoryContext().getConnector().unSubscribe();
     }
 
     private void initInternalState() {
         contextHolderFragment = findContextFragment(this);
         textWatcher = new SendTextToTranslateTextWatcher(contextHolderFragment.getTranslationContext());
-    }
-
-    private void getInputArguments(Bundle state) {
-        if (state != null) {
-            Log.d(TAG, "getInputArguments: load from bundle");
-        }
+        historySubscriber = new TranslatorHistoryChangeSubscriber();
+        changeState = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HistoryRow last = historySubscriber.getLast();
+                Log.d(TAG, String.format("switch from: %s", last.isFavorites()));
+                contextHolderFragment
+                        .getHistoryContext()
+                        .getConnector()
+                        .setFavorite(last, !last.isFavorites());
+            }
+        };
     }
 
     private void initInternalViews(View screenView) {
@@ -104,13 +124,19 @@ public class TranslatorScreenFragment extends Fragment {
                 getResources(),
                 swapCallback);
         input = initInputView(screenView, textWatcher);
-        output = initOutputView(getContext(), screenView);
+        output = initOutputView(getContext(), screenView, changeState);
     }
 
     private void immediateTranslate() {
         Editable text = input.getSourceEditText().getText();
         Log.d(TAG, String.format("immediateTranslate: %s", text));
         textWatcher.afterTextChanged(text);
+    }
+
+    private void getInputArguments(Bundle state) {
+        if (state != null) {
+            Log.d(TAG, "getInputArguments: load from bundle");
+        }
     }
 
     private static TranslatorInputView initInputView(View rootView, TextWatcher textWatcher) {
@@ -204,10 +230,12 @@ public class TranslatorScreenFragment extends Fragment {
 
     }
 
-    private static TranslatorOutputView initOutputView(Context appContext, View rootView) {
+    private static TranslatorOutputView initOutputView(Context appContext, View rootView,
+                                                       View.OnClickListener notification) {
         TranslatorOutputView translatorOutputView = (TranslatorOutputView) rootView.findViewById(R.id.output);
         ListView listView = translatorOutputView.getDictionaryListView();
         listView.setAdapter(new DictionaryAdapter(appContext, R.layout.item_dictionary_definition));
+        translatorOutputView.getSaveInBookmarksButton().setOnClickListener(notification);
         return translatorOutputView;
     }
 
