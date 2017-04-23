@@ -1,6 +1,7 @@
 package yandex.muratov.translator.ui.translator;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,10 +10,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import yandex.muratov.translator.LanguagePickerActivity;
 import yandex.muratov.translator.R;
 import yandex.muratov.translator.network.NetworkUIConnector;
+import yandex.muratov.translator.network.data.Language;
 import yandex.muratov.translator.ui.ContextHolderFragment;
 
 import static yandex.muratov.translator.ui.ContextHolderFragment.findContextFragment;
@@ -27,6 +30,10 @@ public class TranslatorScreenFragment extends Fragment {
     private ContextHolderFragment contextHolderFragment;
 
     private SendTextToTranslateTextWatcher textWatcher;
+
+    public static OnChangeLanguage sourceLanguageChange = null;
+    public static OnChangeLanguage targetLanguageChange = null;
+    private OnReceiveTranslationSubscriber modelSubscriber;
 
 
     @Override
@@ -44,18 +51,24 @@ public class TranslatorScreenFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Log.d(TAG, "onViewCreated: ");
         getInputArguments(getArguments());
         initInternalState();
-        initInternalViews(view, savedInstanceState);
+        initInternalViews(view);
 
-        NetworkUIConnector connector = contextHolderFragment.getTranslationContext()
-                .getConnector();
-        connector.subscribe(new OnReceiveTranslationSubscriber(getContext(), output));
+        modelSubscriber = new OnReceiveTranslationSubscriber(getContext(), output);
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        contextHolderFragment.getTranslationContext().getConnector().subscribe(modelSubscriber);
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
+    public void onPause() {
+        super.onPause();
         contextHolderFragment.getTranslationContext().getConnector().unSubscribe();
     }
 
@@ -70,22 +83,25 @@ public class TranslatorScreenFragment extends Fragment {
         }
     }
 
-    private void initInternalViews(View screenView, Bundle state) {
-        toolbar = initToolbar(this, screenView);
+    private void initInternalViews(View screenView) {
+        initToolbarCallbacks();
+        View.OnClickListener swapCallback = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Language sourceLang = contextHolderFragment.getTranslationContext().getConnector().getSourceLang();
+                Language targetLang = contextHolderFragment.getTranslationContext().getConnector().getTargetLang();
+                sourceLanguageChange.notify(targetLang);
+                targetLanguageChange.notify(sourceLang);
+                textWatcher.afterTextChanged(input.getSourceEditText().getText());
+            }
+        };
+        toolbar = initToolbar(this,
+                contextHolderFragment.getTranslationContext(),
+                screenView,
+                getResources(),
+                swapCallback);
         input = initInputView(screenView, textWatcher);
         output = initOutputView(screenView);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-
     }
 
     private static TranslatorInputView initInputView(View rootView, TextWatcher textWatcher) {
@@ -94,17 +110,87 @@ public class TranslatorScreenFragment extends Fragment {
         return input;
     }
 
-    private static TranslatorToolbar initToolbar(final Fragment appliedFragment, View rootView) {
+    private static TranslatorToolbar initToolbar(final Fragment appliedFragment,
+                                                 final TranslationContext translationContext,
+                                                 View rootView,
+                                                 final Resources resources,
+                                                 View.OnClickListener swapCallback) {
         TranslatorToolbar toolbar = (TranslatorToolbar) rootView.findViewById(R.id.toolbar_translator);
+        initToolbarTitle(translationContext, toolbar);
+        toolbar.getSwapButton().setOnClickListener(swapCallback);
+
         toolbar.getPickSourceLang().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent languageSourcePickerIntent =
-                        new Intent(appliedFragment.getContext(), LanguagePickerActivity.class);
-                appliedFragment.startActivity(languageSourcePickerIntent);
+                String titleText = resources.getString(R.string.title_picker_source_text);
+                Intent intent = initLanguagePickerActivityIntent(appliedFragment,
+                        titleText,
+                        LanguagePickerActivity.SOURCE_LANG_IDENTIFIER);
+                appliedFragment.startActivity(intent);
+            }
+        });
+        toolbar.getPickTargetLang().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String titleText = resources.getString(R.string.title_picker_target_text);
+                Intent intent = initLanguagePickerActivityIntent(appliedFragment,
+                        titleText,
+                        LanguagePickerActivity.TARGET_LANG_IDENTIFIER);
+                appliedFragment.startActivity(intent);
             }
         });
         return toolbar;
+    }
+
+    private void initToolbarCallbacks() {
+        sourceLanguageChange = new OnChangeLanguage() {
+            @Override
+            public void notify(Language language) {
+                changeLanguage(language, SelectedLanguage.SOURCE);
+            }
+        };
+
+        targetLanguageChange = new OnChangeLanguage() {
+            @Override
+            public void notify(Language language) {
+                changeLanguage(language, SelectedLanguage.TARGET);
+            }
+        };
+    }
+
+    private static void initToolbarTitle(TranslationContext translationContext, TranslatorToolbar toolbar) {
+        NetworkUIConnector connector = translationContext.getConnector();
+        if (connector != null) {
+            toolbar.getPickSourceLang().setText(connector.getSourceLang().getUiName());
+            toolbar.getPickTargetLang().setText(connector.getTargetLang().getUiName());
+        }
+    }
+
+    private static Intent initLanguagePickerActivityIntent(Fragment appContext,
+                                                           String tagIdentifier,
+                                                           String callbackIdentifier) {
+        Intent languageSourcePickerIntent =
+                new Intent(appContext.getContext(), LanguagePickerActivity.class);
+        languageSourcePickerIntent.putExtra(LanguagePickerActivity.TITLE_TAG, tagIdentifier);
+        languageSourcePickerIntent.putExtra(LanguagePickerActivity.CALLBACK_TAG, callbackIdentifier);
+        return languageSourcePickerIntent;
+    }
+
+    private void changeLanguage(Language language, SelectedLanguage choose) {
+        NetworkUIConnector connector = contextHolderFragment.getTranslationContext().getConnector();
+        if (connector != null) {
+            if (choose == SelectedLanguage.SOURCE) {
+                connector.setSourceLanguage(language);
+            } else {
+                connector.setTargetLanguage(language);
+            }
+        }
+        Button view = (choose == SelectedLanguage.SOURCE ?
+                toolbar.getPickSourceLang() : toolbar.getPickTargetLang());
+        if (view != null) {
+            view.setText(language.getUiName());
+        }
+
     }
 
     private static TranslatorOutputView initOutputView(View rootView) {
@@ -112,4 +198,8 @@ public class TranslatorScreenFragment extends Fragment {
         return translatorOutputView;
     }
 
+    private enum SelectedLanguage {
+        SOURCE,
+        TARGET
+    }
 }

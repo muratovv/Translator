@@ -5,12 +5,14 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import yandex.muratov.translator.R;
 
 public class LanguagePickerToolbar extends RelativeLayout {
 
     private ImageButton backButton;
+    private TextView title;
 
     public LanguagePickerToolbar(Context context) {
         super(context);
@@ -35,6 +37,11 @@ public class LanguagePickerToolbar extends RelativeLayout {
     private void initElements(Context appContext) {
         View view = inflate(appContext, R.layout.toolbar_language_picker, this);
         backButton = initBackButton(view);
+        title = initTitle(view);
+    }
+
+    private TextView initTitle(View view) {
+        return ((TextView) view.findViewById(R.id.text_language_picker_title));
     }
 
     private ImageButton initBackButton(View view) {
@@ -43,5 +50,9 @@ public class LanguagePickerToolbar extends RelativeLayout {
 
     public ImageButton getBackButton() {
         return backButton;
+    }
+
+    public TextView getTitleView() {
+        return title;
     }
 }

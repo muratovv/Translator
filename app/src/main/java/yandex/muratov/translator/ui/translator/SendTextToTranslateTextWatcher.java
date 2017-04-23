@@ -15,7 +15,7 @@ public class SendTextToTranslateTextWatcher extends DefaultTextWatcher {
     public void afterTextChanged(Editable s) {
         String text = s.toString();
         if (context != null && context.getConnector() != null) {
-            context.getConnector().translate(context.getSource(), context.getUi(), text);
+            context.getConnector().translate(text);
         }
     }
 }

@@ -42,25 +42,21 @@ public class ContextHolderFragment extends Fragment {
     }
 
     private static TranslationContext initTranslationContext(File cache, Language uiLanguage) {
-        TranslationContext context = new TranslationContext();
-
-        context.setSource(Language.EN)
-                .setTarget(Language.RU)
-                .setUi(Language.RU);
-
-        NetworkUIConnector networkConnector = initConnector(cache, context.getUi());
-        context.setConnector(networkConnector);
-        return context;
+        NetworkUIConnector networkConnector = initConnector(cache, Language.EN, Language.RU, uiLanguage);
+        return new TranslationContext(networkConnector);
     }
 
-    private static NetworkUIConnector initConnector(File cache, Language uiLanguage) {
+    private static NetworkUIConnector initConnector(File cache,
+                                                    Language sourceLang,
+                                                    Language targetLang,
+                                                    Language uiLanguage) {
         ConnectionBuilder connectionBuilder = new ConnectionBuilder(cache);
         YandexTranslateRepository translateRepo =
                 new YandexTranslateRepository(connectionBuilder);
         YandexDictionaryRepository dictionaryRepo =
                 new YandexDictionaryRepository(connectionBuilder, uiLanguage);
         YandexTranslator net = new YandexTranslator(translateRepo, dictionaryRepo);
-        return new NetworkUIConnector(net);
+        return new NetworkUIConnector(net, sourceLang, targetLang);
     }
 
     public TranslationContext getTranslationContext() {
