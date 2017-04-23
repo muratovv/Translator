@@ -16,13 +16,17 @@ import yandex.muratov.translator.network.YandexDictionaryRepository;
 import yandex.muratov.translator.network.YandexTranslateRepository;
 import yandex.muratov.translator.network.YandexTranslator;
 import yandex.muratov.translator.network.data.Language;
+import yandex.muratov.translator.storage.InMemoryHistoryStorage;
+import yandex.muratov.translator.storage.StorageToUIConnector;
+import yandex.muratov.translator.ui.bookmarks.HistoryStorageContext;
 import yandex.muratov.translator.ui.translator.TranslationContext;
 
 public class ContextHolderFragment extends Fragment {
 
     public static String TAG = ContextHolderFragment.class.getSimpleName();
 
-    private TranslationContext context;
+    private TranslationContext translationContext;
+    private HistoryStorageContext historyContext;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,7 +36,13 @@ public class ContextHolderFragment extends Fragment {
     }
 
     private void initContext(Activity activity) {
-        context = initTranslationContext(activity.getExternalCacheDir(), Language.RU);
+        translationContext = initTranslationContext(activity.getExternalCacheDir(), Language.RU);
+        historyContext = initHistoryContext();
+    }
+
+    private HistoryStorageContext initHistoryContext() {
+        InMemoryHistoryStorage storage = new InMemoryHistoryStorage();
+        return new HistoryStorageContext(new StorageToUIConnector(storage));
     }
 
     @Nullable
@@ -60,7 +70,11 @@ public class ContextHolderFragment extends Fragment {
     }
 
     public TranslationContext getTranslationContext() {
-        return context;
+        return translationContext;
+    }
+
+    public HistoryStorageContext getHistoryContext() {
+        return historyContext;
     }
 
     public static ContextHolderFragment findContextFragment(Fragment current) {
