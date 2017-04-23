@@ -14,9 +14,9 @@ public class StorageToUIConnector implements HistoryStorageObserver, HistoryStor
         this.storage = storage;
         this.storage.subscribe(new OnChangeStorage() {
             @Override
-            public void onInsertCallback(HistoryRow row) {
-                if (uiSubscriber != null && row != null)
-                    uiSubscriber.onInsertCallback(row);
+            public void onInsertCallback(HistoryRow actual) {
+                if (uiSubscriber != null && actual != null)
+                    uiSubscriber.onInsertCallback(actual);
             }
 
             @Override
@@ -44,10 +44,15 @@ public class StorageToUIConnector implements HistoryStorageObserver, HistoryStor
     }
 
     @Override
-    public void insert(HistoryRow row) {
-        if (row != null) {
-            storage.insert(row);
+    public void putInHistory(HistoryRow actual) {
+        if (actual != null) {
+            storage.putInHistory(actual);
         }
+    }
+
+    @Override
+    public void setFavorite(HistoryRow row, boolean favorite) {
+        storage.setFavorite(row, favorite);
     }
 
     @Override

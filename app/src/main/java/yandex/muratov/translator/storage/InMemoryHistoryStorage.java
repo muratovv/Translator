@@ -1,6 +1,8 @@
 package yandex.muratov.translator.storage;
 
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -12,36 +14,41 @@ import yandex.muratov.translator.storage.api.HistoryStorageModel;
 import yandex.muratov.translator.storage.api.OnChangeStorage;
 import yandex.muratov.translator.storage.api.Result;
 
+
 public class InMemoryHistoryStorage implements HistoryStorageModel {
+    private static String TAG = InMemoryHistoryStorage.class.getSimpleName();
 
     private Map<HistoryRow, HistoryRow> storage = new HashMap<>();
     private OnChangeStorage modelSubscriber;
 
 
     @Override
-    public void insert(HistoryRow row) {
-        HistoryRow oldValue = storage.remove(row);
-        HistoryRow newValue;
+    public void putInHistory(HistoryRow actual) {
+        HistoryRow oldValue = storage.get(actual);
         if (oldValue == null) {
-            newValue = row;
+            storage.put(actual, actual);
+            onInsertCallback(actual);
         } else {
-            newValue = mergeHistoryRow(oldValue, row);
+            onInsertCallback(oldValue);
         }
-        storage.put(newValue, newValue);
-        onInsertCallback(row);
-    }
-
-    private HistoryRow mergeHistoryRow(HistoryRow oldValue, HistoryRow newValue) {
-        return HistoryRow.create(oldValue.getSourceText(), oldValue.getTranslationText(),
-                oldValue.isInFavorites() || newValue.isInFavorites(),
-                oldValue.getRawLang(),
-                newValue.getInsertionTimestamp());
     }
 
     @Override
-    public void onInsertCallback(HistoryRow row) {
+    public void setFavorite(HistoryRow row, boolean favorite) {
+        HistoryRow historyRow = storage.get(row);
+        if (historyRow != null && historyRow.isFavorites() != favorite) {
+            HistoryRow oldRow = storage.remove(historyRow);
+            HistoryRow newRow = HistoryRow.createWithFavorites(oldRow, favorite);
+            storage.put(newRow, newRow);
+            Log.d(TAG, String.format("setFavorite: %s for %s", favorite, newRow.getSourceText()));
+            onInsertCallback(newRow);
+        }
+    }
+
+    @Override
+    public void onInsertCallback(HistoryRow actual) {
         if (modelSubscriber != null) {
-            modelSubscriber.onInsertCallback(row);
+            modelSubscriber.onInsertCallback(actual);
         }
     }
 
