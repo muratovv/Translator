@@ -3,10 +3,10 @@ package yandex.muratov.translator.storage;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 import yandex.muratov.translator.storage.api.HistoryStorageModel;
 import yandex.muratov.translator.storage.api.OnChangeStorage;
@@ -14,14 +14,26 @@ import yandex.muratov.translator.storage.api.Result;
 
 public class InMemoryHistoryStorage implements HistoryStorageModel {
 
-    private Set<HistoryRow> rows = new HashSet<>();
+    private Map<HistoryRow, HistoryRow> storage = new HashMap<>();
     private OnChangeStorage modelSubscriber;
 
 
     @Override
     public void insert(HistoryRow row) {
-        rows.add(row);
+        HistoryRow oldValue = storage.remove(row);
+        HistoryRow newValue;
+        if (oldValue == null) {
+            newValue = row;
+        } else {
+            newValue = mergeHistoryRow(oldValue, row);
+        }
+        storage.put(newValue, newValue);
         onInsertCallback(row);
+    }
+
+    private HistoryRow mergeHistoryRow(HistoryRow oldValue, HistoryRow newValue) {
+        return HistoryRow.create(oldValue.getSourceText(), oldValue.getTranslationText(),
+                oldValue.isInFavorites(), oldValue.getRawLang(), newValue.getInsertionTimestamp());
     }
 
     @Override
@@ -34,9 +46,9 @@ public class InMemoryHistoryStorage implements HistoryStorageModel {
     @Override
     public void removeByPredicate(Predicate<HistoryRow> predicate) {
         List<HistoryRow> removed = new ArrayList<>();
-        for (HistoryRow row : rows) {
+        for (HistoryRow row : storage.keySet()) {
             if (predicate.apply(row)) {
-                rows.remove(row);
+                storage.remove(row);
                 removed.add(row);
             }
         }
@@ -54,7 +66,7 @@ public class InMemoryHistoryStorage implements HistoryStorageModel {
     @Override
     public void getByPredicate(Predicate<HistoryRow> predicate) {
         List<HistoryRow> chosen = new ArrayList<>();
-        for (HistoryRow row : rows) {
+        for (HistoryRow row : storage.keySet()) {
             if (predicate.apply(row)) {
                 chosen.add(row);
             }
