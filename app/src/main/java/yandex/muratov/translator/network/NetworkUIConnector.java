@@ -14,8 +14,14 @@ public class NetworkUIConnector implements ModelObserver, Droppable {
     private NetworkTranslatorModel net;
     private TranslatorModelSubscriber uiSubscriber;
 
-    public NetworkUIConnector(NetworkTranslatorModel net) {
+    private Language sourceLang;
+    private Language targetLang;
+
+    public NetworkUIConnector(NetworkTranslatorModel net,
+                              Language defaultSourceLang, Language defaultTargetLang) {
         this.net = net;
+        this.sourceLang = defaultSourceLang;
+        this.targetLang = defaultTargetLang;
         this.net.subscribe(new TranslatorModelSubscriber() {
             @Override
             public void onTranslateResponse(TranslateAnswer response) {
@@ -74,16 +80,24 @@ public class NetworkUIConnector implements ModelObserver, Droppable {
         net.dropConnection();
     }
 
-    public void translate(Language sourceLanguage, Language targetLanguage, String text) {
-        net.dropLastRequest();
-        if (uiSubscriber == null || sendEmptyAnswer(text)) return;
-        String apiLang = makeApiCodeAdapter(sourceLanguage, targetLanguage);
-        translateRequest(text, apiLang);
+    public Language getSourceLang() {
+        return sourceLang;
     }
 
-    private void translateRequest(String text, String apiLang) {
-        net.translateRequest(apiLang, text);
-        net.dictionaryRequest(apiLang, text);
+    public Language getTargetLang() {
+        return targetLang;
+    }
+
+    public void translate(String text) {
+        net.dropLastRequest();
+        if (uiSubscriber == null || sendEmptyAnswer(text)) return;
+        translateRequest(text);
+    }
+
+    private void translateRequest(String text) {
+        String rawLang = makeApiCodeAdapter(sourceLang, targetLang);
+        net.translateRequest(rawLang, text);
+        net.dictionaryRequest(rawLang, text);
     }
 
     private boolean sendEmptyAnswer(String text) {
@@ -99,5 +113,15 @@ public class NetworkUIConnector implements ModelObserver, Droppable {
 
     private static String makeApiCodeAdapter(Language sourceLanguage, Language targetLanguage) {
         return sourceLanguage.getCode() + "-" + targetLanguage.getCode();
+    }
+
+    public NetworkUIConnector setSourceLanguage(Language source) {
+        this.sourceLang = source;
+        return this;
+    }
+
+    public NetworkUIConnector setTargetLanguage(Language target) {
+        this.targetLang = target;
+        return this;
     }
 }

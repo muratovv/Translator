@@ -19,10 +19,6 @@ public class YandexDictionaryRepository extends BaseNetworkRepository implements
         this.uiLanguage = uiLanguage.getCode();
     }
 
-    public void setUiLanguage(String uiLanguage) {
-        this.uiLanguage = uiLanguage;
-    }
-
     @Override
     public Call<DictionaryAnswer> dictionary(String lang, String text) {
         return api.dictionary(getApiKey(), lang, uiLanguage, text);
