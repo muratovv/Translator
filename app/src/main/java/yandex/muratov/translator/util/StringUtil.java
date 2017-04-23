@@ -16,4 +16,10 @@ public class StringUtil {
         }
         return builder.toString();
     }
+
+    public static String wrap(String left, String body, String right){
+        if(body == null || body.length() == 0)
+            return "";
+        return left + body + right;
+    }
 }
