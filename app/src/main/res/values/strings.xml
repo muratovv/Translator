@@ -7,6 +7,8 @@
     <string name="hint_translate_input">Put text</string>
     <string name="page_title_history">History</string>
     <string name="page_title_favorites">Favorites</string>
+    <string name="title_picker_source_text">Source language</string>
+    <string name="title_picker_target_text">Target language</string>
 
     <!--Translation API errors-->
     <string name="translation_api_error_invalid_api_key">Invalid translation token</string>
