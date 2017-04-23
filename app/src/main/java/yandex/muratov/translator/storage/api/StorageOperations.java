@@ -4,7 +4,9 @@ package yandex.muratov.translator.storage.api;
 import yandex.muratov.translator.storage.HistoryRow;
 
 public interface StorageOperations {
-    void insert(HistoryRow row);
+    void putInHistory(HistoryRow actual);
+
+    void setFavorite(HistoryRow row, boolean favorite);
 
     void removeByPredicate(Predicate<HistoryRow> predicate);
 
