@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -92,7 +93,7 @@ public class TranslatorScreenFragment extends Fragment {
                 Language targetLang = contextHolderFragment.getTranslationContext().getConnector().getTargetLang();
                 sourceLanguageChange.notify(targetLang);
                 targetLanguageChange.notify(sourceLang);
-                textWatcher.afterTextChanged(input.getSourceEditText().getText());
+                immediateTranslate();
             }
         };
         toolbar = initToolbar(this,
@@ -102,6 +103,12 @@ public class TranslatorScreenFragment extends Fragment {
                 swapCallback);
         input = initInputView(screenView, textWatcher);
         output = initOutputView(screenView);
+    }
+
+    private void immediateTranslate() {
+        Editable text = input.getSourceEditText().getText();
+        Log.d(TAG, String.format("immediateTranslate: %s", text));
+        textWatcher.afterTextChanged(text);
     }
 
     private static TranslatorInputView initInputView(View rootView, TextWatcher textWatcher) {
@@ -147,6 +154,7 @@ public class TranslatorScreenFragment extends Fragment {
             @Override
             public void notify(Language language) {
                 changeLanguage(language, SelectedLanguage.SOURCE);
+                immediateTranslate();
             }
         };
 
@@ -154,6 +162,7 @@ public class TranslatorScreenFragment extends Fragment {
             @Override
             public void notify(Language language) {
                 changeLanguage(language, SelectedLanguage.TARGET);
+                immediateTranslate();
             }
         };
     }
