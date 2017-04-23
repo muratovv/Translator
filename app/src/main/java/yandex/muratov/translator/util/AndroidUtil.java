@@ -1,6 +1,7 @@
 package yandex.muratov.translator.util;
 
 import android.content.Context;
+import android.support.annotation.IdRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -41,6 +42,11 @@ public class AndroidUtil {
         public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
 
         }
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> T findViewById(View v, @IdRes int id) {
+        return ((T) v.findViewById(id));
     }
 
     public interface OnItemClickListener {
