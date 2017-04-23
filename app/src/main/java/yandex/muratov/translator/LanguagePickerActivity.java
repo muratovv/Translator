@@ -12,7 +12,7 @@ import yandex.muratov.translator.ui.translator.LanguagePickerToolbarView;
 import yandex.muratov.translator.ui.translator.OnChangeLanguage;
 import yandex.muratov.translator.ui.translator.TranslatorScreenFragment;
 import yandex.muratov.translator.ui.translator.language_picker.LanguagePickerAdapter;
-import yandex.muratov.translator.util.RecyclerViewUtil;
+import yandex.muratov.translator.util.AndroidUtil;
 
 
 public class LanguagePickerActivity extends AppCompatActivity {
@@ -72,8 +72,8 @@ public class LanguagePickerActivity extends AppCompatActivity {
         listOfLanguages.setLayoutManager(new LinearLayoutManager(this));
         LanguagePickerAdapter adapter = new LanguagePickerAdapter(Language.availableLanguages);
         listOfLanguages.setAdapter(adapter);
-        listOfLanguages.addOnItemTouchListener(new RecyclerViewUtil.RecyclerItemClickListener(this,
-                new RecyclerViewUtil.OnItemClickListener() {
+        listOfLanguages.addOnItemTouchListener(new AndroidUtil.RecyclerItemClickListener(this,
+                new AndroidUtil.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
                         Language lang = Language.availableLanguages.get(position);
