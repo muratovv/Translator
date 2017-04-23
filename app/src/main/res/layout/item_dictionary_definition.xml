@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/text_translation_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/colorBasicText"
+        android:textSize="@dimen/font_translation_size"
+        tools:text="Hi" />
+
+    <TextView
+        android:id="@+id/text_view_part_of_speech"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_translation_main"
+        android:textColor="@color/colorPartOfSpeech"
+        android:textSize="@dimen/font_part_of_speech_size"
+        tools:text="Сущ" />
+
+    <LinearLayout
+        android:id="@+id/list_of_dictionary_translations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_view_part_of_speech"
+        android:listSelector="@android:color/transparent"
+        android:orientation="vertical"
+        tools:listitem="@layout/item_dictionary_translation" />
+
+
+</RelativeLayout>

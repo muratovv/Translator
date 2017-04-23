@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="RelativeLayout">
 
     <TextView
         android:id="@+id/text_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:textColor="@color/colorGray"
         android:textSize="@dimen/font_variant_text_size"
-        tools:text="1" />
+        tools:text="11111" />
 
     <TextView
-        android:id="@+id/text_variants"
+        android:id="@+id/text_translation_variants"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/text_number"
         android:layout_marginStart="5dp"
         android:layout_toEndOf="@+id/text_number"
         android:textColor="@color/colorVariants"
@@ -28,28 +29,22 @@
         android:id="@+id/text_explanation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/text_variants"
-        android:layout_below="@+id/text_variants"
+        android:layout_alignStart="@+id/text_translation_variants"
+        android:layout_below="@+id/text_translation_variants"
         android:textColor="@color/colorExplanation"
         android:textSize="@dimen/font_variant_text_size"
         tools:text="(приветствие, алло)" />
 
-    <LinearLayout
-        android:id="@+id/layout_usages"
+    <ListView
+        android:id="@+id/list_of_examples"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/text_explanation"
+        android:layout_alignStart="@+id/text_explanation"
+        android:layout_below="@+id/text_explanation"
         android:layout_marginStart="25dp"
+        tools:listitem="@layout/item_dictionary_explanation"
         android:orientation="vertical">
 
-        <!--need to transfer view below to own file-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorUsages"
-            android:textSize="@dimen/font_variant_text_size"
-            tools:text="доброе утро - good morning" />
-    </LinearLayout>
+    </ListView>
 
 </RelativeLayout>
