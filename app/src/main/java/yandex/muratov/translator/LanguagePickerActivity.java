@@ -3,18 +3,16 @@ package yandex.muratov.translator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import yandex.muratov.translator.network.data.Language;
 import yandex.muratov.translator.ui.translator.LanguagePickerToolbarView;
 import yandex.muratov.translator.ui.translator.OnChangeLanguage;
 import yandex.muratov.translator.ui.translator.TranslatorScreenFragment;
+import yandex.muratov.translator.ui.translator.language_picker.LanguagePickerAdapter;
+import yandex.muratov.translator.util.RecyclerViewUtil;
 
 
 public class LanguagePickerActivity extends AppCompatActivity {
@@ -28,7 +26,7 @@ public class LanguagePickerActivity extends AppCompatActivity {
     private OnChangeLanguage changeLanguageNotification;
 
     private LanguagePickerToolbarView toolbar;
-    private ListView listOfLanguages;
+    private RecyclerView listOfLanguages;
     private String title;
 
     @Override
@@ -58,26 +56,30 @@ public class LanguagePickerActivity extends AppCompatActivity {
     private void initViews() {
         toolbar = initToolbar();
         listOfLanguages = initListOfLanguages();
+        fillListOfLanguages();
 
-        List<String> languages = availableNameLanguages();
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(this, R.layout.item_language,
-                        R.id.item_language_text, languages);
-        listOfLanguages.setAdapter(adapter);
-        listOfLanguages.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Language lang = Language.availableLanguages.get(position);
-                if (changeLanguageNotification != null) {
-                    changeLanguageNotification.notify(lang);
-                }
-                finish();
-            }
-        });
     }
 
-    private ListView initListOfLanguages() {
-        return ((ListView) findViewById(R.id.list_of_languages));
+    private RecyclerView initListOfLanguages() {
+        return ((RecyclerView) findViewById(R.id.list_of_languages));
+    }
+
+    private void fillListOfLanguages() {
+        listOfLanguages.setHasFixedSize(true);
+        listOfLanguages.setLayoutManager(new LinearLayoutManager(this));
+        LanguagePickerAdapter adapter = new LanguagePickerAdapter(Language.availableLanguages);
+        listOfLanguages.setAdapter(adapter);
+        listOfLanguages.addOnItemTouchListener(new RecyclerViewUtil.RecyclerItemClickListener(this,
+                new RecyclerViewUtil.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Language lang = Language.availableLanguages.get(position);
+                        if (changeLanguageNotification != null) {
+                            changeLanguageNotification.notify(lang);
+                        }
+                        finish();
+                    }
+                }));
     }
 
     private LanguagePickerToolbarView initToolbar() {
@@ -92,14 +94,6 @@ public class LanguagePickerActivity extends AppCompatActivity {
             toolbar.getTitleView().setText(title);
         }
         return toolbar;
-    }
-
-    private List<String> availableNameLanguages() {
-        List<String> languages = new ArrayList<>();
-        for (Language language : Language.availableLanguages) {
-            languages.add(language.getUiName());
-        }
-        return languages;
     }
 
     @Override
