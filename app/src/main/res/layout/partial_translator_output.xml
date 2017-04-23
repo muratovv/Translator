@@ -32,7 +32,7 @@
             android:background="?selectableItemBackgroundBorderless"
             android:src="@drawable/ic_play_sound" />
 
-        <ImageButton
+        <yandex.muratov.translator.ui.translator.SwitchImageButton
             android:id="@+id/button_save_in_bookmarks"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="@dimen/image_icon_width"

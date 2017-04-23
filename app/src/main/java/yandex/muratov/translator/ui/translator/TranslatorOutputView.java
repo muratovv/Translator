@@ -14,7 +14,7 @@ public class TranslatorOutputView extends RelativeLayout {
 
     private TextView translationText;
     private ImageButton playSoundButton;
-    private ImageButton saveInBookmarksButton;
+    private SwitchImageButton saveInBookmarksButton;
     private ImageButton shareButton;
     private ImageButton fullscreenButton;
     private ListView dictionaryListView;
@@ -64,8 +64,8 @@ public class TranslatorOutputView extends RelativeLayout {
         return ((ImageButton) view.findViewById(R.id.button_play_output_text));
     }
 
-    private static ImageButton initSaveInBookmarksButton(View view) {
-        return ((ImageButton) view.findViewById(R.id.button_save_in_bookmarks));
+    private static SwitchImageButton initSaveInBookmarksButton(View view) {
+        return ((SwitchImageButton) view.findViewById(R.id.button_save_in_bookmarks));
     }
 
     private static ImageButton initShareButton(View view) {
@@ -82,5 +82,9 @@ public class TranslatorOutputView extends RelativeLayout {
 
     public ListView getDictionaryListView() {
         return dictionaryListView;
+    }
+
+    public SwitchImageButton getSaveInBookmarksButton(){
+        return saveInBookmarksButton;
     }
 }
