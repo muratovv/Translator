@@ -13,7 +13,7 @@ import yandex.muratov.translator.network.data.Language;
 
 public class LanguagePickerAdapter extends RecyclerView.Adapter<LanguageItemHolder> {
 
-    List<Language> languages;
+    private List<Language> languages;
 
     public LanguagePickerAdapter(List<Language> languages) {
         this.languages = languages;
