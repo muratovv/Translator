@@ -9,28 +9,28 @@ import android.widget.RelativeLayout;
 
 import yandex.muratov.translator.R;
 
-public class TranslatorToolbar extends RelativeLayout {
+public class TranslatorToolbarView extends RelativeLayout {
 
     private Button pickSourceLang;
     private Button pickTargetLang;
     private ImageButton swapButton;
 
-    public TranslatorToolbar(Context context) {
+    public TranslatorToolbarView(Context context) {
         super(context);
         initElements(context);
     }
 
-    public TranslatorToolbar(Context context, AttributeSet attrs) {
+    public TranslatorToolbarView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initElements(context);
     }
 
-    public TranslatorToolbar(Context context, AttributeSet attrs, int defStyleAttr) {
+    public TranslatorToolbarView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initElements(context);
     }
 
-    public TranslatorToolbar(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public TranslatorToolbarView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         initElements(context);
     }

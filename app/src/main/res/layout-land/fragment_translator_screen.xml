@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
 
-    <yandex.muratov.translator.ui.translator.TranslatorToolbar
+    <yandex.muratov.translator.ui.translator.TranslatorToolbarView
         android:id="@+id/toolbar_translator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

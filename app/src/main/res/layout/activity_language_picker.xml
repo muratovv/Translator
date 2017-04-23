@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <yandex.muratov.translator.ui.translator.LanguagePickerToolbar
+    <yandex.muratov.translator.ui.translator.LanguagePickerToolbarView
         android:id="@+id/toolbar_language_picker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

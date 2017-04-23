@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import yandex.muratov.translator.network.data.Language;
-import yandex.muratov.translator.ui.translator.LanguagePickerToolbar;
+import yandex.muratov.translator.ui.translator.LanguagePickerToolbarView;
 import yandex.muratov.translator.ui.translator.OnChangeLanguage;
 import yandex.muratov.translator.ui.translator.TranslatorScreenFragment;
 
@@ -27,7 +27,7 @@ public class LanguagePickerActivity extends AppCompatActivity {
 
     private OnChangeLanguage changeLanguageNotification;
 
-    private LanguagePickerToolbar toolbar;
+    private LanguagePickerToolbarView toolbar;
     private ListView listOfLanguages;
     private String title;
 
@@ -80,8 +80,8 @@ public class LanguagePickerActivity extends AppCompatActivity {
         return ((ListView) findViewById(R.id.list_of_languages));
     }
 
-    private LanguagePickerToolbar initToolbar() {
-        LanguagePickerToolbar toolbar = (LanguagePickerToolbar) findViewById(R.id.toolbar_language_picker);
+    private LanguagePickerToolbarView initToolbar() {
+        LanguagePickerToolbarView toolbar = (LanguagePickerToolbarView) findViewById(R.id.toolbar_language_picker);
         toolbar.getBackButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

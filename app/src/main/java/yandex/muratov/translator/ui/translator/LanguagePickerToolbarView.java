@@ -9,27 +9,27 @@ import android.widget.TextView;
 
 import yandex.muratov.translator.R;
 
-public class LanguagePickerToolbar extends RelativeLayout {
+public class LanguagePickerToolbarView extends RelativeLayout {
 
     private ImageButton backButton;
     private TextView title;
 
-    public LanguagePickerToolbar(Context context) {
+    public LanguagePickerToolbarView(Context context) {
         super(context);
         initElements(context);
     }
 
-    public LanguagePickerToolbar(Context context, AttributeSet attrs) {
+    public LanguagePickerToolbarView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initElements(context);
     }
 
-    public LanguagePickerToolbar(Context context, AttributeSet attrs, int defStyleAttr) {
+    public LanguagePickerToolbarView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initElements(context);
     }
 
-    public LanguagePickerToolbar(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public LanguagePickerToolbarView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         initElements(context);
     }

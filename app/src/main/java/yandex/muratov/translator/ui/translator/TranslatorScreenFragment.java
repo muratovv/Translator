@@ -24,7 +24,7 @@ public class TranslatorScreenFragment extends Fragment {
     private static String TAG = TranslatorScreenFragment.class.getSimpleName();
 
     private TranslatorInputView input;
-    private TranslatorToolbar toolbar;
+    private TranslatorToolbarView toolbar;
     private TranslatorOutputView output;
 
     private ContextHolderFragment contextHolderFragment;
@@ -110,12 +110,12 @@ public class TranslatorScreenFragment extends Fragment {
         return input;
     }
 
-    private static TranslatorToolbar initToolbar(final Fragment appliedFragment,
-                                                 final TranslationContext translationContext,
-                                                 View rootView,
-                                                 final Resources resources,
-                                                 View.OnClickListener swapCallback) {
-        TranslatorToolbar toolbar = (TranslatorToolbar) rootView.findViewById(R.id.toolbar_translator);
+    private static TranslatorToolbarView initToolbar(final Fragment appliedFragment,
+                                                     final TranslationContext translationContext,
+                                                     View rootView,
+                                                     final Resources resources,
+                                                     View.OnClickListener swapCallback) {
+        TranslatorToolbarView toolbar = (TranslatorToolbarView) rootView.findViewById(R.id.toolbar_translator);
         initToolbarTitle(translationContext, toolbar);
         toolbar.getSwapButton().setOnClickListener(swapCallback);
 
@@ -158,7 +158,7 @@ public class TranslatorScreenFragment extends Fragment {
         };
     }
 
-    private static void initToolbarTitle(TranslationContext translationContext, TranslatorToolbar toolbar) {
+    private static void initToolbarTitle(TranslationContext translationContext, TranslatorToolbarView toolbar) {
         NetworkUIConnector connector = translationContext.getConnector();
         if (connector != null) {
             toolbar.getPickSourceLang().setText(connector.getSourceLang().getUiName());
