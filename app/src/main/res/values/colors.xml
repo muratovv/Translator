@@ -10,6 +10,7 @@
     <color name="colorSoftGray">#d5d5d6</color>
     <color name="colorElementsInToolbar">#000000</color>
     <color name="colorActiveElementInNavigationBar">#000000</color>
+    <color name="colorBasicText">#000000</color>
     <color name="colorVariants">#39617d</color>
     <color name="colorExplanation">#764e3b</color>
     <color name="colorUsages">#6a90ae</color>
