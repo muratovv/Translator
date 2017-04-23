@@ -23,6 +23,8 @@ public class LanguagePickerActivity extends AppCompatActivity {
     public static final String SOURCE_LANG_IDENTIFIER = "source_lang_tag";
     public static final String TARGET_LANG_IDENTIFIER = "target_lang_tag";
 
+    public static final int LIST_CACHE_SIZE = 10;
+
     private OnChangeLanguage changeLanguageNotification;
 
     private LanguagePickerToolbarView toolbar;
@@ -66,6 +68,7 @@ public class LanguagePickerActivity extends AppCompatActivity {
 
     private void fillListOfLanguages() {
         listOfLanguages.setHasFixedSize(true);
+        listOfLanguages.setItemViewCacheSize(LIST_CACHE_SIZE);
         listOfLanguages.setLayoutManager(new LinearLayoutManager(this));
         LanguagePickerAdapter adapter = new LanguagePickerAdapter(Language.availableLanguages);
         listOfLanguages.setAdapter(adapter);
