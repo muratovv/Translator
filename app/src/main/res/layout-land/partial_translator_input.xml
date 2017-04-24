@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/border_external_input"
@@ -33,25 +34,26 @@
             android:minHeight="125dp"
             android:scrollbars="vertical"
             android:textColorHint="@color/colorSoftGray"
-            android:textSize="@dimen/font_translation_size" />
+            android:textSize="@dimen/font_translation_size"
+            tools:ignore="UnknownIdInLayout" />
 
-        <ImageButton
-            android:id="@+id/button_speech_keyboard"
-            android:layout_width="@dimen/image_icon_width"
-            android:layout_height="@dimen/image_icon_height"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:background="?selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_keyboard_voice" />
+        <!--<ImageButton-->
+            <!--android:id="@+id/button_speech_keyboard"-->
+            <!--android:layout_width="@dimen/image_icon_width"-->
+            <!--android:layout_height="@dimen/image_icon_height"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:background="?selectableItemBackgroundBorderless"-->
+            <!--android:src="@drawable/ic_keyboard_voice" />-->
 
-        <ImageButton
-            android:id="@+id/button_play"
-            android:layout_width="@dimen/image_icon_width"
-            android:layout_height="@dimen/image_icon_height"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/button_speech_keyboard"
-            android:background="?selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_play_sound" />
+        <!--<ImageButton-->
+            <!--android:id="@+id/button_play"-->
+            <!--android:layout_width="@dimen/image_icon_width"-->
+            <!--android:layout_height="@dimen/image_icon_height"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:layout_below="@+id/button_speech_keyboard"-->
+            <!--android:background="?selectableItemBackgroundBorderless"-->
+            <!--android:src="@drawable/ic_play_sound" />-->
 
         <ImageButton
             android:id="@+id/button_erase"

@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import yandex.muratov.translator.ui.ContextHolderFragment;
-import yandex.muratov.translator.ui.SettingsScreenFragment;
 import yandex.muratov.translator.ui.bookmarks.BookmarkScreenFragment;
 import yandex.muratov.translator.ui.translator.TranslatorScreenFragment;
 
@@ -74,10 +73,6 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.action_bookmarks_screen:
                                 Log.d(TAG, "onClick: bookmarks");
                                 changeScreen(R.id.layout_screen, new BookmarkScreenFragment());
-                                break;
-                            case R.id.action_preference_screen:
-                                Log.d(TAG, "onClick: preferences");
-                                changeScreen(R.id.layout_screen, new SettingsScreenFragment());
                                 break;
                         }
                         return true;

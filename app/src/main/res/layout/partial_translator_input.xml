@@ -34,23 +34,23 @@
             android:textColorHint="@color/colorSoftGray"
             android:textSize="@dimen/font_translation_size" />
 
-        <ImageButton
-            android:id="@+id/button_speech_keyboard"
-            android:background="?selectableItemBackgroundBorderless"
-            android:layout_width="@dimen/image_icon_width"
-            android:layout_height="@dimen/image_icon_height"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:src="@drawable/ic_keyboard_voice" />
+        <!--<ImageButton-->
+            <!--android:id="@+id/button_speech_keyboard"-->
+            <!--android:background="?selectableItemBackgroundBorderless"-->
+            <!--android:layout_width="@dimen/image_icon_width"-->
+            <!--android:layout_height="@dimen/image_icon_height"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:src="@drawable/ic_keyboard_voice" />-->
 
-        <ImageButton
-            android:id="@+id/button_play"
-            android:background="?selectableItemBackgroundBorderless"
-            android:layout_width="@dimen/image_icon_width"
-            android:layout_height="@dimen/image_icon_height"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/button_speech_keyboard"
-            android:src="@drawable/ic_play_sound" />
+        <!--<ImageButton-->
+            <!--android:id="@+id/button_play"-->
+            <!--android:background="?selectableItemBackgroundBorderless"-->
+            <!--android:layout_width="@dimen/image_icon_width"-->
+            <!--android:layout_height="@dimen/image_icon_height"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:layout_below="@+id/button_speech_keyboard"-->
+            <!--android:src="@drawable/ic_play_sound" />-->
 
         <ImageButton
             android:id="@+id/button_erase"

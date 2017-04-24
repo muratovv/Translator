@@ -5,19 +5,12 @@
         android:id="@+id/action_translate_screen"
         android:enabled="true"
         android:icon="@drawable/ic_translate"
-        android:title="Translate"
+        android:title="@string/navigation_translate"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_bookmarks_screen"
         android:enabled="true"
         android:icon="@drawable/ic_bookmark_unused"
-        android:title="Bookmarks"
+        android:title="@string/navigation_bookmarks"
         app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_preference_screen"
-        android:enabled="true"
-        android:icon="@drawable/ic_settings"
-        android:title="Settings"
-        app:showAsAction="ifRoom" />
-
 </menu>

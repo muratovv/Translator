@@ -12,9 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/item_translation_margin"
-        android:layout_toStartOf="@+id/layout_bot_buttons_bar"
+
         android:textSize="@dimen/font_translation_size"
-        tools:text="Hi" />
+        tools:text="Hi"
+        android:layout_toStartOf="@+id/layout_bot_buttons_bar" />
 
     <LinearLayout
 
@@ -25,12 +26,12 @@
         android:layout_alignParentTop="true"
         android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/button_play_output_text"
-            android:layout_width="@dimen/image_icon_width"
-            android:layout_height="@dimen/image_icon_height"
-            android:background="?selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_play_sound" />
+        <!--<ImageButton-->
+            <!--android:id="@+id/button_play_output_text"-->
+            <!--android:layout_width="@dimen/image_icon_width"-->
+            <!--android:layout_height="@dimen/image_icon_height"-->
+            <!--android:background="?selectableItemBackgroundBorderless"-->
+            <!--android:src="@drawable/ic_play_sound" />-->
 
         <yandex.muratov.translator.ui.translator.SwitchImageButton
             android:id="@+id/button_save_in_bookmarks"
@@ -40,19 +41,19 @@
             android:background="?selectableItemBackgroundBorderless"
             android:src="@drawable/ic_bookmark_unused" />
 
-        <ImageButton
-            android:id="@+id/button_share"
-            android:layout_width="@dimen/image_icon_width"
-            android:layout_height="@dimen/image_icon_height"
-            android:background="?selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_share" />
+        <!--<ImageButton-->
+            <!--android:id="@+id/button_share"-->
+            <!--android:layout_width="@dimen/image_icon_width"-->
+            <!--android:layout_height="@dimen/image_icon_height"-->
+            <!--android:background="?selectableItemBackgroundBorderless"-->
+            <!--android:src="@drawable/ic_share" />-->
 
-        <ImageButton
-            android:id="@+id/button_fullscreen"
-            android:layout_width="@dimen/image_icon_width"
-            android:layout_height="@dimen/image_icon_height"
-            android:background="?selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_fullscreen" />
+        <!--<ImageButton-->
+            <!--android:id="@+id/button_fullscreen"-->
+            <!--android:layout_width="@dimen/image_icon_width"-->
+            <!--android:layout_height="@dimen/image_icon_height"-->
+            <!--android:background="?selectableItemBackgroundBorderless"-->
+            <!--android:src="@drawable/ic_fullscreen" />-->
     </LinearLayout>
 
 
@@ -62,8 +63,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/text_translation"
-        android:layout_toStartOf="@+id/layout_bot_buttons_bar"
         android:divider="@null"
-        tools:listitem="@layout/item_dictionary_definition" />
+        tools:listitem="@layout/item_dictionary_definition"
+        android:layout_toStartOf="@+id/layout_bot_buttons_bar" />
 
 </RelativeLayout>

@@ -3,7 +3,6 @@ package yandex.muratov.translator.ui.translator;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -13,10 +12,7 @@ import yandex.muratov.translator.R;
 public class TranslatorOutputView extends RelativeLayout {
 
     private TextView translationText;
-    private ImageButton playSoundButton;
     private SwitchImageButton saveInBookmarksButton;
-    private ImageButton shareButton;
-    private ImageButton fullscreenButton;
     private ListView dictionaryListView;
 
 
@@ -43,10 +39,7 @@ public class TranslatorOutputView extends RelativeLayout {
     private void initElements(Context context) {
         View view = inflate(context, R.layout.partial_translator_output, this);
         translationText = initTranslationText(view);
-        playSoundButton = initPlaySoundButton(view);
         saveInBookmarksButton = initSaveInBookmarksButton(view);
-        shareButton = initShareButton(view);
-        fullscreenButton = initFullscreenButton(view);
         dictionaryListView = initAdditionalTranslationVariantsView(view);
     }
 
@@ -60,20 +53,8 @@ public class TranslatorOutputView extends RelativeLayout {
         return ((TextView) view.findViewById(R.id.text_translation));
     }
 
-    private static ImageButton initPlaySoundButton(View view) {
-        return ((ImageButton) view.findViewById(R.id.button_play_output_text));
-    }
-
     private static SwitchImageButton initSaveInBookmarksButton(View view) {
         return ((SwitchImageButton) view.findViewById(R.id.button_save_in_bookmarks));
-    }
-
-    private static ImageButton initShareButton(View view) {
-        return ((ImageButton) view.findViewById(R.id.button_share));
-    }
-
-    private static ImageButton initFullscreenButton(View view) {
-        return ((ImageButton) view.findViewById(R.id.button_fullscreen));
     }
 
     public TextView getTranslationTextView() {
@@ -84,7 +65,7 @@ public class TranslatorOutputView extends RelativeLayout {
         return dictionaryListView;
     }
 
-    public SwitchImageButton getSaveInBookmarksButton(){
+    public SwitchImageButton getSaveInBookmarksButton() {
         return saveInBookmarksButton;
     }
 }

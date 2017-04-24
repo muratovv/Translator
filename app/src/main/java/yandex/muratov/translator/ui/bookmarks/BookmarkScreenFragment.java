@@ -12,17 +12,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 import yandex.muratov.translator.R;
-
-import static yandex.muratov.translator.util.AndroidUtil.findViewById;
 
 public class BookmarkScreenFragment extends android.support.v4.app.Fragment {
     private static String TAG = BookmarkScreenFragment.class.getSimpleName();
 
     private ViewPager pager;
-    private ImageButton removeAllButton;
     private TabLayout tabLayout;
     private BookmarkPageFragment bookmarks;
     private FavoritesPageFragment favorites;
@@ -42,12 +38,7 @@ public class BookmarkScreenFragment extends android.support.v4.app.Fragment {
         pager = initPager(view, getChildFragmentManager(), getActivity().getResources(),
                 bookmarks, favorites);
         tabLayout = initTabLayout(view, pager);
-        removeAllButton = initRemoveAllButton(view);
         return view;
-    }
-
-    private ImageButton initRemoveAllButton(View view) {
-        return findViewById(view.findViewById(R.id.layout_toolbar), R.id.button_remove_all);
     }
 
     private static TabLayout initTabLayout(View view, ViewPager pager) {

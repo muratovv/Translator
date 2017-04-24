@@ -41,8 +41,6 @@ public class TranslatorInputView extends RelativeLayout {
 
     private void initElements(Context context) {
         View view = inflate(context, R.layout.partial_translator_input, this);
-        speechKeyboardButton = initSpeechKeyboardButton(view);
-        playTextButton = initPlayTextButton(view);
         eraseButton = initEraseButton(view);
         sourceEditText = initSourceEditText(view);
 
@@ -61,13 +59,7 @@ public class TranslatorInputView extends RelativeLayout {
         KeyboardUtil.showKeyboard(getContext(), getSourceEditText());
     }
 
-    private static ImageButton initSpeechKeyboardButton(View view) {
-        return ((ImageButton) view.findViewById(R.id.button_speech_keyboard));
-    }
 
-    private static ImageButton initPlayTextButton(View view) {
-        return ((ImageButton) view.findViewById(R.id.button_play));
-    }
 
     private static ImageButton initEraseButton(View view) {
         return ((ImageButton) view.findViewById(R.id.button_erase));
