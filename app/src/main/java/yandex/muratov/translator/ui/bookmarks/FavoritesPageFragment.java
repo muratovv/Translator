@@ -30,7 +30,7 @@ public class FavoritesPageFragment extends BasePageFragment {
         return new StorageOperations.Predicate<HistoryRow>() {
             @Override
             public boolean apply(HistoryRow value) {
-                return value.isFavorites();
+                return value.inFavorites();
             }
         };
     }

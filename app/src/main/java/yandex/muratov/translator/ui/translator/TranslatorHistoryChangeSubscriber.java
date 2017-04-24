@@ -27,9 +27,9 @@ class TranslatorHistoryChangeSubscriber implements OnChangeStorage {
     @Override
     public void onInsertCallback(HistoryRow actual) {
         last = actual;
-        Log.d(TAG, String.format("onInsertCallback: %s with %s", last.getSourceText(), last.isFavorites()));
+        Log.d(TAG, String.format("onInsertCallback: %s with %s", last.getSourceText(), last.inFavorites()));
         if (output == null) return;
-        if (last.isFavorites()) {
+        if (last.inFavorites()) {
             switchShareButtonState(ON);
         } else {
             switchShareButtonState(OFF);

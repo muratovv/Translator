@@ -16,7 +16,7 @@ public class HistoryRow implements Serializable, Comparable<HistoryRow> {
                        boolean inFavorites,
                        String rawLang,
                        long insertionTimestamp) {
-        this.sourceText = sourceText;
+        this.sourceText = sourceText.trim();
         this.translationText = translationText;
         this.inFavorites = inFavorites;
         this.rawLang = rawLang;
@@ -30,6 +30,11 @@ public class HistoryRow implements Serializable, Comparable<HistoryRow> {
                 inFavorites,
                 rawLang,
                 getCurrentTimestamp());
+    }
+
+    public static HistoryRow createWithNewTimestamp(HistoryRow value) {
+        return createWithNewTimestamp(value.getSourceText(), value.getTranslationText(),
+                value.getRawLang(), value.inFavorites());
     }
 
     public static HistoryRow from(String sourceText, String translationText,
@@ -57,7 +62,7 @@ public class HistoryRow implements Serializable, Comparable<HistoryRow> {
         return translationText;
     }
 
-    public boolean isFavorites() {
+    public boolean inFavorites() {
         return inFavorites;
     }
 

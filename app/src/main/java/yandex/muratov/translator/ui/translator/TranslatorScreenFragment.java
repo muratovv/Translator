@@ -98,11 +98,11 @@ public class TranslatorScreenFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 HistoryRow last = historySubscriber.getLast();
-                Log.d(TAG, String.format("switch from: %s", last.isFavorites()));
+                Log.d(TAG, String.format("switch from: %s", last.inFavorites()));
                 contextHolderFragment
                         .getHistoryContext()
                         .getConnector()
-                        .setFavorite(last, !last.isFavorites());
+                        .setFavorite(last, !last.inFavorites());
             }
         };
     }

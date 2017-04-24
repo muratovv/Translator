@@ -51,13 +51,6 @@ public abstract class BasePageFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View baseView, @Nullable Bundle savedInstanceState) {
-
-
-    }
-
-
-    @Override
     public void onResume() {
         super.onResume();
         contextHolder
@@ -75,7 +68,6 @@ public abstract class BasePageFragment extends Fragment {
 
     protected StoredRecordsAdapter initAdapter(Context appContext) {
         ArrayList<HistoryRow> dataset = new ArrayList<>();
-        dataset.add(HistoryRow.createWithNewTimestamp("1", "2", "3", false));
         return new StoredRecordsAdapter(appContext, dataset);
     }
 

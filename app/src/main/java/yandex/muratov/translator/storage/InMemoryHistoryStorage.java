@@ -29,14 +29,17 @@ public class InMemoryHistoryStorage implements HistoryStorageModel {
             storage.put(actual, actual);
             onInsertCallback(actual);
         } else {
-            onInsertCallback(oldValue);
+            storage.remove(oldValue);
+            HistoryRow withNewTimestamp = HistoryRow.createWithNewTimestamp(oldValue);
+            storage.put(withNewTimestamp, withNewTimestamp);
+            onInsertCallback(withNewTimestamp);
         }
     }
 
     @Override
     public void setFavorite(HistoryRow row, boolean favorite) {
         HistoryRow historyRow = storage.get(row);
-        if (historyRow != null && historyRow.isFavorites() != favorite) {
+        if (historyRow != null && historyRow.inFavorites() != favorite) {
             HistoryRow oldRow = storage.remove(historyRow);
             HistoryRow newRow = HistoryRow.createWithFavorites(oldRow, favorite);
             storage.put(newRow, newRow);

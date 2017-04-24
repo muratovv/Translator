@@ -38,7 +38,7 @@ public class StoredRecordsAdapter extends ArrayAdapter<HistoryRow> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_bookmark, parent, false);
         }
 
-        setButtonFavoriteState((ImageButton) findViewById(convertView, R.id.button_in_favorites), row.isFavorites());
+        setButtonFavoriteState((ImageButton) findViewById(convertView, R.id.button_in_favorites), row.inFavorites());
         setText((TextView) findViewById(convertView, R.id.text_source_word), row.getSourceText());
         setText((TextView) findViewById(convertView, R.id.text_dest_word), row.getTranslationText());
         setText((TextView) findViewById(convertView, R.id.text_used_languages), row.getRawLang().toUpperCase());
@@ -53,7 +53,7 @@ public class StoredRecordsAdapter extends ArrayAdapter<HistoryRow> {
     public void onBindViewHolder(BookmarkItemViewHolder holder, int position) {
         HistoryRow row = null;
 
-        setButtonFavoriteState(holder.getInFavorites(), row.isFavorites());
+        setButtonFavoriteState(holder.getInFavorites(), row.inFavorites());
         setText(holder.getSourceText(), row.getSourceText());
         setText(holder.getTranslationText(), row.getTranslationText());
         setText(holder.getUsedLanguages(), row.getRawLang().toUpperCase());
