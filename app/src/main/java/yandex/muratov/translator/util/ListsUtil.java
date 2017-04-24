@@ -1,6 +1,7 @@
 package yandex.muratov.translator.util;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import yandex.muratov.translator.network.data.LightTranslationEntry;
@@ -31,10 +32,18 @@ public class ListsUtil {
         return result;
     }
 
-    public static List<String> extractTranslations(List<LightTranslationEntry> translations){
+    public static List<String> extractTranslations(List<LightTranslationEntry> translations) {
         List<String> result = new ArrayList<>();
         for (LightTranslationEntry translationEntry : translations) {
             result.add(translationEntry.getText());
+        }
+        return result;
+    }
+
+    public static <T> List<T> fetch(Iterator<T> value) {
+        ArrayList<T> result = new ArrayList<>();
+        while (value.hasNext()) {
+            result.add(value.next());
         }
         return result;
     }
