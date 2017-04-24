@@ -16,15 +16,18 @@ import java.util.List;
 
 import yandex.muratov.translator.R;
 import yandex.muratov.translator.storage.HistoryRow;
+import yandex.muratov.translator.storage.StorageToUIConnector;
 
 import static yandex.muratov.translator.ui.translator.DictionaryAdapter.TAG;
 import static yandex.muratov.translator.util.AndroidUtil.findViewById;
 
 public class StoredRecordsAdapter extends ArrayAdapter<HistoryRow> {
 
+    private StorageToUIConnector connector;
 
-    public StoredRecordsAdapter(Context context, List<HistoryRow> dataset) {
+    public StoredRecordsAdapter(Context context, List<HistoryRow> dataset, StorageToUIConnector connector) {
         super(context, R.layout.item_bookmark, dataset);
+        this.connector = connector;
         Log.d(TAG, String.format("StoredRecordsAdapter: my hash=%d", hashCode()));
     }
 
@@ -38,43 +41,40 @@ public class StoredRecordsAdapter extends ArrayAdapter<HistoryRow> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_bookmark, parent, false);
         }
-
-        setButtonFavoriteState((ImageButton) findViewById(convertView, R.id.button_in_favorites), row.inFavorites());
-        setText((TextView) findViewById(convertView, R.id.text_source_word), row.getSourceText());
-        setText((TextView) findViewById(convertView, R.id.text_dest_word), row.getTranslationText());
-        setText((TextView) findViewById(convertView, R.id.text_used_languages), row.getRawLang().toUpperCase());
+        if (row != null) {
+            setButtonFavoriteState((ImageButton) findViewById(convertView, R.id.button_in_favorites),
+                    connector, row);
+            setText((TextView) findViewById(convertView, R.id.text_source_word), row.getSourceText());
+            setText((TextView) findViewById(convertView, R.id.text_dest_word), row.getTranslationText());
+            setText((TextView) findViewById(convertView, R.id.text_used_languages), row.getRawLang().toUpperCase());
+        }
         return convertView;
     }
 
-    public BookmarkItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_bookmark, parent, false);
-        return new BookmarkItemViewHolder(view, this);
-    }
-
-    public void onBindViewHolder(BookmarkItemViewHolder holder, int position) {
-        HistoryRow row = null;
-
-        setButtonFavoriteState(holder.getInFavorites(), row.inFavorites());
-        setText(holder.getSourceText(), row.getSourceText());
-        setText(holder.getTranslationText(), row.getTranslationText());
-        setText(holder.getUsedLanguages(), row.getRawLang().toUpperCase());
-    }
-
-    public void insert(List<HistoryRow> newData) {
+    public void replace(List<HistoryRow> newData) {
         super.clear();
         this.notifyDataSetInvalidated();
         super.addAll(newData);
         notifyDataSetChanged();
     }
 
-    private static void setButtonFavoriteState(ImageButton buttonFavoriteState, boolean isFavorite) {
-        if (isFavorite) {
+    private static void setButtonFavoriteState(ImageButton buttonFavoriteState,
+                                               final StorageToUIConnector connector,
+                                               final HistoryRow row) {
+        buttonFavoriteState.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (connector != null) {
+                    connector.setFavorite(row, !row.inFavorites());
+                }
+            }
+        });
+        if (row.inFavorites()) {
             buttonFavoriteState.setImageResource(R.drawable.ic_bookmark_used);
         } else {
             buttonFavoriteState.setImageResource(R.drawable.ic_bookmark_unused);
         }
     }
-
 
     private static void setText(TextView view, String text) {
         view.setText(text);

@@ -63,7 +63,9 @@ public abstract class BasePageFragment extends Fragment {
     protected StoredRecordsAdapter initAdapter(Context appContext) {
         Log.d(TAG, "initAdapter: ");
         ArrayList<HistoryRow> dataset = new ArrayList<>();
-        return new StoredRecordsAdapter(appContext, dataset);
+        return new StoredRecordsAdapter(appContext, dataset, contextHolder
+                .getHistoryContext()
+                .getConnector());
     }
 
     private OnChangeStorage initOnChangeStorage() {
@@ -71,7 +73,7 @@ public abstract class BasePageFragment extends Fragment {
         return new OnChangeStorage() {
             @Override
             public void onInsertCallback(HistoryRow actual) {
-
+                requestList(searchBar.getQueryLine().getText());
             }
 
             @Override
@@ -84,7 +86,7 @@ public abstract class BasePageFragment extends Fragment {
                 Log.d(TAG, String.format("onGetByPredicate: adapter=%d, size=%s", adapter.hashCode(), result.size()));
 
                 List<HistoryRow> fetch = ListsUtil.fetch(result.values());
-                adapter.insert(fetch);
+                adapter.replace(fetch);
             }
         };
     }
@@ -104,12 +106,16 @@ public abstract class BasePageFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 Log.d(TAG, String.format("in bar: adapter=%d, list=%d", adapter.hashCode(), listOfElements.hashCode()));
-                contextHolder
-                        .getHistoryContext()
-                        .getConnector()
-                        .getByPredicate(getSearchPredicate(s.toString()));
+                requestList(s);
             }
         };
+    }
+
+    private void requestList(Editable s) {
+        contextHolder
+                .getHistoryContext()
+                .getConnector()
+                .getByPredicate(getSearchPredicate(s.toString()));
     }
 
     protected abstract StorageOperations.Predicate<HistoryRow> getSearchPredicate(final String s);
