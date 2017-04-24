@@ -8,16 +8,19 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import yandex.muratov.translator.R;
+
+import static yandex.muratov.translator.util.AndroidUtil.findViewById;
 
 public class BookmarkScreenFragment extends android.support.v4.app.Fragment {
 
     private ViewPager pager;
+    private ImageButton removeAllButton;
     private TabLayout tabLayout;
 
     @Override
@@ -31,7 +34,12 @@ public class BookmarkScreenFragment extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.fragment_bookmarks_screen, container, false);
         pager = initPager(view, getChildFragmentManager(), getActivity().getResources());
         tabLayout = initTabLayout(view, pager);
+        removeAllButton = initRemoveAllButton(view);
         return view;
+    }
+
+    private ImageButton initRemoveAllButton(View view) {
+        return findViewById(view.findViewById(R.id.layout_toolbar), R.id.button_remove_all);
     }
 
     private static TabLayout initTabLayout(View view, ViewPager pager) {
@@ -59,7 +67,6 @@ public class BookmarkScreenFragment extends android.support.v4.app.Fragment {
 
         @Override
         public Fragment getItem(int position) {
-            Log.d(TAG, "getItem: ");
             switch (position) {
                 case 0:
                     return getBookmarksPage();
