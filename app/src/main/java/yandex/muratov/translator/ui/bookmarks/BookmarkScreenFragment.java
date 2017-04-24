@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +19,14 @@ import yandex.muratov.translator.R;
 import static yandex.muratov.translator.util.AndroidUtil.findViewById;
 
 public class BookmarkScreenFragment extends android.support.v4.app.Fragment {
+    private static String TAG = BookmarkScreenFragment.class.getSimpleName();
 
     private ViewPager pager;
     private ImageButton removeAllButton;
     private TabLayout tabLayout;
+    private BookmarkPageFragment bookmarks;
+    private FavoritesPageFragment favorites;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,7 +37,10 @@ public class BookmarkScreenFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_bookmarks_screen, container, false);
-        pager = initPager(view, getChildFragmentManager(), getActivity().getResources());
+        bookmarks = getBookmarksPage();
+        favorites = getFavoritesPage();
+        pager = initPager(view, getChildFragmentManager(), getActivity().getResources(),
+                bookmarks, favorites);
         tabLayout = initTabLayout(view, pager);
         removeAllButton = initRemoveAllButton(view);
         return view;
@@ -48,9 +56,33 @@ public class BookmarkScreenFragment extends android.support.v4.app.Fragment {
         return tabLayout;
     }
 
-    private static ViewPager initPager(View rootView, FragmentManager fm, Resources resources) {
+    private static ViewPager initPager(View rootView, FragmentManager fm, Resources resources,
+                                       final BookmarkPageFragment bookmarks, final FavoritesPageFragment favorites) {
         ViewPager pager = ((ViewPager) rootView.findViewById(R.id.pager));
-        pager.setAdapter(new SectionPageAdapter(fm, resources));
+        pager.setAdapter(new SectionPageAdapter(fm, resources, bookmarks, favorites));
+        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        bookmarks.activate();
+                        break;
+                    case 1:
+                        favorites.activate();
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         return pager;
     }
 
@@ -59,19 +91,24 @@ public class BookmarkScreenFragment extends android.support.v4.app.Fragment {
         private static String TAG = SectionPageAdapter.class.getSimpleName();
 
         private Resources resources;
+        private BookmarkPageFragment bookmarks;
+        private FavoritesPageFragment favorites;
 
-        public SectionPageAdapter(FragmentManager fm, Resources res) {
+        public SectionPageAdapter(FragmentManager fm, Resources resources,
+                                  BookmarkPageFragment bookmarks, FavoritesPageFragment favorites) {
             super(fm);
-            this.resources = res;
+            this.resources = resources;
+            this.bookmarks = bookmarks;
+            this.favorites = favorites;
         }
 
         @Override
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return getBookmarksPage();
+                    return bookmarks;
                 case 1:
-                    return getFavoritesPage();
+                    return favorites;
             }
             return null;
         }
@@ -91,14 +128,25 @@ public class BookmarkScreenFragment extends android.support.v4.app.Fragment {
             }
             return "";
         }
-
-        private Fragment getBookmarksPage() {
-            return BookmarkPageFragment.getInstance();
-        }
-
-        private Fragment getFavoritesPage() {
-            return FavoritesPageFragment.getInstance();
-        }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: Bookmarks");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause: Bookmarks");
+    }
+
+    private static BookmarkPageFragment getBookmarksPage() {
+        return BookmarkPageFragment.getInstance();
+    }
+
+    private static FavoritesPageFragment getFavoritesPage() {
+        return FavoritesPageFragment.getInstance();
+    }
 }

@@ -2,6 +2,7 @@ package yandex.muratov.translator.ui.bookmarks;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +12,12 @@ import yandex.muratov.translator.storage.HistoryRow;
 import yandex.muratov.translator.storage.api.StorageOperations;
 
 public class FavoritesPageFragment extends BasePageFragment {
+    private static String TAG = FavoritesPageFragment.class.getSimpleName();
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
-        View view = super.onCreateView(inflater, container, savedInstanceState);
-        return view;
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
@@ -30,13 +31,30 @@ public class FavoritesPageFragment extends BasePageFragment {
         return new StorageOperations.Predicate<HistoryRow>() {
             @Override
             public boolean apply(HistoryRow value) {
-                return value.inFavorites();
+                String query = s.toLowerCase();
+                String sourceText = value.getSourceText().toLowerCase();
+                String translateText = value.getTranslationText().toLowerCase();
+
+                return value.inFavorites() && (sourceText.contains(query) || translateText.contains(query));
+
             }
         };
     }
 
-
     public static FavoritesPageFragment getInstance() {
+        Log.d(TAG, "getInstance: FavoritesPageFragment");
         return new FavoritesPageFragment();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: Favorites");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause: Favorites");
     }
 }

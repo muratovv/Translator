@@ -35,43 +35,39 @@ public abstract class BasePageFragment extends Fragment {
     protected OnChangeStorage onChangeStorage;
     protected ContextHolderFragment contextHolder;
 
-    protected StoredRecordsAdapter adapter;
+    private StoredRecordsAdapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.page_bookmark_screen, container, false);
-        onChangeStorage = initOnChangeStorage();
+
         contextHolder = ContextHolderFragment.findContextFragment(this.getParentFragment());
-        searchBar = initSearchBar(view);
         adapter = initAdapter(getContext());
         listOfElements = initListOfElements(view);
+        searchBar = initSearchBar(view);
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        onChangeStorage = initOnChangeStorage();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        contextHolder
-                .getHistoryContext()
-                .getConnector()
-                .subscribe(onChangeStorage);
-        contextHolder.getHistoryContext().getConnector().getByPredicate(getSearchPredicate(""));
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        contextHolder.getHistoryContext().getConnector().unSubscribe();
     }
 
     protected StoredRecordsAdapter initAdapter(Context appContext) {
+        Log.d(TAG, "initAdapter: ");
         ArrayList<HistoryRow> dataset = new ArrayList<>();
         return new StoredRecordsAdapter(appContext, dataset);
     }
 
     private OnChangeStorage initOnChangeStorage() {
+        Log.d(TAG, String.format("bind adapter: adapter=%d", adapter.hashCode()));
         return new OnChangeStorage() {
             @Override
             public void onInsertCallback(HistoryRow actual) {
@@ -85,7 +81,7 @@ public abstract class BasePageFragment extends Fragment {
 
             @Override
             public void onGetByPredicate(Result<HistoryRow> result) {
-                Log.d(TAG, String.format("onGetByPredicate: size=%s", result.size()));
+                Log.d(TAG, String.format("onGetByPredicate: adapter=%d, size=%s", adapter.hashCode(), result.size()));
 
                 List<HistoryRow> fetch = ListsUtil.fetch(result.values());
                 adapter.insert(fetch);
@@ -107,6 +103,7 @@ public abstract class BasePageFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
+                Log.d(TAG, String.format("in bar: adapter=%d, list=%d", adapter.hashCode(), listOfElements.hashCode()));
                 contextHolder
                         .getHistoryContext()
                         .getConnector()
@@ -118,21 +115,41 @@ public abstract class BasePageFragment extends Fragment {
     protected abstract StorageOperations.Predicate<HistoryRow> getSearchPredicate(final String s);
 
     @Override
-    public void onStop() {
-        super.onStop();
-        contextHolder.getHistoryContext().getConnector().unSubscribe();
+    public void onPause() {
+        super.onPause();
+        deactivate();
     }
 
     private OneLineSearchBar initSearchBar(View rootView) {
-        OneLineSearchBar viewById = findViewById(rootView, R.id.bar_search);
-        viewById.getQueryLine().addTextChangedListener(initSearchBarTextWatcher());
-        return viewById;
+        OneLineSearchBar bar = findViewById(rootView, R.id.bar_search);
+        bar.getQueryLine().addTextChangedListener(initSearchBarTextWatcher());
+        Log.d(TAG, String.format("initSearchBar: hash %d", bar.hashCode()));
+        return bar;
     }
 
     private ListView initListOfElements(View rootView) {
         ListView listOfRecords = findViewById(rootView, R.id.list_of_translations);
         listOfRecords.setAdapter(adapter);
         return listOfRecords;
+    }
+
+    public void activate() {
+        Log.d(TAG, String.format("activate: %s", this.getClass().getSimpleName()));
+        if (contextHolder != null &&
+                contextHolder.getHistoryContext() != null &&
+                contextHolder.getHistoryContext()
+                        .getConnector() != null) {
+            contextHolder
+                    .getHistoryContext()
+                    .getConnector()
+                    .subscribe(onChangeStorage);
+            contextHolder.getHistoryContext().getConnector().getByPredicate(getSearchPredicate(""));
+        }
+    }
+
+    private void deactivate() {
+        Log.d(TAG, String.format("deactivate: %s", this.getClass().getSimpleName()));
+        contextHolder.getHistoryContext().getConnector().unSubscribe();
     }
 
 }

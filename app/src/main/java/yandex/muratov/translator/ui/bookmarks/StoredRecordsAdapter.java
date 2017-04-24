@@ -25,6 +25,7 @@ public class StoredRecordsAdapter extends ArrayAdapter<HistoryRow> {
 
     public StoredRecordsAdapter(Context context, List<HistoryRow> dataset) {
         super(context, R.layout.item_bookmark, dataset);
+        Log.d(TAG, String.format("StoredRecordsAdapter: my hash=%d", hashCode()));
     }
 
     @NonNull
