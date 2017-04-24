@@ -65,7 +65,7 @@ public class StorageToUIConnector implements HistoryStorageObserver, HistoryStor
     @Override
     public void getByPredicate(Predicate<HistoryRow> predicate) {
         if (predicate != null) {
-            storage.removeByPredicate(predicate);
+            storage.getByPredicate(predicate);
         }
     }
 
