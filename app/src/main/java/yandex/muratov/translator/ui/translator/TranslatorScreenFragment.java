@@ -98,11 +98,14 @@ public class TranslatorScreenFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 HistoryRow last = historySubscriber.getLast();
-                Log.d(TAG, String.format("switch from: %s", last.inFavorites()));
-                contextHolderFragment
-                        .getHistoryContext()
-                        .getConnector()
-                        .setFavorite(last, !last.inFavorites());
+                if (last != null) {
+                    contextHolderFragment
+                            .getHistoryContext()
+                            .getConnector()
+                            .setFavorite(last, !last.inFavorites());
+                } else {
+                    // TODO: 25.04.17 add ui notification about missing answers
+                }
             }
         };
     }
