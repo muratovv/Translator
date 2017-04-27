@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-
+/**
+ * Storage based on {@link HashMap} implementation
+ */
 public class InMemoryHistoryStorage extends MapBasedHistoryStorage {
     private static String TAG = InMemoryHistoryStorage.class.getSimpleName();
 

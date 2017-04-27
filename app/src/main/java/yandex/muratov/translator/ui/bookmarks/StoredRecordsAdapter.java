@@ -16,16 +16,16 @@ import java.util.List;
 
 import yandex.muratov.translator.R;
 import yandex.muratov.translator.storage.HistoryRow;
-import yandex.muratov.translator.storage.StorageToUIConnector;
+import yandex.muratov.translator.storage.StorageController;
 
 import static yandex.muratov.translator.ui.translator.DictionaryAdapter.TAG;
 import static yandex.muratov.translator.util.AndroidUtil.findViewById;
 
 public class StoredRecordsAdapter extends ArrayAdapter<HistoryRow> {
 
-    private StorageToUIConnector connector;
+    private StorageController connector;
 
-    public StoredRecordsAdapter(Context context, List<HistoryRow> dataset, StorageToUIConnector connector) {
+    public StoredRecordsAdapter(Context context, List<HistoryRow> dataset, StorageController connector) {
         super(context, R.layout.item_bookmark, dataset);
         this.connector = connector;
         Log.d(TAG, String.format("StoredRecordsAdapter: my hash=%d", hashCode()));
@@ -59,7 +59,7 @@ public class StoredRecordsAdapter extends ArrayAdapter<HistoryRow> {
     }
 
     private static void setButtonFavoriteState(ImageButton buttonFavoriteState,
-                                               final StorageToUIConnector connector,
+                                               final StorageController connector,
                                                final HistoryRow row) {
         buttonFavoriteState.setOnClickListener(new View.OnClickListener() {
             @Override

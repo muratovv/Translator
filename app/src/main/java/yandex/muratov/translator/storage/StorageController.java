@@ -6,17 +6,20 @@ import yandex.muratov.translator.storage.api.HistoryStorageObserver;
 import yandex.muratov.translator.storage.api.OnChangeStorage;
 import yandex.muratov.translator.storage.api.Result;
 
-public class StorageToUIConnector implements HistoryStorageObserver, HistoryStorage {
+/**
+ * Class resolves access to history storage
+ */
+public class StorageController implements HistoryStorageObserver, HistoryStorage {
     private HistoryStorageModel storage;
     private OnChangeStorage uiSubscriber;
 
-    public StorageToUIConnector(HistoryStorageModel storage) {
+    public StorageController(HistoryStorageModel storage) {
         this.storage = storage;
         this.storage.subscribe(new OnChangeStorage() {
             @Override
-            public void onInsertCallback(HistoryRow actual) {
+            public void onPutCallback(HistoryRow actual) {
                 if (uiSubscriber != null && actual != null)
-                    uiSubscriber.onInsertCallback(actual);
+                    uiSubscriber.onPutCallback(actual);
             }
 
             @Override
@@ -44,9 +47,9 @@ public class StorageToUIConnector implements HistoryStorageObserver, HistoryStor
     }
 
     @Override
-    public void putInHistory(HistoryRow actual) {
-        if (actual != null) {
-            storage.putInHistory(actual);
+    public void put(HistoryRow value) {
+        if (value != null) {
+            storage.put(value);
         }
     }
 

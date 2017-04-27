@@ -72,7 +72,7 @@ public abstract class BasePageFragment extends Fragment {
         Log.d(TAG, String.format("bind adapter: adapter=%d", adapter.hashCode()));
         return new OnChangeStorage() {
             @Override
-            public void onInsertCallback(HistoryRow actual) {
+            public void onPutCallback(HistoryRow actual) {
                 requestList(searchBar.getQueryLine().getText());
             }
 

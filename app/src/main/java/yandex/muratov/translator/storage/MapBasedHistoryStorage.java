@@ -14,6 +14,9 @@ import yandex.muratov.translator.storage.api.Result;
 import yandex.muratov.translator.storage.api.StorageOperations;
 
 
+/**
+ * Storage based on key value structure
+ */
 public abstract class MapBasedHistoryStorage implements HistoryStorageModel {
     private static String TAG = MapBasedHistoryStorage.class.getSimpleName();
 
@@ -28,16 +31,16 @@ public abstract class MapBasedHistoryStorage implements HistoryStorageModel {
 
 
     @Override
-    public void putInHistory(HistoryRow actual) {
-        HistoryRow oldValue = storage.get(actual);
+    public void put(HistoryRow value) {
+        HistoryRow oldValue = storage.get(value);
         if (oldValue == null) {
-            storage.put(actual);
-            onInsertCallback(actual);
+            storage.put(value);
+            onPutCallback(value);
         } else {
             storage.remove(oldValue);
-            HistoryRow withNewTimestamp = HistoryRow.createWithNewTimestamp(oldValue);
+            HistoryRow withNewTimestamp = HistoryRow.copyWithNewTimestamp(oldValue);
             storage.put(withNewTimestamp);
-            onInsertCallback(withNewTimestamp);
+            onPutCallback(withNewTimestamp);
         }
     }
 
@@ -49,14 +52,14 @@ public abstract class MapBasedHistoryStorage implements HistoryStorageModel {
             HistoryRow newRow = HistoryRow.createWithFavorites(oldRow, favorite);
             storage.put(newRow);
             Log.d(TAG, String.format("setFavorite: %s for %s", favorite, newRow.getSourceText()));
-            onInsertCallback(newRow);
+            onPutCallback(newRow);
         }
     }
 
     @Override
-    public void onInsertCallback(HistoryRow actual) {
+    public void onPutCallback(HistoryRow actual) {
         if (modelSubscriber != null) {
-            modelSubscriber.onInsertCallback(actual);
+            modelSubscriber.onPutCallback(actual);
         }
     }
 
@@ -134,6 +137,10 @@ public abstract class MapBasedHistoryStorage implements HistoryStorageModel {
     }
 
 
+    /**
+     * Interface for internal access to Map based implementation of storage
+     * @param <T>
+     */
     public interface DataStorage<T> {
         T put(T key);
 

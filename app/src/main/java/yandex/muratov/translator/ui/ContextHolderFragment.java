@@ -17,7 +17,7 @@ import yandex.muratov.translator.translate.net.YandexTranslateRepository;
 import yandex.muratov.translator.translate.net.YandexTranslator;
 import yandex.muratov.translator.translate.data.Language;
 import yandex.muratov.translator.storage.InMemoryHistoryStorage;
-import yandex.muratov.translator.storage.StorageToUIConnector;
+import yandex.muratov.translator.storage.StorageController;
 
 public class ContextHolderFragment extends Fragment {
 
@@ -40,7 +40,7 @@ public class ContextHolderFragment extends Fragment {
 
     private HistoryStorageContext initHistoryContext() {
         InMemoryHistoryStorage storage = new InMemoryHistoryStorage();
-        return new HistoryStorageContext(new StorageToUIConnector(storage));
+        return new HistoryStorageContext(new StorageController(storage));
     }
 
     @Nullable

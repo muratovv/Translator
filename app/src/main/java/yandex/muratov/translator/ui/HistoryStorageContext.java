@@ -1,15 +1,15 @@
 package yandex.muratov.translator.ui;
 
-import yandex.muratov.translator.storage.StorageToUIConnector;
+import yandex.muratov.translator.storage.StorageController;
 
 public class HistoryStorageContext {
-    private StorageToUIConnector storageToUIConnector;
+    private StorageController storageController;
 
-    public HistoryStorageContext(StorageToUIConnector storageToUIConnector) {
-        this.storageToUIConnector = storageToUIConnector;
+    public HistoryStorageContext(StorageController storageController) {
+        this.storageController = storageController;
     }
 
-    public StorageToUIConnector getConnector() {
-        return storageToUIConnector;
+    public StorageController getConnector() {
+        return storageController;
     }
 }

@@ -7,10 +7,10 @@ import android.widget.Toast;
 import java.util.Objects;
 
 import yandex.muratov.translator.R;
+import yandex.muratov.translator.storage.HistoryRow;
 import yandex.muratov.translator.translate.api.TranslatorModelSubscriber;
 import yandex.muratov.translator.translate.data.DictionaryAnswer;
 import yandex.muratov.translator.translate.data.TranslateAnswer;
-import yandex.muratov.translator.storage.HistoryRow;
 import yandex.muratov.translator.ui.FormatterStrategies;
 import yandex.muratov.translator.ui.HistoryStorageContext;
 
@@ -55,9 +55,9 @@ class OnReceiveTranslationSubscriber implements TranslatorModelSubscriber {
             String sourceText = getSourceText();
             if (sourceText.length() == 0) return;
             String translation = FormatterStrategies.wrapList.toText(response.getTexts());
-            HistoryRow row = HistoryRow.createWithNewTimestamp(sourceText, translation,
-                    response.getLanguage(), false);
-            historyContext.getConnector().putInHistory(row);
+            HistoryRow row = HistoryRow.newRow(sourceText, translation,
+                    response.getLanguage());
+            historyContext.getConnector().put(row);
         }
     }
 
