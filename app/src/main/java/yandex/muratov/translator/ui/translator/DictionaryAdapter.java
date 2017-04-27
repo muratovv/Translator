@@ -16,9 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import yandex.muratov.translator.R;
-import yandex.muratov.translator.network.data.DefinitionEntry;
-import yandex.muratov.translator.network.data.ExampleEntry;
-import yandex.muratov.translator.network.data.TranslationEntry;
+import yandex.muratov.translator.translate.data.DefinitionEntry;
+import yandex.muratov.translator.translate.data.ExampleEntry;
+import yandex.muratov.translator.translate.data.TranslationEntry;
 import yandex.muratov.translator.util.DefaultTextWatcher;
 import yandex.muratov.translator.util.ListsUtil;
 import yandex.muratov.translator.util.StringUtil;

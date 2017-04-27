@@ -1,8 +1,8 @@
-package yandex.muratov.translator.network.api;
+package yandex.muratov.translator.translate.api;
 
 
 import retrofit2.Call;
-import yandex.muratov.translator.network.data.DictionaryAnswer;
+import yandex.muratov.translator.translate.data.DictionaryAnswer;
 
 /**
  * Abstract interface for retrieving {@link DictionaryAnswer}

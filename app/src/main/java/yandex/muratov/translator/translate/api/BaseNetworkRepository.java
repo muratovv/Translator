@@ -1,9 +1,9 @@
-package yandex.muratov.translator.network.api;
+package yandex.muratov.translator.translate.api;
 
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import yandex.muratov.translator.network.ConnectionBuilder;
+import yandex.muratov.translator.translate.ConnectionBuilder;
 
 /**
  * Class represents common context for network repositories

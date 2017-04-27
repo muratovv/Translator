@@ -1,4 +1,4 @@
-package yandex.muratov.translator.network.data;
+package yandex.muratov.translator.translate.data;
 
 
 import java.util.ArrayList;

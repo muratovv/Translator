@@ -1,11 +1,11 @@
-package yandex.muratov.translator.network;
+package yandex.muratov.translator.translate;
 
 import retrofit2.Call;
 import yandex.muratov.translator.BuildConfig;
-import yandex.muratov.translator.network.api.BaseNetworkRepository;
-import yandex.muratov.translator.network.api.TranslateApi;
-import yandex.muratov.translator.network.api.TranslateRepository;
-import yandex.muratov.translator.network.data.TranslateAnswer;
+import yandex.muratov.translator.translate.api.BaseNetworkRepository;
+import yandex.muratov.translator.translate.api.TranslateApi;
+import yandex.muratov.translator.translate.api.TranslateRepository;
+import yandex.muratov.translator.translate.data.TranslateAnswer;
 
 public class YandexTranslateRepository extends BaseNetworkRepository implements TranslateRepository {
 

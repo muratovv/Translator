@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import yandex.muratov.translator.R;
-import yandex.muratov.translator.network.data.Language;
+import yandex.muratov.translator.translate.data.Language;
 
 public class LanguagePickerAdapter extends RecyclerView.Adapter<LanguageItemHolder> {
 

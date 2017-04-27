@@ -1,7 +1,7 @@
-package yandex.muratov.translator.network.api;
+package yandex.muratov.translator.translate.api;
 
 
-import yandex.muratov.translator.network.data.TranslateAnswer;
+import yandex.muratov.translator.translate.data.TranslateAnswer;
 
 /**
  * Class represents response from {@link TranslateApi}

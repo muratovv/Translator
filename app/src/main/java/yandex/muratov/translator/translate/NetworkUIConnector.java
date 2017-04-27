@@ -1,15 +1,15 @@
-package yandex.muratov.translator.network;
+package yandex.muratov.translator.translate;
 
 import android.util.Log;
 
-import yandex.muratov.translator.network.api.Droppable;
-import yandex.muratov.translator.network.api.NetworkModelObserver;
-import yandex.muratov.translator.network.api.NetworkTranslatorModel;
-import yandex.muratov.translator.network.api.TranslatorModelSubscriber;
-import yandex.muratov.translator.network.data.DataCodes;
-import yandex.muratov.translator.network.data.DictionaryAnswer;
-import yandex.muratov.translator.network.data.Language;
-import yandex.muratov.translator.network.data.TranslateAnswer;
+import yandex.muratov.translator.translate.api.Droppable;
+import yandex.muratov.translator.translate.api.NetworkModelObserver;
+import yandex.muratov.translator.translate.api.NetworkTranslatorModel;
+import yandex.muratov.translator.translate.api.TranslatorModelSubscriber;
+import yandex.muratov.translator.translate.data.DataCodes;
+import yandex.muratov.translator.translate.data.DictionaryAnswer;
+import yandex.muratov.translator.translate.data.Language;
+import yandex.muratov.translator.translate.data.TranslateAnswer;
 
 
 public class NetworkUIConnector implements NetworkModelObserver, Droppable {

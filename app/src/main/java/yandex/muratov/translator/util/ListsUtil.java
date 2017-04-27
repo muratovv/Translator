@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import yandex.muratov.translator.network.data.LightTranslationEntry;
-import yandex.muratov.translator.network.data.MeanEntry;
-import yandex.muratov.translator.network.data.SynonymEntry;
+import yandex.muratov.translator.translate.data.LightTranslationEntry;
+import yandex.muratov.translator.translate.data.MeanEntry;
+import yandex.muratov.translator.translate.data.SynonymEntry;
 
 public class ListsUtil {
     public static <T> List<T> of(final T val, final List<T> arg) {

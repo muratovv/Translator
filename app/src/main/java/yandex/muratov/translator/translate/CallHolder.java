@@ -1,4 +1,4 @@
-package yandex.muratov.translator.network;
+package yandex.muratov.translator.translate;
 
 import retrofit2.Call;
 import retrofit2.Callback;

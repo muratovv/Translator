@@ -7,16 +7,16 @@ import android.widget.Toast;
 import java.util.Objects;
 
 import yandex.muratov.translator.R;
-import yandex.muratov.translator.network.api.TranslatorModelSubscriber;
-import yandex.muratov.translator.network.data.DictionaryAnswer;
-import yandex.muratov.translator.network.data.TranslateAnswer;
+import yandex.muratov.translator.translate.api.TranslatorModelSubscriber;
+import yandex.muratov.translator.translate.data.DictionaryAnswer;
+import yandex.muratov.translator.translate.data.TranslateAnswer;
 import yandex.muratov.translator.storage.HistoryRow;
 import yandex.muratov.translator.ui.FormatterStrategies;
 import yandex.muratov.translator.ui.HistoryStorageContext;
 
-import static yandex.muratov.translator.network.data.DataCodes.OK_RESPONSE_CODE;
-import static yandex.muratov.translator.network.data.DataCodes.getResourceByError;
-import static yandex.muratov.translator.network.data.DataCodes.isValid;
+import static yandex.muratov.translator.translate.data.DataCodes.OK_RESPONSE_CODE;
+import static yandex.muratov.translator.translate.data.DataCodes.getResourceByError;
+import static yandex.muratov.translator.translate.data.DataCodes.isValid;
 
 class OnReceiveTranslationSubscriber implements TranslatorModelSubscriber {
 

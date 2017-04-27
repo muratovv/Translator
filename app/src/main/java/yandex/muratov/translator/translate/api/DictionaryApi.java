@@ -1,9 +1,9 @@
-package yandex.muratov.translator.network.api;
+package yandex.muratov.translator.translate.api;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-import yandex.muratov.translator.network.data.DictionaryAnswer;
+import yandex.muratov.translator.translate.data.DictionaryAnswer;
 
 /**
  * Class represents yandex dictionary api

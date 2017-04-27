@@ -1,4 +1,4 @@
-package yandex.muratov.translator.network;
+package yandex.muratov.translator.translate;
 
 import com.google.gson.GsonBuilder;
 import com.ihsanbal.logging.Level;

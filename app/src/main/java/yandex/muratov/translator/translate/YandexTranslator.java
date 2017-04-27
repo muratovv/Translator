@@ -1,16 +1,16 @@
-package yandex.muratov.translator.network;
+package yandex.muratov.translator.translate;
 
 import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import yandex.muratov.translator.network.api.DictionaryRepository;
-import yandex.muratov.translator.network.api.NetworkTranslatorModel;
-import yandex.muratov.translator.network.api.TranslateRepository;
-import yandex.muratov.translator.network.api.TranslatorModelSubscriber;
-import yandex.muratov.translator.network.data.DictionaryAnswer;
-import yandex.muratov.translator.network.data.TranslateAnswer;
+import yandex.muratov.translator.translate.api.DictionaryRepository;
+import yandex.muratov.translator.translate.api.NetworkTranslatorModel;
+import yandex.muratov.translator.translate.api.TranslateRepository;
+import yandex.muratov.translator.translate.api.TranslatorModelSubscriber;
+import yandex.muratov.translator.translate.data.DictionaryAnswer;
+import yandex.muratov.translator.translate.data.TranslateAnswer;
 
 
 public class YandexTranslator implements NetworkTranslatorModel {

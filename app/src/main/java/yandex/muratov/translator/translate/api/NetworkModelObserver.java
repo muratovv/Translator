@@ -1,4 +1,4 @@
-package yandex.muratov.translator.network.api;
+package yandex.muratov.translator.translate.api;
 
 /**
  * Observer of network model

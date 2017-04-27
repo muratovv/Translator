@@ -1,10 +1,10 @@
-package yandex.muratov.translator.network.data;
+package yandex.muratov.translator.translate.data;
 
 /**
  * @author @muratovv
  * @date 20.04.17
  */
-public class SynonymEntry {
+public class MeanEntry {
     private String text = "";
 
     public String getText() {

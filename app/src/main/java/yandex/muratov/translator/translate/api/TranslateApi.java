@@ -1,10 +1,10 @@
-package yandex.muratov.translator.network.api;
+package yandex.muratov.translator.translate.api;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
-import yandex.muratov.translator.network.data.TranslateAnswer;
+import yandex.muratov.translator.translate.data.TranslateAnswer;
 
 /**
  * Class represents yandex dictionary api

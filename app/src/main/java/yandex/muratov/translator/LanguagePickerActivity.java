@@ -7,7 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import yandex.muratov.translator.network.data.Language;
+import yandex.muratov.translator.translate.data.Language;
 import yandex.muratov.translator.ui.translator.LanguagePickerToolbarView;
 import yandex.muratov.translator.ui.translator.OnChangeLanguage;
 import yandex.muratov.translator.ui.translator.TranslatorScreenFragment;

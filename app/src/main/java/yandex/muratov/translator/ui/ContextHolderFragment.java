@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 
 import java.io.File;
 
-import yandex.muratov.translator.network.ConnectionBuilder;
-import yandex.muratov.translator.network.NetworkUIConnector;
-import yandex.muratov.translator.network.YandexDictionaryRepository;
-import yandex.muratov.translator.network.YandexTranslateRepository;
-import yandex.muratov.translator.network.YandexTranslator;
-import yandex.muratov.translator.network.data.Language;
+import yandex.muratov.translator.translate.ConnectionBuilder;
+import yandex.muratov.translator.translate.NetworkUIConnector;
+import yandex.muratov.translator.translate.YandexDictionaryRepository;
+import yandex.muratov.translator.translate.YandexTranslateRepository;
+import yandex.muratov.translator.translate.YandexTranslator;
+import yandex.muratov.translator.translate.data.Language;
 import yandex.muratov.translator.storage.InMemoryHistoryStorage;
 import yandex.muratov.translator.storage.StorageToUIConnector;
 

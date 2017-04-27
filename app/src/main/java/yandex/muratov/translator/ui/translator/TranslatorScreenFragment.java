@@ -17,8 +17,8 @@ import android.widget.ListView;
 
 import yandex.muratov.translator.LanguagePickerActivity;
 import yandex.muratov.translator.R;
-import yandex.muratov.translator.network.NetworkUIConnector;
-import yandex.muratov.translator.network.data.Language;
+import yandex.muratov.translator.translate.NetworkUIConnector;
+import yandex.muratov.translator.translate.data.Language;
 import yandex.muratov.translator.storage.HistoryRow;
 import yandex.muratov.translator.ui.ContextHolderFragment;
 import yandex.muratov.translator.ui.TranslationContext;
