@@ -1,9 +1,7 @@
 package yandex.muratov.translator.network.api;
 
 /**
- * @author @muratovv
- * @date 20.04.17
+ * Interface is application translation model
  */
 public interface TranslatorModelSubscriber extends CallbackTranslateResponse, CallbackDictionaryResponse {
-
 }

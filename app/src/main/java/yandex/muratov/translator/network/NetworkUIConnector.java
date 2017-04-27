@@ -95,13 +95,13 @@ public class NetworkUIConnector implements NetworkModelObserver, Droppable {
     }
 
     @Override
-    public void unSubscribe() {
+    public void unsubscribe() {
         this.uiSubscriber = null;
     }
 
     @Override
-    public void dropLastRequest() {
-        net.dropLastRequest();
+    public void dropLast() {
+        net.dropLast();
     }
 
     @Override
@@ -121,10 +121,10 @@ public class NetworkUIConnector implements NetworkModelObserver, Droppable {
         Log.d(TAG, String.format("translate: %s", text));
         if (text == null || text.trim().equals("")) {
             sendEmptyAnswer();
-            dropLastRequest();
+            dropLast();
             return;
         }
-        dropLastRequest();
+        dropLast();
         translateRequest(text);
     }
 

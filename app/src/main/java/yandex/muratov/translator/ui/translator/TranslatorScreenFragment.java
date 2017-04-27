@@ -86,7 +86,7 @@ public class TranslatorScreenFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        contextHolderFragment.getTranslationContext().getConnector().unSubscribe();
+        contextHolderFragment.getTranslationContext().getConnector().unsubscribe();
         contextHolderFragment.getHistoryContext().getConnector().unSubscribe();
     }
 

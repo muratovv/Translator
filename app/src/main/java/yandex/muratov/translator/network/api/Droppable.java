@@ -1,13 +1,17 @@
 package yandex.muratov.translator.network.api;
 
+/**
+ * Interface represents cancellations for connections
+ */
 public interface Droppable {
-    /**
-     * Drop last request
-     */
-    void dropLastRequest();
 
     /**
-     * Close all connections for closing
+     * Drop last operation
+     */
+    void dropLast();
+
+    /**
+     * Close all operations and close connection
      */
     void dropConnection();
 }
