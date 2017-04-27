@@ -3,7 +3,7 @@ package yandex.muratov.translator.translate.api;
 /**
  *
  */
-public interface NetworkTranslatorModel extends NetworkModelObserver, Droppable {
+public interface TranslationModel extends NetworkModelObserver, Droppable {
 
     /**
      * Request for dictionary API

@@ -4,7 +4,7 @@ import android.util.Log;
 
 import yandex.muratov.translator.translate.api.Droppable;
 import yandex.muratov.translator.translate.api.NetworkModelObserver;
-import yandex.muratov.translator.translate.api.NetworkTranslatorModel;
+import yandex.muratov.translator.translate.api.TranslationModel;
 import yandex.muratov.translator.translate.api.TranslatorModelSubscriber;
 import yandex.muratov.translator.translate.data.DataCodes;
 import yandex.muratov.translator.translate.data.DictionaryAnswer;
@@ -12,10 +12,10 @@ import yandex.muratov.translator.translate.data.Language;
 import yandex.muratov.translator.translate.data.TranslateAnswer;
 
 
-public class NetworkUIConnector implements NetworkModelObserver, Droppable {
-    private static String TAG = NetworkUIConnector.class.getSimpleName();
+public class TranslationController implements NetworkModelObserver, Droppable {
+    private static String TAG = TranslationController.class.getSimpleName();
 
-    private NetworkTranslatorModel net;
+    private TranslationModel net;
     private TranslatorModelSubscriber uiSubscriber;
 
     private Language sourceLang;
@@ -23,8 +23,8 @@ public class NetworkUIConnector implements NetworkModelObserver, Droppable {
     private AnswerHolder<TranslateAnswer> translateHolder = new AnswerHolder<>();
     private AnswerHolder<DictionaryAnswer> dictionaryHolder = new AnswerHolder<>();
 
-    public NetworkUIConnector(NetworkTranslatorModel net,
-                              Language defaultSourceLang, Language defaultTargetLang) {
+    public TranslationController(TranslationModel net,
+                                 Language defaultSourceLang, Language defaultTargetLang) {
         this.net = net;
         this.sourceLang = defaultSourceLang;
         this.targetLang = defaultTargetLang;
@@ -149,12 +149,12 @@ public class NetworkUIConnector implements NetworkModelObserver, Droppable {
         return sourceLanguage.getCode() + "-" + targetLanguage.getCode();
     }
 
-    public NetworkUIConnector setSourceLanguage(Language source) {
+    public TranslationController setSourceLanguage(Language source) {
         this.sourceLang = source;
         return this;
     }
 
-    public NetworkUIConnector setTargetLanguage(Language target) {
+    public TranslationController setTargetLanguage(Language target) {
         this.targetLang = target;
         return this;
     }

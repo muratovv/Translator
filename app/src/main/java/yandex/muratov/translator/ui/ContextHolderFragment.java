@@ -10,11 +10,11 @@ import android.view.ViewGroup;
 
 import java.io.File;
 
-import yandex.muratov.translator.translate.ConnectionBuilder;
-import yandex.muratov.translator.translate.NetworkUIConnector;
-import yandex.muratov.translator.translate.YandexDictionaryRepository;
-import yandex.muratov.translator.translate.YandexTranslateRepository;
-import yandex.muratov.translator.translate.YandexTranslator;
+import yandex.muratov.translator.translate.net.ConnectionBuilder;
+import yandex.muratov.translator.translate.TranslationController;
+import yandex.muratov.translator.translate.net.YandexDictionaryRepository;
+import yandex.muratov.translator.translate.net.YandexTranslateRepository;
+import yandex.muratov.translator.translate.net.YandexTranslator;
 import yandex.muratov.translator.translate.data.Language;
 import yandex.muratov.translator.storage.InMemoryHistoryStorage;
 import yandex.muratov.translator.storage.StorageToUIConnector;
@@ -50,21 +50,21 @@ public class ContextHolderFragment extends Fragment {
     }
 
     private static TranslationContext initTranslationContext(File cache, Language uiLanguage) {
-        NetworkUIConnector networkConnector = initConnector(cache, Language.EN, Language.RU, uiLanguage);
+        TranslationController networkConnector = initConnector(cache, Language.EN, Language.RU, uiLanguage);
         return new TranslationContext(networkConnector);
     }
 
-    private static NetworkUIConnector initConnector(File cache,
-                                                    Language sourceLang,
-                                                    Language targetLang,
-                                                    Language uiLanguage) {
+    private static TranslationController initConnector(File cache,
+                                                       Language sourceLang,
+                                                       Language targetLang,
+                                                       Language uiLanguage) {
         ConnectionBuilder connectionBuilder = new ConnectionBuilder(cache);
         YandexTranslateRepository translateRepo =
                 new YandexTranslateRepository(connectionBuilder);
         YandexDictionaryRepository dictionaryRepo =
                 new YandexDictionaryRepository(connectionBuilder, uiLanguage);
         YandexTranslator net = new YandexTranslator(translateRepo, dictionaryRepo);
-        return new NetworkUIConnector(net, sourceLang, targetLang);
+        return new TranslationController(net, sourceLang, targetLang);
     }
 
     public TranslationContext getTranslationContext() {

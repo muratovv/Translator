@@ -3,7 +3,7 @@ package yandex.muratov.translator.translate;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-class CallHolder<T> {
+public class CallHolder<T> {
     private Call<T> call;
 
     public void dropPreviousCall() {

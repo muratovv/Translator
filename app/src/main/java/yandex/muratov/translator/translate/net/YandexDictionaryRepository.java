@@ -1,8 +1,7 @@
-package yandex.muratov.translator.translate;
+package yandex.muratov.translator.translate.net;
 
 import retrofit2.Call;
 import yandex.muratov.translator.BuildConfig;
-import yandex.muratov.translator.translate.api.BaseNetworkRepository;
 import yandex.muratov.translator.translate.api.DictionaryApi;
 import yandex.muratov.translator.translate.api.DictionaryRepository;
 import yandex.muratov.translator.translate.data.DictionaryAnswer;

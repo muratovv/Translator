@@ -17,7 +17,7 @@ import android.widget.ListView;
 
 import yandex.muratov.translator.LanguagePickerActivity;
 import yandex.muratov.translator.R;
-import yandex.muratov.translator.translate.NetworkUIConnector;
+import yandex.muratov.translator.translate.TranslationController;
 import yandex.muratov.translator.translate.data.Language;
 import yandex.muratov.translator.storage.HistoryRow;
 import yandex.muratov.translator.ui.ContextHolderFragment;
@@ -200,7 +200,7 @@ public class TranslatorScreenFragment extends Fragment {
     }
 
     private static void initToolbarTitle(TranslationContext translationContext, TranslatorToolbarView toolbar) {
-        NetworkUIConnector connector = translationContext.getConnector();
+        TranslationController connector = translationContext.getConnector();
         if (connector != null) {
             toolbar.getPickSourceLang().setText(connector.getSourceLang().getUiName());
             toolbar.getPickTargetLang().setText(connector.getTargetLang().getUiName());
@@ -218,7 +218,7 @@ public class TranslatorScreenFragment extends Fragment {
     }
 
     private void changeLanguage(Language language, SelectedLanguage choose) {
-        NetworkUIConnector connector = contextHolderFragment.getTranslationContext().getConnector();
+        TranslationController connector = contextHolderFragment.getTranslationContext().getConnector();
         if (connector != null) {
             if (choose == SelectedLanguage.SOURCE) {
                 connector.setSourceLanguage(language);

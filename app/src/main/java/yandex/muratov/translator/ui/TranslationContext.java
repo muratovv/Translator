@@ -1,17 +1,17 @@
 package yandex.muratov.translator.ui;
 
 
-import yandex.muratov.translator.translate.NetworkUIConnector;
+import yandex.muratov.translator.translate.TranslationController;
 
 public class TranslationContext {
-    private NetworkUIConnector connector;
+    private TranslationController connector;
 
-    public TranslationContext(NetworkUIConnector connector) {
+    public TranslationContext(TranslationController connector) {
 
         this.connector = connector;
     }
 
-    public NetworkUIConnector getConnector() {
+    public TranslationController getConnector() {
         return connector;
     }
 }
