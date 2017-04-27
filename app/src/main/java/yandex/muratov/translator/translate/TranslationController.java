@@ -11,16 +11,40 @@ import yandex.muratov.translator.translate.data.DictionaryAnswer;
 import yandex.muratov.translator.translate.data.Language;
 import yandex.muratov.translator.translate.data.TranslateAnswer;
 
-
+/**
+ * Class accessor for translation model.
+ */
 public class TranslationController implements NetworkModelObserver, Droppable {
     private static String TAG = TranslationController.class.getSimpleName();
 
+    /**
+     * Active translation model
+     */
     private TranslationModel net;
+
+    /**
+     * Model subscriber, there is available only one subscriber
+     */
     private TranslatorModelSubscriber uiSubscriber;
 
+    /**
+     * Source language of translation
+     */
     private Language sourceLang;
+
+    /**
+     * Target language of translation
+     */
     private Language targetLang;
+
+    /**
+     * Keeper of last {@link yandex.muratov.translator.translate.api.TranslateApi} response
+     */
     private AnswerHolder<TranslateAnswer> translateHolder = new AnswerHolder<>();
+
+    /**
+     * Keeper of last {@link yandex.muratov.translator.translate.api.DictionaryApi} response
+     */
     private AnswerHolder<DictionaryAnswer> dictionaryHolder = new AnswerHolder<>();
 
     public TranslationController(TranslationModel net,
@@ -80,6 +104,9 @@ public class TranslationController implements NetworkModelObserver, Droppable {
         notifyLastResponse();
     }
 
+    /**
+     * Subscriber receive last response if it wat not processed
+     */
     private void notifyLastResponse() {
         DictionaryAnswer dict = dictionaryHolder.getAndErase();
         if (dict != null) {
