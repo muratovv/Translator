@@ -57,13 +57,6 @@ public abstract class MapBasedHistoryStorage implements HistoryStorageModel {
     }
 
     @Override
-    public void onPutCallback(HistoryRow actual) {
-        if (modelSubscriber != null) {
-            modelSubscriber.onPutCallback(actual);
-        }
-    }
-
-    @Override
     public void removeByPredicate(StorageOperations.Predicate<HistoryRow> predicate) {
         List<HistoryRow> removed = new ArrayList<>();
         for (HistoryRow row : storage.values()) {
@@ -73,14 +66,6 @@ public abstract class MapBasedHistoryStorage implements HistoryStorageModel {
             }
         }
         onRemoveByPredicate(new InMemoryResult(removed));
-    }
-
-
-    @Override
-    public void onRemoveByPredicate(Result<HistoryRow> removed) {
-        if (modelSubscriber != null) {
-            modelSubscriber.onRemoveByPredicate(removed);
-        }
     }
 
     @Override
@@ -96,12 +81,24 @@ public abstract class MapBasedHistoryStorage implements HistoryStorageModel {
         onGetByPredicate(new InMemoryResult(chosen));
     }
 
+
     @Override
     public void dropConnection() {
     }
 
-    @Override
-    public void onGetByPredicate(Result<HistoryRow> result) {
+    private void onPutCallback(HistoryRow actual) {
+        if (modelSubscriber != null) {
+            modelSubscriber.onPutCallback(actual);
+        }
+    }
+
+    private void onRemoveByPredicate(Result<HistoryRow> removed) {
+        if (modelSubscriber != null) {
+            modelSubscriber.onRemoveByPredicate(removed);
+        }
+    }
+
+    private void onGetByPredicate(Result<HistoryRow> result) {
         if (modelSubscriber != null) {
             modelSubscriber.onGetByPredicate(result);
         }
@@ -117,6 +114,9 @@ public abstract class MapBasedHistoryStorage implements HistoryStorageModel {
         this.modelSubscriber = null;
     }
 
+    /**
+     * Cursor of results for in-memory storage
+     */
     private static class InMemoryResult implements Result<HistoryRow> {
 
         private List<HistoryRow> result;
@@ -139,6 +139,7 @@ public abstract class MapBasedHistoryStorage implements HistoryStorageModel {
 
     /**
      * Interface for internal access to Map based implementation of storage
+     *
      * @param <T>
      */
     public interface DataStorage<T> {
