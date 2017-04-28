@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * def
+ * Represents entry of "def" key in Yandex Dictionary API
  */
+@SuppressWarnings({"FieldCanBeLocal", "unused"})
 public class DefinitionEntry {
 
     private String text = "";

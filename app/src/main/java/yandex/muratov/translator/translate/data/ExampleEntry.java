@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author @muratovv
- * @date 20.04.17
+ * Represents "ex" key in response of Yandex Dictionary API
  */
+@SuppressWarnings("FieldCanBeLocal")
 public class ExampleEntry {
-    private String                 text = "";
+    private String text = "";
     @SerializedName("tr")
     private List<LightTranslationEntry> translations = new ArrayList<>();
 

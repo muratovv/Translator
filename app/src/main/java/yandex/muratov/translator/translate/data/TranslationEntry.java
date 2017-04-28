@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author @muratovv
- * @date 20.04.17
+ * Class represents key "tr" in Yandex Dictionary API
  */
+@SuppressWarnings("ALL")
 public class TranslationEntry {
     private String text = "";
 

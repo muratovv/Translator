@@ -1,9 +1,9 @@
 package yandex.muratov.translator.translate.data;
 
 /**
- * @author @muratovv
- * @date 20.04.17
+ * Class represents "syn" key in Yandex Dictionary API
  */
+@SuppressWarnings("FieldCanBeLocal")
 public class SynonymEntry {
     private String text = "";
 

@@ -8,9 +8,9 @@ import java.util.List;
 import yandex.muratov.translator.util.StringUtil;
 
 /**
- * @author @muratovv
- * @date 20.04.17
+ * Class represents response from {@link yandex.muratov.translator.translate.api.TranslateApi}
  */
+@SuppressWarnings("WeakerAccess")
 public class TranslateAnswer {
     private int code;
     private String lang = "";
@@ -40,7 +40,7 @@ public class TranslateAnswer {
         return "TranslateAnswer{" +
                 "code=" + code +
                 ", lang='" + lang + '\'' +
-                ", texts=" + StringUtil.join(", ",texts) +
+                ", texts=" + StringUtil.join(", ", texts) +
                 '}';
     }
 }

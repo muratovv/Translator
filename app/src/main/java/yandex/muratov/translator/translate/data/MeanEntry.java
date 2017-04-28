@@ -1,9 +1,9 @@
 package yandex.muratov.translator.translate.data;
 
 /**
- * @author @muratovv
- * @date 20.04.17
+ * Represents "mean" key in Yandex Dictionary API
  */
+@SuppressWarnings("FieldCanBeLocal")
 public class MeanEntry {
     private String text = "";
 

@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author @muratovv
- * @date 20.04.17
+ * Represents whole response from Yandex Dictionary API
  */
+@SuppressWarnings("WeakerAccess")
 public class DictionaryAnswer {
 
     private int code = DataCodes.VALID_ANSWER_CODE;

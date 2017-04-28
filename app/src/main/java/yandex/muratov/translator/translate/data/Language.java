@@ -4,16 +4,26 @@ package yandex.muratov.translator.translate.data;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class represent class in Yandex API
+ */
 @SuppressWarnings("unused")
 public class Language {
-    private String code;
-    private String uiName;
-    private boolean leftToRight;
 
-    private Language(String code, String uiName, boolean leftToRight) {
+    /**
+     * Raw code of language
+     */
+    private String code;
+
+    /**
+     * name for displaying at UI
+     */
+    private String uiName;
+
+
+    private Language(String code, String uiName) {
         this.code = code;
         this.uiName = uiName;
-        this.leftToRight = leftToRight;
     }
 
     public String getCode() {
@@ -24,26 +34,22 @@ public class Language {
         return uiName;
     }
 
-    public boolean isLeftToRight() {
-        return leftToRight;
-    }
-
+    /**
+     * Create language and register in in {@link Language#availableLanguages}
+     */
+    @SuppressWarnings("WeakerAccess")
     public static Language make(String code, String uiName) {
-        Language lang = new Language(code, uiName, true);
+        Language lang = new Language(code, uiName);
         register(lang);
         return lang;
     }
 
-    public static Language make(String code, String uiName, boolean leftToRight) {
-        Language lang = new Language(code, uiName, leftToRight);
-        register(lang);
-        return lang;
-    }
-
+    /**
+     * Add language for registration
+     */
     private static void register(Language lang) {
         availableLanguages.add(lang);
     }
-
 
     public static List<Language> availableLanguages = new ArrayList<>();
 
@@ -67,7 +73,7 @@ public class Language {
     public static final Language HU = make("hu", "Magyar");
     public static final Language MS = make("ms", "Melayu");
     public static final Language MK = make("mk", "Македонски");
-    public static final Language FA = make("fa", "زبان فارسی", false);
+    public static final Language FA = make("fa", "زبان فارسی");
     public static final Language DA = make("da", "Dansk");
     public static final Language ES = make("es", "Español");
     public static final Language FR = make("fr", "Français");
@@ -86,7 +92,7 @@ public class Language {
     public static final Language FI = make("fi", "Suomen");
     public static final Language TG = make("tg", "Забони тоҷикӣ");
     public static final Language EU = make("eu", "Euskal");
-    public static final Language AR = make("ar", "اللغة العربية", false);
+    public static final Language AR = make("ar", "اللغة العربية");
     public static final Language CA = make("ca", "Llengua catalana");
     public static final Language NL = make("nl", "Nederlandse taal");
     public static final Language BG = make("bg", "Български");
@@ -106,7 +112,7 @@ public class Language {
     public static final Language LT = make("lt", "Lietuvių kalba");
     public static final Language ET = make("et", "Eesti keel");
     public static final Language ZH = make("zh", "汉语");
-    public static final Language HE = make("he", "השפה העברית", false);
+    public static final Language HE = make("he", "השפה העברית");
     public static final Language UZ = make("uz", "O'zbek tili");
     public static final Language LA = make("la", "Latina lingua");
     public static final Language SL = make("sl", "Slovenski jezik");
