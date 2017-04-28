@@ -1,4 +1,4 @@
-package yandex.muratov.translator;
+package yandex.muratov.translator.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import yandex.muratov.translator.R;
 import yandex.muratov.translator.translate.data.Language;
 import yandex.muratov.translator.ui.translator.LanguagePickerToolbarView;
 import yandex.muratov.translator.ui.translator.OnChangeLanguage;

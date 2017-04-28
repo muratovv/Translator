@@ -12,7 +12,7 @@
         android:theme="@style/YandexTranslatorTheme">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:windowSoftInputMode="adjustPan">
 
             <intent-filter>
@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LanguagePickerActivity">
+        <activity android:name=".ui.LanguagePickerActivity">
 
         </activity>
 

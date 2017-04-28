@@ -1,4 +1,4 @@
-package yandex.muratov.translator;
+package yandex.muratov.translator.ui;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
-import yandex.muratov.translator.ui.ContextHolderFragment;
+import yandex.muratov.translator.R;
 import yandex.muratov.translator.ui.bookmarks.BookmarkScreenFragment;
 import yandex.muratov.translator.ui.translator.TranslatorScreenFragment;
 

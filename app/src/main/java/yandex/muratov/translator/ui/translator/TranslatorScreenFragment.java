@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 
-import yandex.muratov.translator.LanguagePickerActivity;
+import yandex.muratov.translator.ui.LanguagePickerActivity;
 import yandex.muratov.translator.R;
 import yandex.muratov.translator.translate.TranslationController;
 import yandex.muratov.translator.translate.data.Language;
