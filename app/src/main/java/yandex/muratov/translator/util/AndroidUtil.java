@@ -1,55 +1,28 @@
 package yandex.muratov.translator.util;
 
-import android.content.Context;
 import android.support.annotation.IdRes;
-import android.support.v7.widget.RecyclerView;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 
+import yandex.muratov.translator.ui.translator.language_picker.LanguageItemHolder;
 
+
+/**
+ * Utility class for android useful methods
+ */
 public class AndroidUtil {
-    public static class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
-        private OnItemClickListener mListener;
 
-        GestureDetector mGestureDetector;
-
-        public RecyclerItemClickListener(Context context, OnItemClickListener listener) {
-            mListener = listener;
-            mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
-                @Override
-                public boolean onSingleTapUp(MotionEvent e) {
-                    return true;
-                }
-            });
-        }
-
-        @Override
-        public boolean onInterceptTouchEvent(RecyclerView view, MotionEvent e) {
-            View childView = view.findChildViewUnder(e.getX(), e.getY());
-            if (childView != null && mListener != null && mGestureDetector.onTouchEvent(e)) {
-                mListener.onItemClick(childView, view.getChildAdapterPosition(childView));
-                return true;
-            }
-            return false;
-        }
-
-        @Override
-        public void onTouchEvent(RecyclerView view, MotionEvent motionEvent) {
-        }
-
-        @Override
-        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-        }
-    }
-
+    /**
+     * Static method find view, with cast
+     */
     @SuppressWarnings("unchecked")
     public static <T> T findViewById(View v, @IdRes int id) {
         return ((T) v.findViewById(id));
     }
 
-    public interface OnItemClickListener {
-        void onItemClick(View view, int position);
+    /**
+     * Class for organization OnItemClick for {@link android.support.v7.widget.RecyclerView}
+     */
+    public abstract static class OnRecyclerViewItemClickListener {
+        public abstract void onClick(LanguageItemHolder holder, int position);
     }
 }

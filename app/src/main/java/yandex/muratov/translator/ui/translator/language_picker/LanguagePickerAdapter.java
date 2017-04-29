@@ -10,13 +10,16 @@ import java.util.List;
 
 import yandex.muratov.translator.R;
 import yandex.muratov.translator.translate.data.Language;
+import yandex.muratov.translator.util.AndroidUtil;
 
 public class LanguagePickerAdapter extends RecyclerView.Adapter<LanguageItemHolder> {
 
     private List<Language> languages;
+    private AndroidUtil.OnRecyclerViewItemClickListener listener;
 
-    public LanguagePickerAdapter(List<Language> languages) {
+    public LanguagePickerAdapter(List<Language> languages, AndroidUtil.OnRecyclerViewItemClickListener listener) {
         this.languages = languages;
+        this.listener = listener;
     }
 
     @Override
@@ -28,12 +31,19 @@ public class LanguagePickerAdapter extends RecyclerView.Adapter<LanguageItemHold
     }
 
     @Override
-    public void onBindViewHolder(LanguageItemHolder holder, int position) {
+    public void onBindViewHolder(final LanguageItemHolder holder, final int position) {
         holder.textView.setText(languages.get(position).getUiName());
+        holder.textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick(holder, position);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return languages.size();
     }
+
 }

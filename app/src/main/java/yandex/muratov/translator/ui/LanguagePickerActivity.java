@@ -12,6 +12,7 @@ import yandex.muratov.translator.translate.data.Language;
 import yandex.muratov.translator.ui.translator.LanguagePickerToolbarView;
 import yandex.muratov.translator.ui.translator.OnChangeLanguage;
 import yandex.muratov.translator.ui.translator.TranslatorScreenFragment;
+import yandex.muratov.translator.ui.translator.language_picker.LanguageItemHolder;
 import yandex.muratov.translator.ui.translator.language_picker.LanguagePickerAdapter;
 import yandex.muratov.translator.util.AndroidUtil;
 
@@ -71,19 +72,18 @@ public class LanguagePickerActivity extends AppCompatActivity {
         listOfLanguages.setHasFixedSize(true);
         listOfLanguages.setItemViewCacheSize(LIST_CACHE_SIZE);
         listOfLanguages.setLayoutManager(new LinearLayoutManager(this));
-        LanguagePickerAdapter adapter = new LanguagePickerAdapter(Language.availableLanguages);
+        LanguagePickerAdapter adapter = new LanguagePickerAdapter(Language.availableLanguages,
+                new AndroidUtil.OnRecyclerViewItemClickListener() {
+            @Override
+            public void onClick(LanguageItemHolder holder, int position) {
+                Language lang = Language.availableLanguages.get(position);
+                if (changeLanguageNotification != null) {
+                    changeLanguageNotification.notify(lang);
+                }
+                finish();
+            }
+        });
         listOfLanguages.setAdapter(adapter);
-        listOfLanguages.addOnItemTouchListener(new AndroidUtil.RecyclerItemClickListener(this,
-                new AndroidUtil.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        Language lang = Language.availableLanguages.get(position);
-                        if (changeLanguageNotification != null) {
-                            changeLanguageNotification.notify(lang);
-                        }
-                        finish();
-                    }
-                }));
     }
 
     private LanguagePickerToolbarView initToolbar() {
