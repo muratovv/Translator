@@ -32,6 +32,7 @@ public class LanguagePickerActivity extends AppCompatActivity {
     private LanguagePickerToolbarView toolbar;
     private RecyclerView listOfLanguages;
     private String title;
+    private AndroidUtil.OnRecyclerViewItemClickListener itemListener;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +45,16 @@ public class LanguagePickerActivity extends AppCompatActivity {
     private void initModel() {
         Bundle bundle = getIntent().getExtras();
         changeLanguageNotification = getCallback(bundle.getString(CALLBACK_TAG));
+        itemListener = new AndroidUtil.OnRecyclerViewItemClickListener() {
+            @Override
+            public void onClick(LanguageItemHolder holder, int position) {
+                Language lang = Language.availableLanguages.get(position);
+                if (changeLanguageNotification != null) {
+                    changeLanguageNotification.notify(lang);
+                }
+                finish();
+            }
+        };
         title = bundle.getString(TITLE_TAG);
     }
 
@@ -73,16 +84,7 @@ public class LanguagePickerActivity extends AppCompatActivity {
         listOfLanguages.setItemViewCacheSize(LIST_CACHE_SIZE);
         listOfLanguages.setLayoutManager(new LinearLayoutManager(this));
         LanguagePickerAdapter adapter = new LanguagePickerAdapter(Language.availableLanguages,
-                new AndroidUtil.OnRecyclerViewItemClickListener() {
-            @Override
-            public void onClick(LanguageItemHolder holder, int position) {
-                Language lang = Language.availableLanguages.get(position);
-                if (changeLanguageNotification != null) {
-                    changeLanguageNotification.notify(lang);
-                }
-                finish();
-            }
-        });
+                itemListener);
         listOfLanguages.setAdapter(adapter);
     }
 
