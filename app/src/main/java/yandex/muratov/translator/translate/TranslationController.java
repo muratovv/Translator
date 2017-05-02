@@ -52,6 +52,9 @@ public class TranslationController implements NetworkModelObserver, Droppable {
      */
     private AnswerHolder<DictionaryAnswer> dictionaryHolder = new AnswerHolder<>();
 
+    /**
+     * Queue for defer translation requests
+     */
     private DeferredQueue<String> translationQueue;
 
     public TranslationController(TranslationModel net,
