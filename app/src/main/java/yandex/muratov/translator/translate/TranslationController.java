@@ -2,6 +2,11 @@ package yandex.muratov.translator.translate;
 
 import android.util.Log;
 
+import java.util.concurrent.TimeUnit;
+
+import deferred_queue.core.Callback;
+import deferred_queue.core.DeferredQueue;
+import deferred_queue.core.Delay;
 import yandex.muratov.translator.translate.api.Droppable;
 import yandex.muratov.translator.translate.api.NetworkModelObserver;
 import yandex.muratov.translator.translate.api.TranslationModel;
@@ -46,6 +51,8 @@ public class TranslationController implements NetworkModelObserver, Droppable {
      * Keeper of last {@link yandex.muratov.translator.translate.api.DictionaryApi} response
      */
     private AnswerHolder<DictionaryAnswer> dictionaryHolder = new AnswerHolder<>();
+
+    private DeferredQueue<String> translationQueue;
 
     public TranslationController(TranslationModel net,
                                  Language defaultSourceLang, Language defaultTargetLang) {
@@ -96,6 +103,25 @@ public class TranslationController implements NetworkModelObserver, Droppable {
                 uiSubscriber.onDictionaryRequestFail(error);
             }
         });
+        translationQueue = initQueue();
+    }
+
+    private DeferredQueue<String> initQueue() {
+        DeferredQueue<String> queue = new DeferredQueue<>();
+        queue.setOnTimeExpiredCallback(new Callback<String>() {
+            @Override
+            public void call(String text) {
+                dropLast();
+                translateRequest(text);
+            }
+        });
+        queue.setOnForceDequeCallback(new Callback<String>() {
+            @Override
+            public void call(String ignored) {
+                dropLast();
+            }
+        });
+        return queue;
     }
 
     @Override
@@ -144,15 +170,17 @@ public class TranslationController implements NetworkModelObserver, Droppable {
         return targetLang;
     }
 
-    public void translate(String text) {
+    public void translate(final String text) {
         Log.d(TAG, String.format("translate: %s", text));
         if (text == null || text.trim().equals("")) {
+            translationQueue.forcePull();
             sendEmptyAnswer();
             dropLast();
             return;
         }
-        dropLast();
-        translateRequest(text);
+//        dropLast();
+//        translateRequest(text);
+        translationQueue.insert(text, Delay.delay(1, TimeUnit.SECONDS));
     }
 
     private void translateRequest(String text) {

@@ -40,4 +40,5 @@ dependencies {
     compile('com.github.ihsanbal:LoggingInterceptor:2.0.0') {
         exclude group: 'org.json', module: 'json'
     }
+    compile 'com.github.muratovv:deferred_queue:0.1.1'
 }
