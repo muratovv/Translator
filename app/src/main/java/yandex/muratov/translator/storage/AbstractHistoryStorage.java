@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import yandex.muratov.translator.storage.api.HistoryStorageModel;
+import yandex.muratov.translator.storage.api.KeyValueStorage;
 import yandex.muratov.translator.storage.api.OnChangeStorage;
 import yandex.muratov.translator.storage.api.Result;
 import yandex.muratov.translator.storage.api.StorageOperations;
@@ -17,17 +17,17 @@ import yandex.muratov.translator.storage.api.StorageOperations;
 /**
  * Storage based on key value structure
  */
-public abstract class MapBasedHistoryStorage implements HistoryStorageModel {
-    private static String TAG = MapBasedHistoryStorage.class.getSimpleName();
+public abstract class AbstractHistoryStorage implements HistoryStorageModel {
+    private static String TAG = AbstractHistoryStorage.class.getSimpleName();
 
-    private DataStorage<HistoryRow> storage;
+    private KeyValueStorage<HistoryRow> storage;
     private OnChangeStorage modelSubscriber;
 
-    public MapBasedHistoryStorage() {
+    public AbstractHistoryStorage() {
         storage = initStorage();
     }
 
-    protected abstract DataStorage<HistoryRow> initStorage();
+    protected abstract KeyValueStorage<HistoryRow> initStorage();
 
 
     @Override
@@ -83,8 +83,7 @@ public abstract class MapBasedHistoryStorage implements HistoryStorageModel {
 
 
     @Override
-    public void dropConnection() {
-    }
+    public abstract void dropConnection();
 
     private void onPutCallback(HistoryRow actual) {
         if (modelSubscriber != null) {
@@ -134,21 +133,5 @@ public abstract class MapBasedHistoryStorage implements HistoryStorageModel {
         public Iterator<HistoryRow> values() {
             return result.iterator();
         }
-    }
-
-
-    /**
-     * Interface for internal access to Map based implementation of storage
-     *
-     * @param <T>
-     */
-    public interface DataStorage<T> {
-        T put(T key);
-
-        T get(T key);
-
-        T remove(T key);
-
-        Set<T> values();
     }
 }

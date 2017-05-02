@@ -5,19 +5,25 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import yandex.muratov.translator.storage.api.KeyValueStorage;
+
 /**
  * Storage based on {@link HashMap} implementation
  */
-public class InMemoryHistoryStorage extends MapBasedHistoryStorage {
+public class InMemoryHistoryStorage extends AbstractHistoryStorage {
     private static String TAG = InMemoryHistoryStorage.class.getSimpleName();
 
     @Override
-    protected DataStorage<HistoryRow> initStorage() {
+    protected KeyValueStorage<HistoryRow> initStorage() {
         return new MapDataStorage<>();
     }
 
+    @Override
+    public void dropConnection() {
 
-    private static class MapDataStorage<T> implements DataStorage<T> {
+    }
+
+    private static class MapDataStorage<T> implements KeyValueStorage<T> {
         private Map<T, T> map = new HashMap<>();
 
 
