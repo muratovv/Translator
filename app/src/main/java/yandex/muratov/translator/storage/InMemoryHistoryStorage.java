@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import yandex.muratov.translator.storage.api.KeyValueStorage;
+import yandex.muratov.translator.storage.data.HistoryRow;
 
 /**
  * Storage based on {@link HashMap} implementation

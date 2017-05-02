@@ -19,7 +19,7 @@ import yandex.muratov.translator.ui.LanguagePickerActivity;
 import yandex.muratov.translator.R;
 import yandex.muratov.translator.translate.TranslationController;
 import yandex.muratov.translator.translate.data.Language;
-import yandex.muratov.translator.storage.HistoryRow;
+import yandex.muratov.translator.storage.data.HistoryRow;
 import yandex.muratov.translator.ui.ContextHolderFragment;
 import yandex.muratov.translator.ui.TranslationContext;
 

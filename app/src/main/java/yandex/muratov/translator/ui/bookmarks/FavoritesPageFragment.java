@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import yandex.muratov.translator.R;
-import yandex.muratov.translator.storage.HistoryRow;
+import yandex.muratov.translator.storage.data.HistoryRow;
 import yandex.muratov.translator.storage.api.StorageOperations;
 
 public class FavoritesPageFragment extends BasePageFragment {

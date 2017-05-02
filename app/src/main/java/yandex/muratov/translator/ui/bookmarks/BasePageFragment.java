@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import yandex.muratov.translator.R;
-import yandex.muratov.translator.storage.HistoryRow;
+import yandex.muratov.translator.storage.data.HistoryRow;
 import yandex.muratov.translator.storage.api.OnChangeStorage;
 import yandex.muratov.translator.storage.api.Result;
 import yandex.muratov.translator.storage.api.StorageOperations;

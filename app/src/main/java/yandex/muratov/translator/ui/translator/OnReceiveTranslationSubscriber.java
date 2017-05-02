@@ -7,7 +7,7 @@ import android.widget.Toast;
 import java.util.Objects;
 
 import yandex.muratov.translator.R;
-import yandex.muratov.translator.storage.HistoryRow;
+import yandex.muratov.translator.storage.data.HistoryRow;
 import yandex.muratov.translator.translate.api.TranslatorModelSubscriber;
 import yandex.muratov.translator.translate.data.DictionaryAnswer;
 import yandex.muratov.translator.translate.data.TranslateAnswer;

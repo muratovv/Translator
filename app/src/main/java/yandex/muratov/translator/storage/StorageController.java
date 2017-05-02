@@ -5,6 +5,7 @@ import yandex.muratov.translator.storage.api.HistoryStorageModel;
 import yandex.muratov.translator.storage.api.HistoryStorageObserver;
 import yandex.muratov.translator.storage.api.OnChangeStorage;
 import yandex.muratov.translator.storage.api.Result;
+import yandex.muratov.translator.storage.data.HistoryRow;
 
 /**
  * Class resolves access to history storage

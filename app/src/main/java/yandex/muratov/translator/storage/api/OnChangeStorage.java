@@ -1,6 +1,6 @@
 package yandex.muratov.translator.storage.api;
 
-import yandex.muratov.translator.storage.HistoryRow;
+import yandex.muratov.translator.storage.data.HistoryRow;
 
 /**
  * Subscriber for storage

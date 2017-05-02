@@ -15,7 +15,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import yandex.muratov.translator.R;
-import yandex.muratov.translator.storage.HistoryRow;
+import yandex.muratov.translator.storage.data.HistoryRow;
 import yandex.muratov.translator.storage.StorageController;
 
 import static yandex.muratov.translator.ui.translator.DictionaryAdapter.TAG;

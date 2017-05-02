@@ -1,4 +1,4 @@
-package yandex.muratov.translator.storage;
+package yandex.muratov.translator.storage.data;
 
 import android.support.annotation.NonNull;
 

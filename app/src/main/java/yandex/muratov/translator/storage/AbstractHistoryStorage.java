@@ -12,6 +12,7 @@ import yandex.muratov.translator.storage.api.KeyValueStorage;
 import yandex.muratov.translator.storage.api.OnChangeStorage;
 import yandex.muratov.translator.storage.api.Result;
 import yandex.muratov.translator.storage.api.StorageOperations;
+import yandex.muratov.translator.storage.data.HistoryRow;
 
 
 /**

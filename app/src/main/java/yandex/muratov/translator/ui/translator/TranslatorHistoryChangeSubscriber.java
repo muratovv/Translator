@@ -3,7 +3,7 @@ package yandex.muratov.translator.ui.translator;
 import android.util.Log;
 
 import yandex.muratov.translator.R;
-import yandex.muratov.translator.storage.HistoryRow;
+import yandex.muratov.translator.storage.data.HistoryRow;
 import yandex.muratov.translator.storage.api.OnChangeStorage;
 import yandex.muratov.translator.storage.api.Result;
 
