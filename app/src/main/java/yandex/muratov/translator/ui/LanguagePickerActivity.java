@@ -12,7 +12,6 @@ import yandex.muratov.translator.translate.data.Language;
 import yandex.muratov.translator.ui.translator.LanguagePickerToolbarView;
 import yandex.muratov.translator.ui.translator.OnChangeLanguage;
 import yandex.muratov.translator.ui.translator.TranslatorScreenFragment;
-import yandex.muratov.translator.ui.translator.language_picker.LanguageItemHolder;
 import yandex.muratov.translator.ui.translator.language_picker.LanguagePickerAdapter;
 import yandex.muratov.translator.util.AndroidUtil;
 
@@ -47,10 +46,9 @@ public class LanguagePickerActivity extends AppCompatActivity {
         changeLanguageNotification = getCallback(bundle.getString(CALLBACK_TAG));
         itemListener = new AndroidUtil.OnRecyclerViewItemClickListener() {
             @Override
-            public void onClick(LanguageItemHolder holder, int position) {
-                Language lang = Language.availableLanguages.get(position);
+            public void onClick(Language language) {
                 if (changeLanguageNotification != null) {
-                    changeLanguageNotification.notify(lang);
+                    changeLanguageNotification.notify(language);
                 }
                 finish();
             }

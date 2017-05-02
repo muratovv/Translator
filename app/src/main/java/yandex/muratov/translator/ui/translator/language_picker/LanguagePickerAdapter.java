@@ -27,18 +27,12 @@ public class LanguagePickerAdapter extends RecyclerView.Adapter<LanguageItemHold
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View item = inflater.inflate(R.layout.item_language, parent, false);
-        return new LanguageItemHolder(item);
+        return new LanguageItemHolder(item, listener);
     }
 
     @Override
     public void onBindViewHolder(final LanguageItemHolder holder, final int position) {
-        holder.textView.setText(languages.get(position).getUiName());
-        holder.textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onClick(holder, position);
-            }
-        });
+        holder.bind(languages.get(position));
     }
 
     @Override
