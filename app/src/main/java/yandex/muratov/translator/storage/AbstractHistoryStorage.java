@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import yandex.muratov.translator.storage.api.HistoryStorageModel;
-import yandex.muratov.translator.storage.api.KeyValueStorage;
+import yandex.muratov.translator.storage.api.SetStorage;
 import yandex.muratov.translator.storage.api.OnChangeStorage;
 import yandex.muratov.translator.storage.api.Result;
 import yandex.muratov.translator.storage.api.StorageOperations;
@@ -21,14 +21,14 @@ import yandex.muratov.translator.storage.data.HistoryRow;
 public abstract class AbstractHistoryStorage implements HistoryStorageModel {
     private static String TAG = AbstractHistoryStorage.class.getSimpleName();
 
-    private KeyValueStorage<HistoryRow> storage;
+    private SetStorage<HistoryRow> storage;
     private OnChangeStorage modelSubscriber;
 
     public AbstractHistoryStorage() {
         storage = initStorage();
     }
 
-    protected abstract KeyValueStorage<HistoryRow> initStorage();
+    protected abstract SetStorage<HistoryRow> initStorage();
 
 
     @Override

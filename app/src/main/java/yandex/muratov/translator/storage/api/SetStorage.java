@@ -7,24 +7,23 @@ import java.util.Set;
  *
  * @param <T>
  */
-public interface KeyValueStorage<T> {
+public interface SetStorage<T> {
 
     /**
-     * @param key object to insert
+     * @param value object to insert
      * @return previous value
      */
-    T put(T key);
+    T put(T value);
 
     /**
-     * @return previous object for this key
+     * @return previous value or null
      */
-    T get(T key);
+    T get(T value);
 
     /**
-     * @param key for removing from storage
-     * @return
+     * @param value for removing from storage
      */
-    T remove(T key);
+    T remove(T value);
 
     /**
      * @return all values available in storage

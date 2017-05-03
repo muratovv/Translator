@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import yandex.muratov.translator.storage.api.KeyValueStorage;
+import yandex.muratov.translator.storage.api.SetStorage;
 import yandex.muratov.translator.storage.data.HistoryRow;
 
 /**
@@ -15,7 +15,7 @@ public class InMemoryHistoryStorage extends AbstractHistoryStorage {
     private static String TAG = InMemoryHistoryStorage.class.getSimpleName();
 
     @Override
-    protected KeyValueStorage<HistoryRow> initStorage() {
+    protected SetStorage<HistoryRow> initStorage() {
         return new MapDataStorage<>();
     }
 
@@ -24,23 +24,23 @@ public class InMemoryHistoryStorage extends AbstractHistoryStorage {
 
     }
 
-    private static class MapDataStorage<T> implements KeyValueStorage<T> {
+    private static class MapDataStorage<T> implements SetStorage<T> {
         private Map<T, T> map = new HashMap<>();
 
 
         @Override
-        public T put(T key) {
-            return map.put(key, key);
+        public T put(T value) {
+            return map.put(value, value);
         }
 
         @Override
-        public T get(T key) {
-            return map.get(key);
+        public T get(T value) {
+            return map.get(value);
         }
 
         @Override
-        public T remove(T key) {
-            return map.remove(key);
+        public T remove(T value) {
+            return map.remove(value);
         }
 
         @Override
