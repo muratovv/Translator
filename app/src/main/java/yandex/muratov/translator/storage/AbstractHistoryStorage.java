@@ -1,5 +1,6 @@
 package yandex.muratov.translator.storage;
 
+import android.content.Context;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -24,7 +25,10 @@ public abstract class AbstractHistoryStorage implements HistoryStorageModel {
     private SetStorage<HistoryRow> storage;
     private OnChangeStorage modelSubscriber;
 
-    public AbstractHistoryStorage() {
+    protected Context appContext;
+
+    public AbstractHistoryStorage(Context appContext) {
+        this.appContext = appContext;
         storage = initStorage();
     }
 

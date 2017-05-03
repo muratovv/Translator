@@ -1,6 +1,8 @@
 package yandex.muratov.translator.storage;
 
 
+import android.content.Context;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -13,6 +15,10 @@ import yandex.muratov.translator.storage.data.HistoryRow;
  */
 public class InMemoryHistoryStorage extends AbstractHistoryStorage {
     private static String TAG = InMemoryHistoryStorage.class.getSimpleName();
+
+    public InMemoryHistoryStorage(Context appContext) {
+        super(appContext);
+    }
 
     @Override
     protected SetStorage<HistoryRow> initStorage() {

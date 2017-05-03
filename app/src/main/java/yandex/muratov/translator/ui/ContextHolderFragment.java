@@ -10,14 +10,15 @@ import android.view.ViewGroup;
 
 import java.io.File;
 
-import yandex.muratov.translator.translate.net.ConnectionBuilder;
+import yandex.muratov.translator.storage.AbstractHistoryStorage;
+import yandex.muratov.translator.storage.DbHistoryStorage;
+import yandex.muratov.translator.storage.StorageController;
 import yandex.muratov.translator.translate.TranslationController;
+import yandex.muratov.translator.translate.data.Language;
+import yandex.muratov.translator.translate.net.ConnectionBuilder;
 import yandex.muratov.translator.translate.net.YandexDictionaryRepository;
 import yandex.muratov.translator.translate.net.YandexTranslateRepository;
 import yandex.muratov.translator.translate.net.YandexTranslator;
-import yandex.muratov.translator.translate.data.Language;
-import yandex.muratov.translator.storage.InMemoryHistoryStorage;
-import yandex.muratov.translator.storage.StorageController;
 
 public class ContextHolderFragment extends Fragment {
 
@@ -39,7 +40,7 @@ public class ContextHolderFragment extends Fragment {
     }
 
     private HistoryStorageContext initHistoryContext() {
-        InMemoryHistoryStorage storage = new InMemoryHistoryStorage();
+        AbstractHistoryStorage storage = new DbHistoryStorage(getContext());
         return new HistoryStorageContext(new StorageController(storage));
     }
 

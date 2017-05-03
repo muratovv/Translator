@@ -50,4 +50,7 @@ dependencies {
 
     // deferred queue
     compile 'com.github.muratovv:deferred_queue:0.1.1'
+
+    // data base
+    compile 'io.paperdb:paperdb:2.0'
 }
