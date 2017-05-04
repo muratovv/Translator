@@ -81,8 +81,6 @@ public class BookmarkScreenFragment extends android.support.v4.app.Fragment {
 
     private static class SectionPageAdapter extends FragmentPagerAdapter {
 
-        private static String TAG = SectionPageAdapter.class.getSimpleName();
-
         private Resources resources;
         private BookmarkPageFragment bookmarks;
         private FavoritesPageFragment favorites;

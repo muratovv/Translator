@@ -45,16 +45,4 @@ public class FavoritesPageFragment extends BasePageFragment {
         Log.d(TAG, "getInstance: FavoritesPageFragment");
         return new FavoritesPageFragment();
     }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d(TAG, "onResume: Favorites");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.d(TAG, "onPause: Favorites");
-    }
 }

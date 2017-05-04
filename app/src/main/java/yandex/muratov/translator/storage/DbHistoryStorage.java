@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import io.paperdb.Book;
 import io.paperdb.Paper;
 import yandex.muratov.translator.storage.api.SetStorage;
 import yandex.muratov.translator.storage.data.HistoryRow;
@@ -33,34 +34,36 @@ public class DbHistoryStorage extends AbstractHistoryStorage {
     private static class PaperStorage implements SetStorage<HistoryRow> {
 
         private static String BOOK_TAG = "bookmarks";
+        private Book book;
 
         public PaperStorage(Context appContext) {
             Paper.init(appContext);
+            book = Paper.book(BOOK_TAG);
         }
 
         @Override
         public HistoryRow put(HistoryRow value) {
             String serialized = serialize(value);
-            HistoryRow previous = deserialize((String) Paper.book(BOOK_TAG).read(serialized));
-            Paper.book(BOOK_TAG).write(serialized, serialized);
+            HistoryRow previous = deserialize((String) book.read(serialized));
+            book.write(serialized, serialized);
             return previous;
         }
 
         @Override
         public HistoryRow get(HistoryRow value) {
-            return deserialize((String) Paper.book(BOOK_TAG).read(serialize(value)));
+            return deserialize((String) book.read(serialize(value)));
         }
 
         @Override
         public HistoryRow remove(HistoryRow key) {
             HistoryRow value = get(key);
-            Paper.book(BOOK_TAG).delete(serialize(key));
+            book.delete(serialize(key));
             return value;
         }
 
         @Override
         public Set<HistoryRow> values() {
-            List<String> allKeys = Paper.book(BOOK_TAG).getAllKeys();
+            List<String> allKeys = book.getAllKeys();
             List<HistoryRow> result = new ArrayList<>();
             for (String key : allKeys) {
                 result.add(deserialize(key));

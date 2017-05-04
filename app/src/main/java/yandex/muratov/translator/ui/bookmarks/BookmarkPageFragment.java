@@ -1,12 +1,9 @@
 package yandex.muratov.translator.ui.bookmarks;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
-import android.view.View;
 
-import yandex.muratov.translator.storage.data.HistoryRow;
 import yandex.muratov.translator.storage.api.StorageOperations;
+import yandex.muratov.translator.storage.data.HistoryRow;
 
 public class BookmarkPageFragment extends BasePageFragment {
     private static String TAG = BookmarkPageFragment.class.getSimpleName();
@@ -24,11 +21,6 @@ public class BookmarkPageFragment extends BasePageFragment {
                 return sourceText.contains(query) || translateText.contains(query);
             }
         };
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
     }
 
     public static BookmarkPageFragment getInstance() {
