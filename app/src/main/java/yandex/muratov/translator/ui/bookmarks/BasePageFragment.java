@@ -58,6 +58,7 @@ public abstract class BasePageFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        activate();
     }
 
     protected StoredRecordsAdapter initAdapter(Context appContext) {
@@ -83,7 +84,8 @@ public abstract class BasePageFragment extends Fragment {
 
             @Override
             public void onGetByPredicate(Result<HistoryRow> result) {
-                Log.d(TAG, String.format("onGetByPredicate: adapter=%d, size=%s", adapter.hashCode(), result.size()));
+                Log.d(TAG, String.format("onGetByPredicate: adapter=%d, size=%s",
+                        adapter.hashCode(), result.size()));
 
                 List<HistoryRow> fetch = ListsUtil.fetch(result.values());
                 adapter.replace(fetch);
@@ -105,7 +107,6 @@ public abstract class BasePageFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                Log.d(TAG, String.format("in bar: adapter=%d, list=%d", adapter.hashCode(), listOfElements.hashCode()));
                 requestList(s);
             }
         };
@@ -129,7 +130,6 @@ public abstract class BasePageFragment extends Fragment {
     private OneLineSearchBar initSearchBar(View rootView) {
         OneLineSearchBar bar = findViewById(rootView, R.id.bar_search);
         bar.getQueryLine().addTextChangedListener(initSearchBarTextWatcher());
-        Log.d(TAG, String.format("initSearchBar: hash %d", bar.hashCode()));
         return bar;
     }
 
@@ -149,6 +149,7 @@ public abstract class BasePageFragment extends Fragment {
                     .getHistoryContext()
                     .getConnector()
                     .subscribe(onChangeStorage);
+            Log.d(TAG, "activate: empty string request");
             contextHolder.getHistoryContext().getConnector().getByPredicate(getSearchPredicate(""));
         }
     }

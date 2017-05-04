@@ -29,7 +29,6 @@ public class BookmarkPageFragment extends BasePageFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        activate();
     }
 
     public static BookmarkPageFragment getInstance() {

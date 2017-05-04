@@ -32,6 +32,7 @@ public class BookmarkScreenFragment extends android.support.v4.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateView: ");
         View view = inflater.inflate(R.layout.fragment_bookmarks_screen, container, false);
         bookmarks = getBookmarksPage();
         favorites = getFavoritesPage();
@@ -51,19 +52,20 @@ public class BookmarkScreenFragment extends android.support.v4.app.Fragment {
                                        final BookmarkPageFragment bookmarks, final FavoritesPageFragment favorites) {
         ViewPager pager = ((ViewPager) rootView.findViewById(R.id.pager));
         pager.setAdapter(new SectionPageAdapter(fm, resources, bookmarks, favorites));
-        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        ViewPager.OnPageChangeListener listener = new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
             public void onPageSelected(int position) {
                 switch (position) {
                     case 0:
+                        Log.d(TAG, "onPageSelected: bookmarks");
                         bookmarks.activate();
                         break;
                     case 1:
+                        Log.d(TAG, "onPageSelected: favorites");
                         favorites.activate();
                         break;
                 }
@@ -71,9 +73,9 @@ public class BookmarkScreenFragment extends android.support.v4.app.Fragment {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
-        });
+        };
+        pager.addOnPageChangeListener(listener);
         return pager;
     }
 
@@ -119,18 +121,6 @@ public class BookmarkScreenFragment extends android.support.v4.app.Fragment {
             }
             return "";
         }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d(TAG, "onResume: Bookmarks");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.d(TAG, "onPause: Bookmarks");
     }
 
     private static BookmarkPageFragment getBookmarksPage() {
